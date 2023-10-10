@@ -8,7 +8,7 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
-    SetMainWindowText("TOMB OF BEAST");  //タイトル設定
+    SetMainWindowText("Pokemon Card Game");  //タイトル設定
     SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLOR_BIT_16);
 
