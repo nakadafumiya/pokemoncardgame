@@ -1,7 +1,8 @@
 #pragma once
 #include "AbstractScene.h"
 
-class SceneManager : public AbstractScene {
+class SceneManager : public AbstractScene 
+{
 private:
 
 	AbstractScene* mScene;
