@@ -87,7 +87,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
@@ -121,7 +121,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\dxlib</AdditionalLibraryDirectories>
     </Link>
@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractScene.h" />
+    <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
+    <ClInclude Include="Field.h" />
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="PadInput.h" />
