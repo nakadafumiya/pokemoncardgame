@@ -7,8 +7,8 @@ private:
 	int Trash_X, Trash_Y;
 	int Bench_X, Bench_Y;
 	int Stadium_X, Stadium_Y;
-	const int Size_H = 130;
-	const int Size_W = 100;
+	const int Size_H = 150;
+	const int Size_W = 110;
 
 public:
 	Field();
