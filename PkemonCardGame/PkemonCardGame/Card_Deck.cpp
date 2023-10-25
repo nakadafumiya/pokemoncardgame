@@ -3,7 +3,7 @@
 
 Card_Deck::Card_Deck()
 {
-	image = LoadGraph("images/Pokemon_Card_D1/ポケカ背面.png", true);
+	image = LoadGraph("images/Pokemon_Card_D1/ポケカ背面.png");
 }
 
 void Card_Deck::Draw()
