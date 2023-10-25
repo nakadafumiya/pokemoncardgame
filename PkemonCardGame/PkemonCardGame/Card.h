@@ -6,9 +6,12 @@ class Card : public AbstractScene
 {
 private:
 	int type[23];
-	int value[60];
+	int ATK;
+	int HP;
+	int ENE;
+	bool EVO;
 public:
-	GameMainScene();
+	Card();
 	//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
 	virtual AbstractScene* Update();
 	//•`‰æ‚ÉŠÖ‚·‚é‚±‚ë‚ğÀ‘•‚·‚é
