@@ -6,6 +6,11 @@ Card_Deck::Card_Deck()
 	image = LoadGraph("images/Pokemon_Card_D1/É|ÉPÉJîwñ .png");
 }
 
+void Card_Deck::Update()
+{
+	
+}
+
 void Card_Deck::Draw()
 {
 	DrawGraph(50, 170, image, true);
