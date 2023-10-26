@@ -3,10 +3,10 @@
 
 Card::Card()
 {
-	ATK=0;
-	HP=0;
-	ENE=0;
-	EVO=false;
+	ATK = 0;
+	HP = 0;
+	ENE = 0;
+	EVO = false;
 }
 
 AbstractScene* Card::Update()
