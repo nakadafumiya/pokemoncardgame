@@ -40,7 +40,7 @@ void Field::Draw() const
 		DrawString(x + 15, y + 20, "デッキ", 0xffffff);
 
 		//サイド
-		int correction = 20;  //補正値
+		int correction = 25;  //補正値
 		x = Side_X + STAGE_WIDTH_MAX * 0.63;
 		for (int h = 0; h < 3; h++)
 		{
@@ -82,10 +82,8 @@ void Field::Draw() const
 	DrawBox(Stadium_X, Stadium_Y, Stadium_X + Size_W, Stadium_Y + Size_H, 0xffffff, false);
 	DrawString(Stadium_X + 5, Stadium_Y + 10, "スタジアム", 0xffffff);
 
-#ifndef DEBUG
-#define DEBUG
-	DrawLine(SCREEN_WIDTH * 0.2, 0, SCREEN_WIDTH * 0.2, SCREEN_HEIGHT, 0x00ff00);
-	DrawLine(SCREEN_WIDTH * 0.8, 0, SCREEN_WIDTH * 0.8, SCREEN_HEIGHT, 0x00ff00);
-#endif // DEBUG
+	//デッドライン
+	DrawLine(SCREEN_WIDTH * 0.2, 0, SCREEN_WIDTH * 0.2, SCREEN_HEIGHT, 0x0000ff);
+	DrawLine(SCREEN_WIDTH * 0.8, 0, SCREEN_WIDTH * 0.8, SCREEN_HEIGHT, 0x0000ff);
 
 }
