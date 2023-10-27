@@ -153,6 +153,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Side.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Side.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
