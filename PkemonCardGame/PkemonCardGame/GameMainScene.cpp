@@ -1,7 +1,6 @@
 #include "Dxlib.h"
 #include "GameMainScene.h"
 
-
 GameMainScene::GameMainScene()
 {
 
