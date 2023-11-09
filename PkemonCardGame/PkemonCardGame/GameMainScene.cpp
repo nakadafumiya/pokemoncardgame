@@ -1,5 +1,6 @@
 #include "Dxlib.h"
 #include "GameMainScene.h"
+#include "Card_Deck.h"
 
 
 GameMainScene::GameMainScene()
@@ -8,6 +9,7 @@ GameMainScene::GameMainScene()
 	Player = 0;
 	Turn = START;
 	Cr = GetColor(255, 255, 255);
+
 }
 
 AbstractScene* GameMainScene::Update()
@@ -29,26 +31,26 @@ AbstractScene* GameMainScene::Update()
 	case MY_TURN:
 		if (Player == 0)
 		{
-			//”’F‚Ì’l‚ğæ“¾
+			//ï¿½ï¿½ï¿½Fï¿½Ì’lï¿½ï¿½ï¿½æ“¾
 			Cr = GetColor(255, 255, 255);
 
 			
 			if (GetJoypadInputState(PAD_INPUT_1) == 1)
 			{
-				//èDŒ©‚é
+				//ï¿½ï¿½Dï¿½ï¿½ï¿½ï¿½
 				return this;
 			}
 			if (GetJoypadInputState(PAD_INPUT_3) == 1)
 			{
-				//ƒJ[ƒh‚ÌÚ×(‰¡‚Ì‰æ–Ê‚ÉƒAƒbƒv)
+				//ï¿½Jï¿½[ï¿½hï¿½ÌÚï¿½(ï¿½ï¿½ï¿½Ì‰ï¿½Ê‚ÉƒAï¿½bï¿½v)
 			}
 			if (GetJoypadInputState(PAD_INPUT_2) == 1)
 			{
-				//ƒJ[ƒh‚Ìg—p(¢Š«)
+				//ï¿½Jï¿½[ï¿½hï¿½Ìgï¿½p(ï¿½ï¿½ï¿½ï¿½)
 			}
 			if (GetJoypadInputState(PAD_INPUT_4) == 1)
 			{
-				//–ß‚é
+				//ï¿½ß‚ï¿½
 			}
 			if (GetJoypadInputState(PAD_INPUT_START) == 1)
 			{
@@ -58,19 +60,23 @@ AbstractScene* GameMainScene::Update()
 		}
 		break;
 	case ENEMY_TURN:
-	   //”’F‚Ì’l‚ğæ“¾
+	   //ï¿½ï¿½ï¿½Fï¿½Ì’lï¿½ï¿½ï¿½æ“¾
 		Cr = GetColor(255, 255, 255);
 		
-	  //•¶š‚Ì•`‰æ
-		DrawString(960, 540, "“G‚Ìƒ^[ƒ“I", Cr);
+	  //ï¿½ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
+		DrawString(960, 540, "ï¿½Gï¿½Ìƒ^ï¿½[ï¿½ï¿½ï¿½I", Cr);
 		NextTurn = false;
 	}
+
+	card_deck.Update();
+
 	return this;
 }
 
 void GameMainScene::Draw() const
 {
 	field.Draw();
+
 
 	switch (Turn)
 	{
@@ -82,36 +88,37 @@ void GameMainScene::Draw() const
 		if (Player == 0)
 		{
 
-			//•¶š—ñ‚Ì•`‰æ
-			DrawString(960, 540, "©•ª‚Ìƒ^[ƒ“I", Cr);
-			DrawString(50, 100, "B:èD Y:ƒJ[ƒh‚ÌÚ× X:g—p(¢Š«) A:–ß‚é START:ƒ^[ƒ“ƒGƒ“ƒh", Cr);
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
+			DrawString(960, 540, "ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒ^ï¿½[ï¿½ï¿½ï¿½I", Cr);
+			DrawString(50, 100, "B:ï¿½ï¿½D Y:ï¿½Jï¿½[ï¿½hï¿½ÌÚï¿½ X:ï¿½gï¿½p(ï¿½ï¿½ï¿½ï¿½) A:ï¿½ß‚ï¿½ START:ï¿½^ï¿½[ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½h", Cr);
 
 			if (GetJoypadInputState(PAD_INPUT_1) == 1)
 			{
-				//èDŒ©‚é
+				//ï¿½ï¿½Dï¿½ï¿½ï¿½ï¿½
 			}
 			if (GetJoypadInputState(PAD_INPUT_3) == 1)
 			{
-				//ƒJ[ƒh‚ÌÚ×(‰¡‚Ì‰æ–Ê‚ÉƒAƒbƒv)
+				//ï¿½Jï¿½[ï¿½hï¿½ÌÚï¿½(ï¿½ï¿½ï¿½Ì‰ï¿½Ê‚ÉƒAï¿½bï¿½v)
 			}
 			if (GetJoypadInputState(PAD_INPUT_2) == 1)
 			{
-				//ƒJ[ƒh‚Ìg—p(¢Š«)
+				//ï¿½Jï¿½[ï¿½hï¿½Ìgï¿½p(ï¿½ï¿½ï¿½ï¿½)
 			}
 			if (GetJoypadInputState(PAD_INPUT_4) == 1)
 			{
-				//–ß‚é
+				//ï¿½ß‚ï¿½
 			}
 			if (GetJoypadInputState(PAD_INPUT_START) == 1)
 			{
-				DrawString(960, 540, "ƒ^[ƒ“ƒGƒ“ƒh", Cr);
+				DrawString(960, 540, "ï¿½^ï¿½[ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½h", Cr);
 				break;
 			}
 		}
 		break;
 	case ENEMY_TURN:
 
-		//•¶š‚Ì•`‰æ
-		DrawString(960, 540, "“G‚Ìƒ^[ƒ“I", Cr);
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
+		DrawString(960, 540, "ï¿½Gï¿½Ìƒ^ï¿½[ï¿½ï¿½ï¿½I", Cr);
 	}
+	side.Draw();
 }
