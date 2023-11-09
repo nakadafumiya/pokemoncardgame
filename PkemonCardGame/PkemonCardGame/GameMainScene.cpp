@@ -3,11 +3,17 @@
 
 GameMainScene::GameMainScene()
 {
+	
 
+	 Trun = false; //ターンの切り替え
 }
 
 AbstractScene* GameMainScene::Update()
 {
+	if (Trun = false)
+	{
+		//山札から１枚カードを引く
+	}
 	return this;
 }
 

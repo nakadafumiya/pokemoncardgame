@@ -2,27 +2,14 @@
 #include "AbstractScene.h"
 #include"common.h"
 
-
-class Pokemon
+class Items : public AbstractScene
 {
 private:
-
-	int Kokuba;
-	int Kokuba_M;
-	int rarutosu;
-	int kiruria;
-	int sanaito_e;
-	int dhianshi;
-	int gekkouga;
-
-	bool Action;
-protected:
 	int ATK;
-	int HP;
-	int ENE;
-	bool EVO;
+	int Genki;
+	int Beruto;
 public:
-	Pokemon();
+	Items();
 	//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
 	virtual AbstractScene* Update();
 	//•`‰æ‚ÉŠÖ‚·‚é‚±‚ë‚ğÀ‘•‚·‚é

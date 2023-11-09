@@ -5,7 +5,8 @@
 class GameMainScene : public AbstractScene
 {
 private:
-	
+
+	bool Trun; //ターン切り替え
 public:
 GameMainScene();
 //描画以外の更新を実装する
