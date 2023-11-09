@@ -17,4 +17,6 @@ AbstractScene* GameMainScene::Update()
 void GameMainScene::Draw() const
 {
 	field.Draw();
+	side.Draw();
+
 }

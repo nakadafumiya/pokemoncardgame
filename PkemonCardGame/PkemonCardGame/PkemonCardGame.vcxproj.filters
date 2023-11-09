@@ -37,6 +37,7 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Card_Deck.cpp">
+    <ClCompile Include="Side.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +61,7 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Card_Deck.h">
+    <ClInclude Include="Side.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
