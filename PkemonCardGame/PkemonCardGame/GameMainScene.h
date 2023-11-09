@@ -8,6 +8,7 @@
 class GameMainScene : public AbstractScene
 {
 private:
+
 	Field field;
 	int Turn;
 	int Cr;
@@ -17,6 +18,7 @@ private:
 	bool NextTurn;
 	Card_Deck card_deck;
 	Side side;
+
 public:
 GameMainScene();
 //�`��ȊO�̍X�V����������

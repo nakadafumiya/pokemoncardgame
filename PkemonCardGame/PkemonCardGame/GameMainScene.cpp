@@ -2,7 +2,6 @@
 #include "GameMainScene.h"
 #include "Card_Deck.h"
 
-
 GameMainScene::GameMainScene()
 {
 	NextTurn = false;
@@ -14,6 +13,7 @@ GameMainScene::GameMainScene()
 
 AbstractScene* GameMainScene::Update()
 {
+
 	switch(Turn)
 	{
 	case START:
@@ -67,6 +67,8 @@ AbstractScene* GameMainScene::Update()
 		DrawString(960, 540, "�G�̃^�[���I", Cr);
 		NextTurn = false;
 	}
+
+
 
 	card_deck.Update();
 

@@ -2,6 +2,7 @@
 #include "common.h"
 #include "SceneManager.h"
 #include "PadInput.h"
+#include "Pokemon.h"
 #include "GameMainScene.h"
 
 
