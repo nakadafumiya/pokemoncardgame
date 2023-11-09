@@ -2,11 +2,13 @@
 #include "AbstractScene.h"
 #include"common.h"
 #include "Field.h"
+#include"Side.h"
 
 class GameMainScene : public AbstractScene
 {
 private:
 	Field field;
+	Side side;
 
 public:
 GameMainScene();

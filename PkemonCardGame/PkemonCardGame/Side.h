@@ -4,6 +4,9 @@
 class Side
 {
 private:
+	float Side_X, Side_Y;
+	const int Size_H = 150;
+	const int Size_W = 110;
 
 	
 	int count; 
