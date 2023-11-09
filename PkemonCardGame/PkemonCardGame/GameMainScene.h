@@ -3,18 +3,29 @@
 #include"common.h"
 #include "Field.h"
 #include "Hand.h"
+#include "Card_Deck.h"
+#include"Side.h"
 
 class GameMainScene : public AbstractScene
 {
 private:
+
 	Field field;
 	Hand hand;
+	int Turn;
+	int Cr;
+	int Player;
+	int CPU;
+	 
+	bool NextTurn;
+	Card_Deck card_deck;
+	Side side;
 
 public:
 GameMainScene();
-//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
+//ï¿½`ï¿½ï¿½ÈŠOï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 virtual AbstractScene* Update();
-//•`‰æ‚ÉŠÖ‚·‚é‚±‚ë‚ğÀ‘•‚·‚é
+//ï¿½`ï¿½ï¿½ÉŠÖ‚ï¿½ï¿½é‚±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 virtual void Draw()const;
 };
 

@@ -147,22 +147,63 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractScene.h" />
+
+    <ClCompile Include="dhianshi.cpp" />
+    <ClCompile Include="Energy.cpp" />
+
+    <ClCompile Include="Card_Deck.cpp" />
     <ClCompile Include="Field.cpp" />
+
     <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="Hand.cpp" />
+    <ClCompile Include="gekkouga.cpp" />
+    <ClCompile Include="Items.cpp" />
     <ClCompile Include="KeyManager.cpp" />
+    <ClCompile Include="kiruria.cpp" />
+    <ClCompile Include="kokuba.cpp" />
+    <ClCompile Include="kokuba_vm.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
+    <ClCompile Include="Pokemon.cpp" />
+    <ClCompile Include="rarutosu.cpp" />
+    <ClCompile Include="sa_naito.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+
+    <ClCompile Include="Stadium.cpp" />
+    <ClCompile Include="Goods.cpp" />
+    <ClCompile Include="Trainer.cpp" />
+
+    <ClCompile Include="Side.cpp" />
+
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Card_Deck.h" />
     <ClInclude Include="common.h" />
+
+    <ClInclude Include="dhianshi.h" />
+    <ClInclude Include="Energy.h" />
+
     <ClInclude Include="Field.h" />
+
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="Hand.h" />
+    <ClInclude Include="gekkouga.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="KeyManager.h" />
+    <ClInclude Include="kiruria.h" />
+    <ClInclude Include="kokuba.h" />
+    <ClInclude Include="kokuba_vm.h" />
     <ClInclude Include="PadInput.h" />
+    <ClInclude Include="Pokemon.h" />
+    <ClInclude Include="rarutosu.h" />
+    <ClInclude Include="sa_naito.h" />
     <ClInclude Include="SceneManager.h" />
+
+    <ClInclude Include="Stadium.h" />
+    <ClInclude Include="Goods.h" />
+    <ClInclude Include="Trainer.h" />
+
+    <ClInclude Include="Side.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
