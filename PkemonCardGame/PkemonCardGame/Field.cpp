@@ -30,8 +30,8 @@ void Field::Draw() const
 {
 	//îwåi
 	DrawBoxAA((float)STAGE_WIDTH_MIN, 0.0f, (float)STAGE_WIDTH_MAX, (float)SCREEN_HEIGHT, 0x57af72, true);//0x57bf6a
-	/*DrawBoxAA(0.0f, 0.0f, (float)STAGE_WIDTH_MIN, (float)SCREEN_HEIGHT, 0xf5f5f5, true);
-	DrawBoxAA((float)STAGE_WIDTH_MAX, 0.0f, (float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0xf5f5f5, true);*/
+	DrawBoxAA(0.0f, 0.0f, (float)STAGE_WIDTH_MIN, (float)SCREEN_HEIGHT, 0xfffaf0, true);
+	DrawBoxAA((float)STAGE_WIDTH_MAX, 0.0f, (float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0xfffaf0, true);
 
 	for (int i = 0; i < 2; i++)
 	{

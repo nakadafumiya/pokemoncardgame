@@ -2,11 +2,13 @@
 #include "AbstractScene.h"
 #include"common.h"
 #include "Field.h"
+#include "Hand.h"
 
 class GameMainScene : public AbstractScene
 {
 private:
 	Field field;
+	Hand hand;
 
 public:
 GameMainScene();
