@@ -64,7 +64,7 @@ AbstractScene* GameMainScene::Update()
 		Cr = GetColor(255, 255, 255);
 		
 	  //�����̕`��
-		DrawString(960, 540, "�G�̃^�[���I", Cr);
+		//DrawString(960, 540, "�G�̃^�[���I", Cr);
 		NextTurn = false;
 	}
 
@@ -83,7 +83,7 @@ void GameMainScene::Draw() const
 	switch (Turn)
 	{
 	case START:
-		DrawString(960, 540, "Battle Start", GetColor(255, 0, 0));
+		//DrawString(960, 540, "Battle Start", GetColor(255, 0, 0));
 		break;
 
 	case MY_TURN:
@@ -91,8 +91,8 @@ void GameMainScene::Draw() const
 		{
 
 			//������̕`��
-			DrawString(960, 540, "�����̃^�[���I", Cr);
-			DrawString(50, 100, "B:��D Y:�J�[�h�̏ڍ� X:�g�p(����) A:�߂� START:�^�[���G���h", Cr);
+			//DrawString(960, 540, "�����̃^�[���I", Cr);
+			//DrawString(50, 100, "B:��D Y:�J�[�h�̏ڍ� X:�g�p(����) A:�߂� START:�^�[���G���h", Cr);
 
 			if (GetJoypadInputState(PAD_INPUT_1) == 1)
 			{
@@ -112,7 +112,7 @@ void GameMainScene::Draw() const
 			}
 			if (GetJoypadInputState(PAD_INPUT_START) == 1)
 			{
-				DrawString(960, 540, "�^�[���G���h", Cr);
+				//DrawString(960, 540, "�^�[���G���h", Cr);
 				break;
 			}
 		}
@@ -120,7 +120,7 @@ void GameMainScene::Draw() const
 	case ENEMY_TURN:
 
 		//�����̕`��
-		DrawString(960, 540, "�G�̃^�[���I", Cr);
+		DrawString(960, 540, "ENEMY TURN", Cr);
 	}
 	side.Draw();
 }
