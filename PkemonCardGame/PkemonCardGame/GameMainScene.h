@@ -7,7 +7,12 @@ class GameMainScene : public AbstractScene
 {
 private:
 	Field field;
-
+	int Turn;
+	int Cr;
+	int Player;
+	int CPU;
+	 
+	bool NextTurn;
 public:
 GameMainScene();
 //•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
