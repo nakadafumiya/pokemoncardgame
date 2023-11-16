@@ -4,11 +4,11 @@
 Card_Deck::Card_Deck()
 {
 	First_Draw = false;
-	Hand_Card;
-	Card_num;
+	Hand_Card = 0;
+	Card_num = 0;
 }
 
-void Card_Deck::Update()
+AbstractScene* Card_Deck::Update()
 {
 	//if (Turn == true)
 	{
@@ -29,6 +29,7 @@ void Card_Deck::Update()
 			First_Draw = false;
 		}
 	}
+	return this;
 }
 
 void Card_Deck::Draw()

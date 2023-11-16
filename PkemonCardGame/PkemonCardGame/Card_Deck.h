@@ -1,10 +1,11 @@
 #pragma once
 #include "DxLib.h"
 //#include "Pokemon.h"
+#include "GameMainScene.h"
 
 #define DECK 60
 
-class Card_Deck
+class Card_Deck : private GameMainScene
 {
 private:
 	bool First_Draw;
@@ -13,6 +14,6 @@ private:
 
 public:
 	Card_Deck();
-	void Update();
+	virtual AbstractScene* Update();
 	void Draw();
 };
