@@ -14,6 +14,7 @@ GameMainScene::GameMainScene()
 AbstractScene* GameMainScene::Update()
 {
 	hand.Update();
+	side.Update();
 
 	switch(Turn)
 	{
