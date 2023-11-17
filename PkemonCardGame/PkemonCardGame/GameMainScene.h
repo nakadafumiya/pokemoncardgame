@@ -6,6 +6,8 @@
 #include "Card_Deck.h"
 #include"Side.h"
 
+class Card_Deck;
+
 class GameMainScene : public AbstractScene
 {
 private:
@@ -27,5 +29,11 @@ GameMainScene();
 virtual AbstractScene* Update();
 //�`��Ɋւ��邱�����������
 virtual void Draw()const;
+
+int GetTurn()
+{
+	return Turn;
+}
+
 };
 

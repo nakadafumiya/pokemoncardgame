@@ -71,7 +71,7 @@ AbstractScene* GameMainScene::Update()
 
 
 
-	card_deck.Update();
+	card_deck.Update(this);
 
 	return this;
 }

@@ -5,15 +5,23 @@
 
 #define DECK 60
 
-class Card_Deck : private GameMainScene
+class Card_Deck
 {
 private:
 	bool First_Draw;
 	int Hand_Card;
 	int Card_num;
+	int turn;
 
 public:
 	Card_Deck();
-	virtual AbstractScene* Update();
-	void Draw();
+	virtual AbstractScene* Update(GameMainScene* a);
+	virtual void Draw() const;
+
+	void setturn(int val);
+
+	int getturn()
+	{
+		return turn;
+	}
 };

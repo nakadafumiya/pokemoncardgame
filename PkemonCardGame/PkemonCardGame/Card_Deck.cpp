@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "Card_Deck.h"
+#include "GameMainScene.h"
 
 Card_Deck::Card_Deck()
 {
@@ -8,9 +9,10 @@ Card_Deck::Card_Deck()
 	Card_num = 0;
 }
 
-AbstractScene* Card_Deck::Update()
+AbstractScene* Card_Deck::Update(GameMainScene* a)
 {
-	//if (Turn == true)
+	int turn_tmp = a->GetTurn();
+	if (turn_tmp == 1)
 	{
 		First_Draw = true;
 
@@ -29,10 +31,14 @@ AbstractScene* Card_Deck::Update()
 			First_Draw = false;
 		}
 	}
-	return this;
+	setturn(turn_tmp);
 }
 
-void Card_Deck::Draw()
+void Card_Deck::Draw() const
 {
-	
+}
+
+void Card_Deck::setturn(int val)
+{
+	turn = val;
 }
