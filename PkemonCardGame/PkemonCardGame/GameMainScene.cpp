@@ -31,26 +31,26 @@ AbstractScene* GameMainScene::Update()
 	case MY_TURN:
 		if (Player == 0)
 		{
-			//���F�̒l���擾
+			
 			Cr = GetColor(255, 255, 255);
 
 			
-			if (GetJoypadInputState(PAD_INPUT_1) == 1)
+			if (GetJoypadInputState(PAD_INPUT_X) == 1)
 			{
-				//��D����
+				//手札
 				return this;
 			}
-			if (GetJoypadInputState(PAD_INPUT_3) == 1)
+			if (GetJoypadInputState(PAD_INPUT_Y) == 1)
 			{
-				//�J�[�h�̏ڍ�(���̉�ʂɃA�b�v)
+				//カードの使用・召喚
 			}
-			if (GetJoypadInputState(PAD_INPUT_2) == 1)
+			if (GetJoypadInputState(PAD_INPUT_B) == 1)
 			{
-				//�J�[�h�̎g�p(����)
+				//カードの詳細表示(横のスペース)
 			}
-			if (GetJoypadInputState(PAD_INPUT_4) == 1)
+			if (GetJoypadInputState(PAD_INPUT_A) == 1)
 			{
-				//�߂�
+				//戻る
 			}
 			if (GetJoypadInputState(PAD_INPUT_START) == 1)
 			{
@@ -60,11 +60,11 @@ AbstractScene* GameMainScene::Update()
 		}
 		break;
 	case ENEMY_TURN:
-	   //���F�̒l���擾
+	   
 		Cr = GetColor(255, 255, 255);
 		
-	  //�����̕`��
-		//DrawString(960, 540, "�G�̃^�[���I", Cr);
+	  
+		DrawString(960, 540, "ENEMY TURN", Cr);
 		NextTurn = false;
 	}
 
@@ -83,43 +83,43 @@ void GameMainScene::Draw() const
 	switch (Turn)
 	{
 	case START:
-		//DrawString(960, 540, "Battle Start", GetColor(255, 0, 0));
+		DrawString(960, 540, "Battle Start", GetColor(255, 0, 0));
 		break;
 
 	case MY_TURN:
 		if (Player == 0)
 		{
 
-			//������̕`��
-			//DrawString(960, 540, "�����̃^�[���I", Cr);
-			//DrawString(50, 100, "B:��D Y:�J�[�h�̏ڍ� X:�g�p(����) A:�߂� START:�^�[���G���h", Cr);
+			
+			DrawString(960, 540, "YOUR TURN", Cr);
+			DrawString(50, 100, "X:手札　 Y:カードの使用 B:カードの詳細　 A:戻る 　START:ターンエンド　", Cr);
 
-			if (GetJoypadInputState(PAD_INPUT_1) == 1)
+			if (GetJoypadInputState(PAD_INPUT_X) == 1)
 			{
-				//��D����
+				//手札
 			}
-			if (GetJoypadInputState(PAD_INPUT_3) == 1)
+			if (GetJoypadInputState(PAD_INPUT_Y) == 1)
 			{
-				//�J�[�h�̏ڍ�(���̉�ʂɃA�b�v)
+				//カードの使用・召喚
 			}
-			if (GetJoypadInputState(PAD_INPUT_2) == 1)
+			if (GetJoypadInputState(PAD_INPUT_B) == 1)
 			{
-				//�J�[�h�̎g�p(����)
+				//カードの詳細表示(横のスペース)
 			}
-			if (GetJoypadInputState(PAD_INPUT_4) == 1)
+			if (GetJoypadInputState(PAD_INPUT_A) == 1)
 			{
-				//�߂�
+				//戻る
 			}
 			if (GetJoypadInputState(PAD_INPUT_START) == 1)
 			{
-				//DrawString(960, 540, "�^�[���G���h", Cr);
+				DrawString(960, 540, "TURN END", Cr);
 				break;
 			}
 		}
 		break;
 	case ENEMY_TURN:
 
-		//�����̕`��
+		
 		DrawString(960, 540, "ENEMY TURN", Cr);
 	}
 	side.Draw();
