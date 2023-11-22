@@ -1,8 +1,22 @@
 #include "Pokemon.h"
+#include <stdio.h>
 #include "DxLib.h"
+#include <stdlib.h>	
+#include <fstream>
+#define N 256
+#define ROW 20
 
 Pokemon::Pokemon()
 {
+	FILE* fp = nullptr;
+	/*std::ifstream ifs("data/Pokemon.txt");
+	if (ifs.is_open()) {
+		std::string a;
+		ifs >> a;
+		ifs.close();
+	}*/
+	errno_t err = fopen_s(&fp, "C:/Pokemon.txt", "r");
+	if (fp != nullptr)
 	for (int i = 0; i < 20; i++)
 	{
 		fscanf_s(fp, "%s,%d,%s,%s,%d,%d,%d,%s", Poke_id[0].NAME, 20, &Poke_id[0].HP, Poke_id[0].WEEK, 10, Poke_id[0].NOWEEK, 10, &Poke_id[0].RUN, &Poke_id[0].SIDE, &Poke_id[0].EVO, Poke_id[0].SINKAMOTO, 20);
