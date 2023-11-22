@@ -7,7 +7,7 @@ struct Data
 {
 	char NAME[20];
 	int HP;
-	char WEEK[10];
+	char WEAK[10];
 	char NOWEEK[10];
 	int RUN;
 	int SIDE;
@@ -18,7 +18,7 @@ struct Data
 class Pokemon : public Card_Deck
 {
 private:
-	struct Data Poke_id[20];
+	Data Poke_id[7];
 	bool Action;
 protected:
 	int ENE;

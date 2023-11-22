@@ -10,42 +10,28 @@
 
 Pokemon::Pokemon()
 {
-	FILE* fp = nullptr;
-	/*std::ifstream ifs("data/Pokemon.txt");
-	if (ifs.is_open()) {
-		std::string a;
-		ifs >> a;
-		ifs.close();
-	}*/
-	errno_t err = fopen_s(&fp, "C:/Pokemon.txt", "r");
-	if (fp != nullptr)
-	for (int i = 0; i < 20; i++)
-	{
-		fscanf_s(fp, "%s,%d,%s,%s,%d,%d,%d,%s", Poke_id[0].NAME, 20, &Poke_id[0].HP, Poke_id[0].WEEK, 10, Poke_id[0].NOWEEK, 10, &Poke_id[0].RUN, &Poke_id[0].SIDE, &Poke_id[0].EVO, Poke_id[0].SINKAMOTO, 20);
-	}
 	Action = false;
 
-	////�t�@�C���ǂݍ���
+	////ファイル読み込み
 	//FILE* fp;
 	//fopen_s(&fp, "data/pokemon.csv", "r");
-
 	//if (fp != NULL)
 	//{
 	//	for (int i = 0; i < 7; i++)
 	//	{
-	//		fscanf_s(fp, "%[^,],%d,%[^,],%[^,],%d,%[^,],%d,%d", pData[i].NAME,30, &pData[i].HP, pData[i].WEAK,10, pData[i].RESIST,10
-	//			, &pData[i].EVO, pData[i].B_EVO,30, &pData[i].RETREAT, &pData[i].SIDE);
+	//		fscanf_s(fp, "%[^,],%d,%[^,],%[^,],%d,%[^,],%d,%d", Poke_id[i].NAME, sizeof(Poke_id[i].NAME), &Poke_id[i].HP, Poke_id[i].WEAK, sizeof(Poke_id[i].WEAK), Poke_id[i].NOWEEK, sizeof(Poke_id[i].NOWEEK)
+	//			, &Poke_id[i].EVO, Poke_id[i].SINKAMOTO, sizeof(Poke_id[i].SINKAMOTO), &Poke_id[i].RUN, &Poke_id[i].SIDE);
 	//	}
 	//	fclose(fp);
 	//}
-	//else //�t�@�C�����J���Ȃ�������Q�[�����I������
+	//else //ファイル読み込みに失敗したら、ゲームを終了する
 	//{
 	//	DxLib_End();
 	//}
 
-	//�t�@�C���ǂݍ���
+	//ファイル読み込み
 	std::ifstream ifs("data/pokemon.csv");
-	//�t�@�C�����J���Ȃ�������Q�[�����I������
+	//ファイル読み込みに失敗したら、ゲームを終了する
 	if (ifs.fail())
 	{
 		DxLib_End();
@@ -54,8 +40,8 @@ Pokemon::Pokemon()
 	int i = 0;
 	while (ifs.getline(buff,1000))
 	{
-		sscanf_s(buff, "%[^,],%d,%[^,],%[^,],%d,%[^,],%d,%d", pData[i].NAME, sizeof(pData[i].NAME), &pData[i].HP, pData[i].WEAK, sizeof(pData[i].WEAK), pData[i].RESIST, sizeof(pData[i].RESIST)
-			, &pData[i].EVO, pData[i].B_EVO, sizeof(pData[i].B_EVO), &pData[i].RETREAT, &pData[i].SIDE);
+		sscanf_s(buff, "%[^,],%d,%[^,],%[^,],%d,%[^,],%d,%d", Poke_id[i].NAME, sizeof(Poke_id[i].NAME), &Poke_id[i].HP, Poke_id[i].WEAK, sizeof(Poke_id[i].WEAK), Poke_id[i].NOWEEK, sizeof(Poke_id[i].NOWEEK)
+			, &Poke_id[i].EVO, Poke_id[i].SINKAMOTO, sizeof(Poke_id[i].SINKAMOTO), &Poke_id[i].RUN, &Poke_id[i].SIDE);
 		i++;
 	}
 	ifs.close();
@@ -83,4 +69,9 @@ void Pokemon::Update()
 }
 void Pokemon::Draw() const
 {
+	for (int i = 0; i < 7; i++)
+	{
+		DrawFormatString(0, 0 + 20 * i, 0x000000, "%s %d %s %s %d %s %d %d", Poke_id[i].NAME, Poke_id[i].HP, Poke_id[i].WEAK
+			, Poke_id[i].NOWEEK, Poke_id[i].EVO, Poke_id[i].SINKAMOTO, Poke_id[i].RUN, Poke_id[i].SIDE);
+	}
 }
