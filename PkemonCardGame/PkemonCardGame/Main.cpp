@@ -22,7 +22,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     SetFontSize(20);  //ï∂éöÉTÉCÉYÇê›íË
 
-    SceneManager sceneMng((AbstractScene*)new Pokemon() );
+    SceneManager sceneMng((AbstractScene*)new GameMainScene() );
 
   
 
@@ -39,7 +39,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         ScreenFlip();  //ó†âÊñ ÇÃî|ó{Çï\âÊñ Ç…îΩâf
 
         PAD_INPUT::UpdateKey();
-
+        if (PAD_INPUT::OnClick(PAD_INPUT_START) || CheckHitKey(KEY_INPUT_ESCAPE))
+        {
+            DxLib_End();
+        }
       
     }
 

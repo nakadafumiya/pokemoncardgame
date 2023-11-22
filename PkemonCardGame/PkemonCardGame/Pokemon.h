@@ -24,7 +24,7 @@ protected:
 public:
 	Pokemon();
 	//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
-	virtual AbstractScene* Update();
+	virtual void Update();
 	//•`‰æ‚ÉŠÖ‚·‚é‚±‚ë‚ğÀ‘•‚·‚é
 	virtual void Draw()const;
 };
