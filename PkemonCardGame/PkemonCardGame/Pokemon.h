@@ -22,6 +22,7 @@ private:
 	struct Data Poke_id[20];
 	bool Action;
 	int i;
+	Card_Deck card_d;
 protected:
 	int ENE;
 public:

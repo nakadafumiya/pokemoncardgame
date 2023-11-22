@@ -40,9 +40,17 @@ Pokemon::Pokemon()
 void Pokemon::Update()
 {
 	{
-		
-		/*if (Hand_Card > 19) {
-
+		//card_d.Hand_Card;
+		/*if (card_d.Hand_Card > 19)
+		{
+			Poke_id[i].NAME;
+			Poke_id[i].HP;
+			Poke_id[i].WEEK;
+			Poke_id[i].NOWEEK;
+			Poke_id[i].RUN;
+			Poke_id[i].SIDE;
+			Poke_id[i].EVO;
+			Poke_id[i].SINKAMOTO;
 		}*/
 
 		 if (CheckHitKey(KEY_INPUT_SPACE))
@@ -57,6 +65,7 @@ void Pokemon::Update()
 			Poke_id[i].SIDE;
 			Poke_id[i].EVO;
 			Poke_id[i].SINKAMOTO;
+			
 		 }
 
 	}

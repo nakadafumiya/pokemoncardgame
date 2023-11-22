@@ -80,6 +80,7 @@ void GameMainScene::Draw() const
 {
 	field.Draw();
 	hand.Draw();
+	//card_deck.Draw();
 	pokemon.Draw();
 
 	switch (Turn)
