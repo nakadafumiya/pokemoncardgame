@@ -1,6 +1,8 @@
 #include "Dxlib.h"
 #include "GameMainScene.h"
 #include "Card_Deck.h"
+#include "Pokemon.h"
+Pokemon poke;
 
 GameMainScene::GameMainScene()
 {
@@ -80,7 +82,7 @@ void GameMainScene::Draw() const
 {
 	field.Draw();
 	hand.Draw();
-
+	poke.Draw();
 
 	switch (Turn)
 	{
