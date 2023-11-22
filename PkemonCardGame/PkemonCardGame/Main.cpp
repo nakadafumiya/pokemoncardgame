@@ -39,7 +39,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         ScreenFlip();  //— ‰æ–Ê‚Ì”|—{‚ð•\‰æ–Ê‚É”½‰f
 
         PAD_INPUT::UpdateKey();
-
+        if (PAD_INPUT::OnClick(PAD_INPUT_START) || CheckHitKey(KEY_INPUT_ESCAPE))
+        {
+            DxLib_End();
+        }
       
     }
 

@@ -6,7 +6,7 @@
 
 class Card_Deck
 {
-private:
+public:
 	bool First_Draw;
 	int Hand_Card;
 	int Card_num;

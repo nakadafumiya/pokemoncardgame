@@ -1,42 +1,31 @@
+
 #pragma once
 #include "AbstractScene.h"
+#include "Card_Deck.h"
 #include"common.h"
-
-struct Pokemon_Data
+struct Data
 {
-	char NAME[30];
+	char NAME[20];
 	int HP;
-	int WEAK[10];
-	int RESIST[10];
-	int EVO;
-	int B_EVO[30];
-	int RETREAT;
+	char WEEK[10];
+	char NOWEEK[10];
+	int RUN;
 	int SIDE;
+	int EVO;
+	char SINKAMOTO[20];
 };
 
-class Pokemon
+class Pokemon : public Card_Deck
 {
 private:
-	Pokemon_Data pData[7];
-
-	int Kokuba;
-	int Kokuba_M;
-	int rarutosu;
-	int kiruria;
-	int sanaito_e;
-	int dhianshi;
-	int gekkouga;
-
+	struct Data Poke_id[20];
 	bool Action;
 protected:
-	int ATK;
-	int HP;
 	int ENE;
-	bool EVO;
 public:
 	Pokemon();
-	//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
+	//ï¿½`ï¿½ï¿½ÈŠOï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	virtual void Update();
-	//•`‰æ‚ÉŠÖ‚·‚é‚±‚ë‚ğÀ‘•‚·‚é
+	//ï¿½`ï¿½ï¿½ÉŠÖ‚ï¿½ï¿½é‚±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	virtual void Draw()const;
 };

@@ -1,14 +1,31 @@
 #include <fstream>
 #include <iostream>
 #include "Pokemon.h"
+#include <stdio.h>
 #include "DxLib.h"
+#include <stdlib.h>	
+#include <fstream>
+#define N 256
+#define ROW 20
 
 Pokemon::Pokemon()
 {
-
+	FILE* fp = nullptr;
+	/*std::ifstream ifs("data/Pokemon.txt");
+	if (ifs.is_open()) {
+		std::string a;
+		ifs >> a;
+		ifs.close();
+	}*/
+	errno_t err = fopen_s(&fp, "C:/Pokemon.txt", "r");
+	if (fp != nullptr)
+	for (int i = 0; i < 20; i++)
+	{
+		fscanf_s(fp, "%s,%d,%s,%s,%d,%d,%d,%s", Poke_id[0].NAME, 20, &Poke_id[0].HP, Poke_id[0].WEEK, 10, Poke_id[0].NOWEEK, 10, &Poke_id[0].RUN, &Poke_id[0].SIDE, &Poke_id[0].EVO, Poke_id[0].SINKAMOTO, 20);
+	}
 	Action = false;
 
-	////ƒtƒ@ƒCƒ‹“Ç‚Ýž‚Ý
+	////ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‚Ýï¿½ï¿½ï¿½
 	//FILE* fp;
 	//fopen_s(&fp, "data/pokemon.csv", "r");
 
@@ -21,14 +38,14 @@ Pokemon::Pokemon()
 	//	}
 	//	fclose(fp);
 	//}
-	//else //ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚È‚©‚Á‚½‚çƒQ[ƒ€‚ðI—¹‚·‚é
+	//else //ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	//{
 	//	DxLib_End();
 	//}
 
-	//ƒtƒ@ƒCƒ‹“Ç‚Ýž‚Ý
+	//ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ç‚Ýï¿½ï¿½ï¿½
 	std::ifstream ifs("data/pokemon.csv");
-	//ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚È‚©‚Á‚½‚çƒQ[ƒ€‚ðI—¹‚·‚é
+	//ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (ifs.fail())
 	{
 		DxLib_End();
@@ -44,12 +61,26 @@ Pokemon::Pokemon()
 	ifs.close();
 }
 
- void Pokemon::Update()
+void Pokemon::Update()
 {
+	{
+		int i = 5;
+		// if (Hand_Card > 19)
+		// {
+			//int i = Hand_Card;
 
-	
+			//Poke_d[i].NAME;
+			//Poke_d[i].HP;
+			//Poke_d[i].WEEK;
+			//Poke_d[i].NOWEEK;
+			//Poke_d[i].RUN;
+			//Poke_d[i].SIDE;
+			//Poke_d[i].EVO;
+			//Poke_d[i].SINKAMOTO;
+		 //}
+
+	}
 }
-
 void Pokemon::Draw() const
 {
 }
