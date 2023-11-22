@@ -1,26 +1,27 @@
+
 #pragma once
 #include "AbstractScene.h"
+#include "Card_Deck.h"
 #include"common.h"
+struct Data
+{
+	char NAME[20];
+	int HP;
+	char WEEK[10];
+	char NOWEEK[10];
+	int RUN;
+	int SIDE;
+	int EVO;
+	char SINKAMOTO[20];
+};
 
-
-class Pokemon
+class Pokemon : public Card_Deck
 {
 private:
-
-	int Kokuba;
-	int Kokuba_M;
-	int rarutosu;
-	int kiruria;
-	int sanaito_e;
-	int dhianshi;
-	int gekkouga;
-
+	struct Data Poke_id[20];
 	bool Action;
 protected:
-	int ATK;
-	int HP;
 	int ENE;
-	bool EVO;
 public:
 	Pokemon();
 	//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
