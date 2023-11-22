@@ -22,16 +22,6 @@ Side::Side()
 AbstractScene* Side::Update()
 {
 
-	//å„Ç≈è¡Ç∑
-	if  (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_DOWN))
-	{
-		--count;
-	}
-	if (count <= 0)
-	{
-		count = 0;
-	}
-
 	return 0;
 }
 
