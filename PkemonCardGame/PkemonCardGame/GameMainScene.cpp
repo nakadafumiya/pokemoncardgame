@@ -13,6 +13,7 @@ GameMainScene::GameMainScene()
 
 AbstractScene* GameMainScene::Update()
 {
+	
 	hand.Update();
 	side.Update();
 
@@ -79,6 +80,7 @@ AbstractScene* GameMainScene::Update()
 
 void GameMainScene::Draw() const
 {
+	
 	field.Draw();
 	hand.Draw();
 	pokemon.Draw();

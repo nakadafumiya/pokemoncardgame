@@ -160,6 +160,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stadium.cpp" />
     <ClCompile Include="Goods.cpp" />
+    <ClCompile Include="Title.cpp" />
     <ClCompile Include="Trainer.cpp" />
     <ClCompile Include="Side.cpp" />
   </ItemGroup>
@@ -177,6 +178,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stadium.h" />
     <ClInclude Include="Goods.h" />
+    <ClInclude Include="Title.h" />
     <ClInclude Include="Trainer.h" />
     <ClInclude Include="Side.h" />
   </ItemGroup>
