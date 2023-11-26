@@ -14,5 +14,5 @@ public:
 public:
 	Card_Deck();
 	void Update();
-	void Draw();
+	virtual void Draw()const;
 };

@@ -4,7 +4,7 @@
 #include "PadInput.h"
 #include "Pokemon.h"
 #include "GameMainScene.h"
-
+#include "Title.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -22,7 +22,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     SetFontSize(20);  //ï∂éöÉTÉCÉYÇê›íË
 
-    SceneManager sceneMng((AbstractScene*)new GameMainScene() );
+    SceneManager sceneMng((AbstractScene*)new Title() );
 
   
 

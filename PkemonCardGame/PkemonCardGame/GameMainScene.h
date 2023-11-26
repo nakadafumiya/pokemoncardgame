@@ -6,6 +6,8 @@
 #include "Card_Deck.h"
 #include "Pokemon.h"
 #include"Side.h"
+#include "Title.h"
+
 
 class GameMainScene : public AbstractScene
 {
@@ -22,6 +24,7 @@ private:
 	Card_Deck card_deck;
 	Side side;
 	Pokemon pokemon;
+	
 
 
 public:
