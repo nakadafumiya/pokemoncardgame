@@ -24,7 +24,4 @@ public:
 	{
 		return turn;
 	}
-	
-	void Update();
-	virtual void Draw()const;
 };
