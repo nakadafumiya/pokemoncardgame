@@ -19,6 +19,11 @@
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="rarutosu.cpp" />
     <ClCompile Include="sa_naito.cpp" />
+    <ClCompile Include="Items.cpp" />
+    <ClCompile Include="KeyManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PadInput.cpp" />
+    <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stadium.cpp" />
     <ClCompile Include="Goods.cpp" />
@@ -44,6 +49,10 @@
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="rarutosu.h" />
     <ClInclude Include="sa_naito.h" />
+    <ClInclude Include="Items.h" />
+    <ClInclude Include="KeyManager.h" />
+    <ClInclude Include="PadInput.h" />
+    <ClInclude Include="Pokemon.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stadium.h" />
     <ClInclude Include="Goods.h" />

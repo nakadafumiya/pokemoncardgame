@@ -13,7 +13,9 @@ GameMainScene::GameMainScene()
 
 AbstractScene* GameMainScene::Update()
 {
+	
 	hand.Update();
+	side.Update();
 
 	switch(Turn)
 	{
@@ -72,15 +74,17 @@ AbstractScene* GameMainScene::Update()
 
 
 	card_deck.Update(this);
-
+	pokemon.Update();
 	return this;
 }
 
 void GameMainScene::Draw() const
 {
+	
 	field.Draw();
 	hand.Draw();
-
+	//card_deck.Draw();
+	pokemon.Draw();
 
 	switch (Turn)
 	{
