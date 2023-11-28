@@ -21,7 +21,7 @@ Pokemon::Pokemon()
 		throw (-1);
 	}
 
-	for (int i = 0; i < 19; i++)
+	for (i = 0; i < 19; i++)
 	{
 		fscanf_s(fp, "%[^,],%d,%[^,],%[^,],%d,%d,%d,%[^,],",
 			Poke_id[i].NAME, 20,
