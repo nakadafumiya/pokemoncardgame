@@ -57,6 +57,7 @@ AbstractScene* Title::Update()
 		if (selectY == 0 && PAD_INPUT::OnClick(XINPUT_BUTTON_B))
 		{
 			flg = true;
+			return new GameMainScene();
 		}
 		else if (selectY == 1 && PAD_INPUT::OnClick(XINPUT_BUTTON_B))
 		{
