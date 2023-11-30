@@ -3,6 +3,7 @@
 #include "AbstractScene.h"
 #include "Card_Deck.h"
 #include"common.h"
+#include "PadInput.h"
 struct Data
 {
 	char NAME[20];
@@ -20,6 +21,8 @@ class Pokemon : public Card_Deck
 private:
 	struct Data Poke_id[20];
 	bool Action;
+	int i;
+	Card_Deck card_d;
 protected:
 	int ENE;
 public:
