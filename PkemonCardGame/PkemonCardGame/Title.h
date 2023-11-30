@@ -22,10 +22,14 @@ private:
 	int TitleImage; //タイトル画面
 	int BackTitle;  //タイトル背景
 
+	int Carsol;
+
+	bool flg;
 	int interval;
 	int JoyPadX;
 	int JoyPadY;
-	int select;
+	int selectX;
+	int selectY;
 
 public:
 	Title();
