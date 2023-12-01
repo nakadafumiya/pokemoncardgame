@@ -156,7 +156,6 @@
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Goods.cpp" />
     <ClCompile Include="Sup.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Side.cpp" />
@@ -171,7 +170,6 @@
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Goods.h" />
     <ClInclude Include="Sup.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Side.h" />

@@ -75,7 +75,7 @@ AbstractScene* GameMainScene::Update()
 
 
 	card_deck.Update(this);
-	pokemon.Update();
+	pokemon.Update(this);
 	return this;
 }
 

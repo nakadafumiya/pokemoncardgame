@@ -21,15 +21,14 @@ class Pokemon : public Card_Deck
 private:
 	struct Data Poke_id[20];
 	bool Action;
-	int i;
+
 	int BattlePoke;
-	Card_Deck card_d;
 protected:
 	int ENE;
 public:
 	Pokemon();
 	//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
-	virtual void Update();
+	virtual void Update(class GameMainScene* a) override;
 	//•`‰æ‚ÉŠÖ‚·‚é‚±‚ë‚ğÀ‘•‚·‚é
-	virtual void Draw()const;
+	virtual void Draw()const override;
 };

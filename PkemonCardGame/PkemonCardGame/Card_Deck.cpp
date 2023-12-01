@@ -11,7 +11,7 @@ Card_Deck::Card_Deck()
 	Card_num = 0;
 }
 
-AbstractScene* Card_Deck::Update(GameMainScene* a)
+void Card_Deck::Update(GameMainScene* a)
 {
 	int turn_tmp = a->GetTurn();
 	if (turn_tmp == 1)

@@ -9,13 +9,11 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="Pokemon.cpp" />
-    <ClCompile Include="Items.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Goods.cpp" />
     <ClCompile Include="Side.cpp" />
     <ClCompile Include="Sup.cpp" />
     <ClCompile Include="Title.cpp" />
@@ -30,12 +28,10 @@
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="Pokemon.h" />
-    <ClInclude Include="Items.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Goods.h" />
     <ClInclude Include="Side.h" />
     <ClInclude Include="Sup.h" />
     <ClInclude Include="Title.h" />

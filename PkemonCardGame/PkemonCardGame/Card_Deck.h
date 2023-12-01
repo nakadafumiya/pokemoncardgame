@@ -1,7 +1,6 @@
 #pragma once
 #include "DxLib.h"
 //#include "Pokemon.h"
-#include "GameMainScene.h"
 
 #define DECK 60
 
@@ -15,7 +14,7 @@ public:
 
 public:
 	Card_Deck();
-	virtual AbstractScene* Update(GameMainScene* a);
+	virtual void Update(class GameMainScene* a);
 	virtual void Draw() const;
 
 	void setturn(int val);
@@ -24,5 +23,6 @@ public:
 	{
 		return turn;
 	}
+
 	int GetCard()const { return Hand_Card; }
 };
