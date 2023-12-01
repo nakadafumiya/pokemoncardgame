@@ -41,7 +41,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         PAD_INPUT::UpdateKey();
         if (PAD_INPUT::OnClick(PAD_INPUT_START) || CheckHitKey(KEY_INPUT_ESCAPE))
         {
-            DxLib_End();
+           break;
         }
       
     }

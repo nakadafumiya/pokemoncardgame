@@ -9,6 +9,8 @@
 
 Pokemon::Pokemon()
 {
+	BattlePoke = -1;
+
 	i = 0;
 	FILE* fp = nullptr;
 	
@@ -39,38 +41,13 @@ Pokemon::Pokemon()
 
 void Pokemon::Update()
 {
-	{
-		//card_d.Hand_Card;
-		/*if (card_d.Hand_Card > 19)
-		{
-			Poke_id[i].NAME;
-			Poke_id[i].HP;
-			Poke_id[i].WEEK;
-			Poke_id[i].NOWEEK;
-			Poke_id[i].RUN;
-			Poke_id[i].SIDE;
-			Poke_id[i].EVO;
-			Poke_id[i].SINKAMOTO;
-		}*/
 
-		 if (CheckHitKey(KEY_INPUT_SPACE))
-		 {
-			//int i = Hand_Card;
-		    i = GetRand(18);
-			Poke_id[i].NAME;
-			Poke_id[i].HP;
-			Poke_id[i].WEEK;
-			Poke_id[i].NOWEEK;
-			Poke_id[i].RUN;
-			Poke_id[i].SIDE;
-			Poke_id[i].EVO;
-			Poke_id[i].SINKAMOTO;
-			
-		 }
+	i = card_d.GetCard();
 
-	}
 }
 void Pokemon::Draw() const
 {
+	DrawFormatString(0, 100, 0x000000, "%d", i);
+
 	DrawFormatString(0, 0, 0x000000, "%s %d %s %s %d %d %d %s", Poke_id[i].NAME, Poke_id[i].HP, Poke_id[i].WEEK, Poke_id[i].NOWEEK, Poke_id[i].RUN, Poke_id[i].SIDE, Poke_id[i].EVO, Poke_id[i].SINKAMOTO);
 }

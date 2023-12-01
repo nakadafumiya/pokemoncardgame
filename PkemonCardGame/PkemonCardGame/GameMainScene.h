@@ -22,6 +22,7 @@ private:
 	int Player;
 	int CPU;
 	 
+	//bool Battlefield;
 	bool NextTurn;
 	Card_Deck card_deck;
 	Side side;
@@ -41,5 +42,6 @@ int GetTurn()
 	return Turn;
 }
 
+//void Battlepoke();
 };
 

@@ -2,6 +2,8 @@
 #include "Card_Deck.h"
 #include "GameMainScene.h"
 
+int Card_Deck::Hand_Card = 0;
+
 Card_Deck::Card_Deck()
 {
 	First_Draw = false;
