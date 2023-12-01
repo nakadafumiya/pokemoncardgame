@@ -20,7 +20,7 @@ private:
 	int Player;
 	int CPU;
 	 
-	//bool Battlefield;
+	bool Battlefield;
 	bool NextTurn;
 	Card_Deck card_deck;
 	Side side;
@@ -34,6 +34,7 @@ GameMainScene();
 virtual AbstractScene* Update();
 //�`��Ɋւ��邱�����������
 virtual void Draw()const;
+//バトルフィールド
 //void Battlepoke();
 };
 
