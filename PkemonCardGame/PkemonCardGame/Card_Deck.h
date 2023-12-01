@@ -8,7 +8,7 @@ class Card_Deck
 {
 public:
 	bool First_Draw;
-	int Hand_Card;
+	static int Hand_Card;
 	int Card_num;
 
 	/*ŒÂl—p*/
@@ -31,4 +31,5 @@ public:
 	Card_Deck();
 	void Update();
 	virtual void Draw()const;
+	int GetCard()const { return Hand_Card; }
 };

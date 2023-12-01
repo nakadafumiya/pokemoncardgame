@@ -8,6 +8,7 @@ Pokemon poke;
 GameMainScene::GameMainScene()
 {
 	NextTurn = false;
+	//Battlefield = true;
 	Player = 0;
 	Turn = START;
 	Cr = GetColor(255, 255, 255);
@@ -96,7 +97,7 @@ void GameMainScene::Draw() const
 	
 	field.Draw();
 	hand.Draw();
-	//card_deck.Draw();
+	card_deck.Draw();
 	pokemon.Draw();
 
 	switch (Turn)
@@ -143,3 +144,14 @@ void GameMainScene::Draw() const
 	}
 	side.Draw();
 }
+
+//void GameMainScene::Battlepoke()
+//{
+//	if (Battlefield = true)
+//	{
+//		if (Poke_id[i].SINKAMOTO = null)
+//		{
+//			Battlefield = Card
+//		}
+//	}
+//}

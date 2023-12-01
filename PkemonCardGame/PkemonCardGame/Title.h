@@ -14,8 +14,22 @@ private:
 	int Arceus;     //アルセウス
 	int Rayquaza;   //レックウザ
 
+	int GardevoirCard;  //サーナイトカード
+	int BudrexCard;     //コクバカード
+	int ArceusCard;     //アルセウスカード
+	int RayquazaCard;   //レックウザカード
+
 	int TitleImage; //タイトル画面
 	int BackTitle;  //タイトル背景
+
+	int Carsol;
+
+	bool flg;
+	int interval;
+	int JoyPadX;
+	int JoyPadY;
+	int selectX;
+	int selectY;
 
 public:
 	Title();

@@ -11,14 +11,15 @@ int Card_Deck::CardDraw()
 	DrawCheck[ret] = false;
 	return ret;
 }
+int Card_Deck::Hand_Card = 0;
 
 Card_Deck::Card_Deck()
 {
 	First_Draw = false;
-	Hand_Card;
+	Hand_Card = 0;
 	Card_num;
 
-	/*ŒÂl—p*/
+	/*ï¿½Âlï¿½p*/
 	for (int i = 0; i < 19; i++)
 	{
 		DrawCheck[i] = true;
@@ -46,14 +47,15 @@ void Card_Deck::Update()
 	//		First_Draw = false;
 	//	}
 	//}*/
-	//if (CheckHitKey(KEY_INPUT_SPACE))
-	//{
+	
+	if (CheckHitKey(KEY_INPUT_SPACE))
+	{
 
-	//	Hand_Card = GetRand(60);
-	//}
+		Hand_Card = GetRand(18);
+	}
 }
 
 void Card_Deck::Draw() const
 {
-	//DrawFormatString(0, 200, 0x000000, "%d", Hand_Card);
+	DrawFormatString(0, 200, 0x000000, "%d", Hand_Card);
 }
