@@ -2,6 +2,7 @@
 #include "GameMainScene.h"
 #include "Card_Deck.h"
 #include "Pokemon.h"
+#include "PadInput.h"
 Pokemon poke;
 
 GameMainScene::GameMainScene()
@@ -73,7 +74,17 @@ AbstractScene* GameMainScene::Update()
 		NextTurn = false;
 	}
 
-
+	/*個人用*/
+	//デッキからカードを引く
+	if (PAD_INPUT::OnClick(XINPUT_BUTTON_X))
+	{
+		//引けるカードがある時だけ引く
+		if (card_deck.CheckCard())
+		{
+			hand.DrawCard(card_deck.CardDraw());
+		}
+	}
+	/*ここまで*/
 
 	card_deck.Update();
 	pokemon.Update();

@@ -1,24 +1,23 @@
 #include "Hand.h"
 #include "DxLib.h"
 #include "PadInput.h"
-#include <time.h>
+#include <string.h>
 
 Hand::Hand()
 {
 	for (int i = 0; i < MaxHand; i++)
 	{
-		if (i < 7)
-		{
-			hand[i] = i;
-		}
-		else
-		{
-			hand[i] = -1;
-		}
+		hand[i] = -1;
+		//hand[i] = NULL;
 
 		dPosition[i] = -1;
 	}
-	HandNum = 7;
+	for (int i = 0; i < 5; i++)
+	{
+		/*saveHand[i] = NULL;*/
+		saveHand[i] = -1;
+	}
+	HandNum = 0;//7
 	Cursor_X = 0;
 	Push_X = 90;
 
@@ -27,16 +26,7 @@ Hand::Hand()
 
 void Hand::Update()
 {
-	//to do 確認用
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_X))
-	{
-		if (HandNum < MaxHand)
-		{
-			srand((unsigned int)time(NULL));
-			DrawCard(rand() % 22);
-		}
-	}
-	
+	//to do 確認用	
 	//カーソル移動
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_RIGHT))
 	{
@@ -70,7 +60,7 @@ void Hand::Update()
 		DecreaseNum = 0;
 		//カーソル位置が手札の数より大きかったら
 		//最後尾に調整する
-		if (HandNum < Cursor_X)
+		if (HandNum < Cursor_X + 1)
 		{
 			Cursor_X = HandNum - 1;
 		}
@@ -84,8 +74,9 @@ void Hand::Draw() const
 	for (int i = 0; i < HandNum; i++)
 	{
 		DrawFormatString(1100 + 25 * i, 700, 0xffffff, "%d", hand[i]);
+		//DrawFormatString(900 + 100 * i, 700, 0x000000, "%s", hand[i]);
 	}
-	DrawCircle(1105 + 28 * Cursor_X, 730, 5, 0xff0000, true);
+	DrawCircle(910 + 110 * Cursor_X, 800, 5, 0xff0000, true);
 
 	for (int i = 0; i < HandNum; i++)
 	{
@@ -106,7 +97,60 @@ void Hand::Draw() const
 			pw = 20;
 		}
 
-		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[hand[i]], TRUE);
+		//if (hand[i] != NULL)
+		//{
+		//	switch (DetermineCard(i))
+		//	{
+		//	case 0:  //こくば
+		//		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[0], TRUE);
+		//		break;
+		//	case 1:  //こくばVMAX
+		//		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[1], TRUE);
+		//		break;
+		//	case 2:  //ラルトス
+		//		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[2], TRUE);
+		//		break;
+		//	case 3:  //キルリア
+		//		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[3], TRUE);
+		//		break;
+		//	case 4:  //サーナイト
+		//		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[4], TRUE);
+		//		break;
+		//	case 5:  //ディアンシー
+		//		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[5], TRUE);
+		//		break;
+		//	case 6:  //ゲッコウガ
+		//		DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[6], TRUE);
+		//		break;
+		//	}
+
+		if (hand[i] != -1)
+		{
+			switch (DetermineCard(i))
+			{
+			case 0:  //こくば
+				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[0], TRUE);
+				break;
+			case 1:  //こくばVMAX
+				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[1], TRUE);
+				break;
+			case 2:  //ラルトス
+				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[2], TRUE);
+				break;
+			case 3:  //キルリア
+				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[3], TRUE);
+				break;
+			case 4:  //サーナイト
+				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[4], TRUE);
+				break;
+			case 5:  //ディアンシー
+				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[5], TRUE);
+				break;
+			case 6:  //ゲッコウガ
+				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardimg[6], TRUE);
+				break;
+			}
+		}
 	}
 
 #ifndef DEBUG
@@ -135,9 +179,13 @@ void Hand::DrawCard(int card)
 {
 	//手札の数を引いた分増やす
 	++HandNum;
+
 	//カードの種類を格納
 	hand[HandNum - 1] = card;
-	if (7 < HandNum)  //手札の数が7枚より上の時
+	//hand[HandNum] = poke.GetName(card);
+
+	//手札の数が7枚より上の時間隔を狭める
+	if (7 < HandNum)
 	{
 		Push_X -= 5;  //手札が増えた分カードの間隔を狭める
 	}
@@ -149,6 +197,11 @@ void Hand::TrashHand()
 	//指定した位置のカードを消す
 	for (int i = 0; i < DecreaseNum; i++)
 	{
+		if (i < 5) //一時保存
+		{
+			saveHand[i] = hand[i];
+		}
+		//hand[dPosition[i]] = NULL;
 		hand[dPosition[i]] = -1;
 		if (Push_X < 90) //間隔が90未満の時
 		{
@@ -156,24 +209,68 @@ void Hand::TrashHand()
 		}
 	}
 
-	int i = 0;
-	//前に詰める
-	while (i < HandNum)
+	//手札にカードが残っているか調べる
+	bool have_c = false; //true:残っている false:残っていない
+	for (int i = 0; i < HandNum; i++)
 	{
-		//今見ているのが-1なら後ろから前に詰める
-		if (hand[i] == -1)
+		//カードがある時have_cをtrueにする
+		/*if (hand[i] != NULL)
 		{
-			for (int j = i; j < HandNum; j++)
-			{
-				hand[j] = hand[j + 1];
-			}
-			//最後尾を-1にする・手札の数を減らす
-			hand[HandNum - 1] = -1;
-			--HandNum;
+			have_c = true;
+			break;
+		}*/
+		if (hand[i] != -1)
+		{
+			have_c = true;
+			break;
 		}
+	}
 
-		//hand[i]が-1じゃないならiを+1する
-		if (hand[i] != -1) ++i;
+
+	int i = 0;
+	//残っているカードがある時前に詰める
+	if (have_c)
+	{
+		while (i < HandNum)
+		{
+			////今見ているのがNULLなら後ろから前に詰める
+			//if (hand[i] == NULL)//hand[i] == -1
+			//{
+			//	for (int j = i; j < HandNum; j++)
+			//	{
+			//		//hand[j] = hand[j + 1];
+			//		hand[j] = hand[j + 1];
+			//	}
+			//	//最後尾を-1にする・手札の数を減らす
+			//	//hand[HandNum - 1] = -1;
+			//	hand[HandNum - 1] = NULL;
+			//	--HandNum;
+			//}
+
+			////hand[i]が-1じゃないならiを+1する
+			////if (hand[i] != -1) ++i;
+			////hand_s[i]がNULLじゃないならiを+1する
+			//if (hand[i] != NULL) ++i;
+
+			//今見ているのがNULLなら後ろから前に詰める
+			if (hand[i] == -1)
+			{
+				for (int j = i; j < HandNum; j++)
+				{
+					hand[j] = hand[j + 1];
+				}
+				//最後尾を-1にする・手札の数を減らす
+				hand[HandNum - 1] = -1;
+				--HandNum;
+			}
+
+			//hand[i]が-1じゃないならiを+1する
+			if (hand[i] != -1) ++i;
+		}
+	}
+	else
+	{
+		HandNum = 0;
 	}
 }
 
@@ -188,6 +285,7 @@ void Hand::AllTrash()
 	for (int i = 0; i < HandNum; i++)
 	{ 
 		hand[i] = -1;
+		//hand[i] = NULL;
 	}
 	HandNum = 0;
 }
@@ -205,4 +303,72 @@ void Hand::LoadImages()
 	{
 		cardimg[i] = LoadGraph(card[i]);
 	}
+}
+
+int Hand::DetermineCard(int i) const
+{
+	/*if (strcmp(hand[i], "kokuba") == 0
+		|| strcmp(hand[i], "\nkokuba") == 0)
+	{
+		return 0;
+	}
+	if (strcmp(hand[i], "\nkokuba_m") == 0)
+	{
+		return 1;
+	}
+	if (strcmp(hand[i], "\nrarutosu") == 0)
+	{
+		return 2;
+	}
+	if (strcmp(hand[i], "\nkiruria") == 0)
+	{
+		return 3;
+	}
+	if (strcmp(hand[i], "\nsa-naito") == 0)
+	{
+		return 4;
+	}
+	if (strcmp(hand[i], "\ndhianshi") == 0)
+	{
+		return 5;
+	}
+	if (strcmp(hand[i], "\ngekkouga") == 0)
+	{
+		return 6;
+	}*/
+
+	/*ポケモン*/
+	if (hand[i] <= 3)
+	{
+		return 0;
+	}
+	if (hand[i] <= 7)
+	{
+		return 1;
+	}
+	if (hand[i] <= 11)
+	{
+		return 2;
+	}
+	if (hand[i] <= 14)
+	{
+		return 3;
+	}
+	if (hand[i] <= 16)
+	{
+		return 4;
+	}
+	if (hand[i] == 17)
+	{
+		return 5;
+	}
+	if (hand[i] == 18)
+	{
+		return 6;
+	}
+	/*道具*/
+	
+	/*トレーナーズ*/
+
+	return -1;
 }

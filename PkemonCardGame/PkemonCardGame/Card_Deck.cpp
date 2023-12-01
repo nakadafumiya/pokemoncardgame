@@ -1,11 +1,28 @@
 #include "DxLib.h"
 #include "Card_Deck.h"
 
+int Card_Deck::CardDraw()
+{
+	int ret = 0;
+	do
+	{
+		ret = GetRand(19 - 1);
+	} while (!DrawCheck[ret]);
+	DrawCheck[ret] = false;
+	return ret;
+}
+
 Card_Deck::Card_Deck()
 {
 	First_Draw = false;
 	Hand_Card;
 	Card_num;
+
+	/*ŒÂl—p*/
+	for (int i = 0; i < 19; i++)
+	{
+		DrawCheck[i] = true;
+	}
 }
 
 void Card_Deck::Update()

@@ -1,4 +1,6 @@
 #pragma once
+#include "Card_Deck.h"
+#include "Pokemon.h"
 
 class Hand
 {
@@ -14,11 +16,32 @@ public:
 	void SetTrashPosition(int position);
 	//èD‘S•”Á‚·
 	void AllTrash();
-	void LoadImages();
+	//char* SendCardName(int i) { return saveHand[i]; }
+	int SendCardName(int i) { return saveHand[i]; }
+	void InitSaveHand()
+	{
+		/*for (int i = 0; i < 5; i++)
+		{
+			if (saveHand[i] == NULL) break;
+			saveHand[i] = NULL;
+		}*/
 
-private:
+		for (int i = 0; i < 5; i++)
+		{
+			if (saveHand[i] == -1) break;
+			saveHand[i] = -1;
+		}
+	}
+	void LoadImages();
+	//•`‰æ‚·‚éƒJ[ƒh‚ğ”»•Ê
+	int DetermineCard(int i)const;
+
+protected:
 	int cardimg[22]; //ƒJ[ƒh‰æ‘œ
 	int hand[10]; //èD
+	//char* hand[10]; //charŒ^èD
+	//char* saveHand[5]; //ˆê•Û‘¶—p
+	int saveHand[5];
 	int HandNum;  //‚Á‚Ä‚¢‚éèD‚Ì”
 	int Cursor_X;  //ƒJ[ƒ\ƒ‹ˆÊ’u
 	int DecreaseNum = 0;    //Œ¸‚ç‚·”
@@ -26,4 +49,8 @@ private:
 	int Push_X;  //èD‚ª‘‚¦‚é‚½‚Ñ‚É‰¡‚É‹l‚ß‚é
 
 	const int MaxHand = 10;  //Å‘å‚Å‚Ä‚éèD‚Ì”
+
+private:
+	Card_Deck deck;
+	Pokemon poke;
 };
