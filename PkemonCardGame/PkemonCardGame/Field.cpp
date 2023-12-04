@@ -95,8 +95,4 @@ void Field::Draw() const
 	//スタジアム
 	DrawBoxAA(Stadium_X, Stadium_Y, Stadium_X + Size_W, Stadium_Y + Size_H, 0xffffff, false, Line_Tchickness);
 	DrawStringF(Stadium_X + 5, Stadium_Y + 10, "スタジアム", 0xffffff);
-
-	//デッドライン
-	/*DrawLineAA(SCREEN_WIDTH * 0.2, 0, SCREEN_WIDTH * 0.2, SCREEN_HEIGHT, 0x00ffff);
-	DrawLineAA(SCREEN_WIDTH * 0.8, 0, SCREEN_WIDTH * 0.8, SCREEN_HEIGHT, 0x00ffff);*/
 }

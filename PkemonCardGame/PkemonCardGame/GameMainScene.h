@@ -2,10 +2,12 @@
 #include "AbstractScene.h"
 #include"common.h"
 #include "Field.h"
-#include "Hand.h"
+#include "Card_Deck.h"
 #include "Pokemon.h"
 #include"Side.h"
 #include "Title.h"
+#include "Player.h"
+#include "CPU.h"
 
 
 class Card_Deck;
@@ -15,7 +17,8 @@ class GameMainScene : public AbstractScene
 private:
 
 	Field field;
-	Hand hand;
+	Player player;
+	CPU cpu;
 	int Turn;
 	int Cr;
 	int Player;

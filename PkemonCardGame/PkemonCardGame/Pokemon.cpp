@@ -1,3 +1,5 @@
+#include <fstream>
+#include <iostream>
 #include "Pokemon.h"
 #include <stdio.h>
 #include "PadInput.h"
@@ -16,10 +18,10 @@ Pokemon::Pokemon()
 	
 	errno_t err = fopen_s(&fp, "data/Pokemon.txt", "r");
 
-	// ƒGƒ‰[ƒ`ƒFƒbƒN
+	// ï¿½Gï¿½ï¿½ï¿½[ï¿½`ï¿½Fï¿½bï¿½N
 	if (fp == nullptr)
 	{
-		OutputDebugString("ƒtƒ@ƒCƒ‹‚ğŠJ‚¯‚È‚¢\n");
+		OutputDebugString("ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½È‚ï¿½\n");
 		throw (-1);
 	}
 

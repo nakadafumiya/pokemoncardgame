@@ -19,7 +19,7 @@ struct Data
 class Pokemon : public Card_Deck
 {
 private:
-	struct Data Poke_id[20];
+	Data Poke_id[20];
 	bool Action;
 	
 	int BattlePoke;
@@ -36,8 +36,10 @@ protected:
 	int ENE;
 public:
 	Pokemon();
-	//•`‰æˆÈŠO‚ÌXV‚ğÀ‘•‚·‚é
+	//ï¿½`ï¿½ï¿½ÈŠOï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	virtual void Update(class GameMainScene* a) override;
-	//•`‰æ‚ÉŠÖ‚·‚é‚±‚ë‚ğÀ‘•‚·‚é
+	//ï¿½`ï¿½ï¿½ÉŠÖ‚ï¿½ï¿½é‚±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	virtual void Draw()const override;
+
+	Data GetPokeID(int i)const { return Poke_id[i]; }
 };
