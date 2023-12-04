@@ -18,10 +18,10 @@ Pokemon::Pokemon()
 	
 	errno_t err = fopen_s(&fp, "data/Pokemon.txt", "r");
 
-	// �G���[�`�F�b�N
+	//
 	if (fp == nullptr)
 	{
-		OutputDebugString("�t�@�C�����J���Ȃ�\n");
+		OutputDebugString("images/Pokemon_Card_D2/CardBack.png");
 		throw (-1);
 	}
 
