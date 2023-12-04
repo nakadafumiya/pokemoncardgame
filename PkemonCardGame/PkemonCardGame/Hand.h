@@ -6,8 +6,6 @@ class Hand
 {
 public:
 	Hand();
-	void Update();
-	void Draw()const;
 	//èD‚ğ‘‚â‚·
 	void DrawCard(int card);
 	//èD‚ğŒ¸‚ç‚·
@@ -32,22 +30,18 @@ public:
 			saveHand[i] = -1;
 		}
 	}
-	void LoadImages();
 	//•`‰æ‚·‚éƒJ[ƒh‚ğ”»•Ê
-	int DetermineCard(int i)const;
+	int DetermineCard(int i ,int dtype)const;
 
 protected:
-	int cardimg[22]; //ƒJ[ƒh‰æ‘œ
 	int hand[10]; //èD
 	//char* hand[10]; //charŒ^èD
 	//char* saveHand[5]; //ˆê•Û‘¶—p
 	int saveHand[5];
 	int HandNum;  //‚Á‚Ä‚¢‚éèD‚Ì”
-	int Cursor_X;  //ƒJ[ƒ\ƒ‹ˆÊ’u
 	int DecreaseNum = 0;    //Œ¸‚ç‚·”
 	int dPosition[10]; //Œ¸‚ç‚·ˆÊ’u
 	int Push_X;  //èD‚ª‘‚¦‚é‚½‚Ñ‚É‰¡‚É‹l‚ß‚é
-
 	const int MaxHand = 10;  //Å‘å‚Å‚Ä‚éèD‚Ì”
 
 private:

@@ -11,10 +11,9 @@ public:
 	static int Hand_Card;
 	int Card_num;
 
-	/*個人用*/
-	bool DrawCheck[19];  //true:山札にある false:山札にない
-	int CardDraw();
-	bool CheckCard()
+	bool DrawCheck[19];  //山札にカードが存在するか true:ある false:ない
+	int CardDraw();  //ドロー
+	bool CheckCard() //山札にカードが残っているか? true：ある false:ない
 	{
 		for (int i = 0; i < 19; i++)
 		{
@@ -25,7 +24,6 @@ public:
 		}
 		return false;
 	}
-	/*ここまで*/
 
 public:
 	Card_Deck();

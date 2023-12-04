@@ -33,6 +33,5 @@ public:
 	//�`��Ɋւ��邱�����������
 	virtual void Draw()const;
 
-	/*個人用*/
-	char* GetName(int card) { return Poke_id[card].NAME; }
+	Data GetPokeID(int i)const { return Poke_id[i]; }
 };

@@ -5,7 +5,6 @@
 #include "PadInput.h"
 #include "DxLib.h"
 #include <stdlib.h>	
-#include <fstream>
 #define N 256
 #define ROW 20
 

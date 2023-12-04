@@ -13,12 +13,13 @@ GameMainScene::GameMainScene()
 	Turn = START;
 	Cr = GetColor(255, 255, 255);
 
+	Player::Player(1);
 }
 
 AbstractScene* GameMainScene::Update()
 {
-	
-	hand.Update();
+	player.Update();
+	cpu.Update();
 	side.Update();
 
 	switch(Turn)
@@ -75,18 +76,6 @@ AbstractScene* GameMainScene::Update()
 		NextTurn = false;
 	}
 
-	/*個人用*/
-	//デッキからカードを引く
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_X))
-	{
-		//引けるカードがある時だけ引く
-		if (card_deck.CheckCard())
-		{
-			hand.DrawCard(card_deck.CardDraw());
-		}
-	}
-	/*ここまで*/
-
 	card_deck.Update();
 	pokemon.Update();
 	return this;
@@ -96,7 +85,6 @@ void GameMainScene::Draw() const
 {
 	
 	field.Draw();
-	hand.Draw();
 	card_deck.Draw();
 	pokemon.Draw();
 
@@ -143,6 +131,8 @@ void GameMainScene::Draw() const
 		DrawString(960, 540, "ENEMY TURN", Cr);
 	}
 	side.Draw();
+	player.Draw();
+	cpu.Draw();
 }
 
 //void GameMainScene::Battlepoke()
