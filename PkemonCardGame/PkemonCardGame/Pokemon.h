@@ -8,6 +8,7 @@ struct Data
 {
 	char NAME[20];
 	int HP;
+	char TYPE[10];
 	char WEEK[10];
 	char NOWEEK[10];
 	int RUN;
@@ -36,10 +37,11 @@ protected:
 	int ENE;
 public:
 	Pokemon();
-	//ï¿½`ï¿½ï¿½ÈŠOï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//E½`E½E½ÈŠOE½ÌXE½VE½E½E½E½E½E½E½E½E½E½
 	virtual void Update(class GameMainScene* a) override;
-	//ï¿½`ï¿½ï¿½ÉŠÖ‚ï¿½ï¿½é‚±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//E½`E½E½ÉŠÖ‚ï¿½E½é‚±E½E½E½E½E½E½E½E½E½E½E½
 	virtual void Draw()const override;
 
+	int Weak()const;
 	Data GetPokeID(int i)const { return Poke_id[i]; }
 };
