@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "Card_Deck.h"
+#include "GameMainScene.h"
 
 int Card_Deck::Hand_Card = 0;
 
@@ -7,18 +8,19 @@ Card_Deck::Card_Deck()
 {
 	First_Draw = false;
 	Hand_Card = 0;
-	Card_num;
+	Card_num = 0;
 }
 
-void Card_Deck::Update()
+void Card_Deck::Update(GameMainScene* a)
 {
-	if (Turn == true)
+	/*int turn_tmp = a->GetTurn();
+	if (turn_tmp == 1)
 	{
 		First_Draw = true;
 
 		if (First_Draw == true)
 		{
-			Card_num = GetRand(60);
+			Card_num = GetRand(18);
 			Hand_Card = Card_num;
 			First_Draw = false;
 		}
@@ -26,20 +28,26 @@ void Card_Deck::Update()
 		{
 			while (Card_num != Hand_Card)
 			{
-				Card_num = GetRand(60);
+				Card_num = GetRand(18);
 			}
 			First_Draw = false;
 		}
-	}
-	
-	if (CheckHitKey(KEY_INPUT_SPACE))
+	}*/
+
+	if (PAD_INPUT::OnClick(XINPUT_BUTTON_B))
 	{
 
 		Hand_Card = GetRand(18);
 	}
+	//setturn(turn_tmp);
 }
 
 void Card_Deck::Draw() const
 {
 	DrawFormatString(0, 200, 0x000000, "%d", Hand_Card);
+}
+
+void Card_Deck::setturn(int val)
+{
+	turn = val;
 }

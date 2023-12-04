@@ -74,8 +74,8 @@ AbstractScene* GameMainScene::Update()
 
 
 
-	card_deck.Update();
-	pokemon.Update();
+	card_deck.Update(this);
+	pokemon.Update(this);
 	return this;
 }
 
@@ -134,10 +134,12 @@ void GameMainScene::Draw() const
 
 //void GameMainScene::Battlepoke()
 //{
-//	if (Battlefield == true && Poke_id[i].SINKAMOTO = null)
+//	if (Battlefield = true && Poke_id[i].SINKAMOTO = null)
 //	{
 //		
-//		Battlefield == 
-//		
+//	}
+//	else(Poke_id[i].SINKAMOTO = kokuba && Hand)
+//	{
+//
 //	}
 //}
