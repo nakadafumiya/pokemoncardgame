@@ -37,6 +37,15 @@ Pokemon::Pokemon()
 	}
 	Action = false;
 	fclose(fp);
+
+	//kokuba = LoadGraph("images/OriginalMaterial/Pokemon_Card_D1_Before/こくばバドレックスV.jpg");
+	kokuba = LoadGraph("images/Pokemon_Card_D1/こくばバドレックスV.png");
+	rarutosu = LoadGraph("images/Pokemon_Card_D1/Ralts.png");
+	dhianshi = LoadGraph("images/Pokemon_Card_D1/ディアンシー.png");
+	gekkouga = LoadGraph("images/Pokemon_Card_D1/ShiningGreninja.png");
+	kokuba_m = LoadGraph("images/Pokemon_Card_D1/こくばバドレックスVMAX.png");
+	kiruria = LoadGraph("images/Pokemon_Card_D1/Kirlia.png");
+	sa_naito = LoadGraph("images/Pokemon_Card_D1/サーナイト.png");
 }
 
 void Pokemon::Update(GameMainScene* a)
@@ -56,4 +65,39 @@ void Pokemon::Draw() const
 		Poke_id[Hand_Card].SIDE,
 		Poke_id[Hand_Card].EVO, 
 		Poke_id[Hand_Card].SINKAMOTO);
+	//こくば
+	if (Hand_Card < 4) 
+	{
+		DrawGraph(SCREEN_WIDTH/2-70, 630, kokuba, TRUE);
+	}
+	//ラルトス
+	if (Hand_Card >= 4 && Hand_Card < 8)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, rarutosu, TRUE);
+	}
+	//ディアンシー
+	if (Hand_Card == 8)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, dhianshi, TRUE);
+	}
+	//ゲッコウガ
+	if (Hand_Card == 9)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, gekkouga, TRUE);
+	}
+	//こくばVM
+	if (Hand_Card >= 10 && Hand_Card < 14)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, kokuba_m, TRUE);
+	}
+	//キルリア
+	if (Hand_Card >=14 && Hand_Card < 17)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, kiruria, TRUE);
+	}
+	//サーナイト
+	if (Hand_Card >= 17 && Hand_Card < 19)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, sa_naito, TRUE);
+	}
 }

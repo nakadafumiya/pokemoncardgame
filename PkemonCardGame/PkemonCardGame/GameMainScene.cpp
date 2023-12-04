@@ -5,7 +5,7 @@
 GameMainScene::GameMainScene()
 {
 	NextTurn = false;
-	//Battlefield = true;
+	Battlefield = true;
 	Player = 0;
 	Turn = START;
 	Cr = GetColor(255, 255, 255);
@@ -134,11 +134,12 @@ void GameMainScene::Draw() const
 
 //void GameMainScene::Battlepoke()
 //{
-//	if (Battlefield = true)
+//	if (Battlefield = true && Poke_id[i].SINKAMOTO = null)
 //	{
-//		if (Poke_id[i].SINKAMOTO = null)
-//		{
-//			Battlefield = Card
-//		}
+//		
+//	}
+//	else(Poke_id[i].SINKAMOTO = kokuba && Hand)
+//	{
+//
 //	}
 //}
