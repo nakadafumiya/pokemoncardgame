@@ -12,8 +12,6 @@ GameMainScene::GameMainScene()
 	Player = 0;
 	Turn = START;
 	Cr = GetColor(255, 255, 255);
-
-	Player::Player(1);
 }
 
 AbstractScene* GameMainScene::Update()

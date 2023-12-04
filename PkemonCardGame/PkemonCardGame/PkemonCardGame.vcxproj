@@ -148,7 +148,6 @@
   <ItemGroup>
     <ClCompile Include="AbstractScene.h" />
     <ClCompile Include="CPU.cpp" />
-    <ClCompile Include="Energy.cpp" />
     <ClCompile Include="Card_Deck.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
@@ -167,7 +166,6 @@
     <ClInclude Include="Card_Deck.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="CPU.h" />
-    <ClInclude Include="Energy.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="Hand.h" />
