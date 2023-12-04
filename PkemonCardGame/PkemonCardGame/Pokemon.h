@@ -21,17 +21,16 @@ class Pokemon : public Card_Deck
 private:
 	Data Poke_id[20];
 	bool Action;
-	int i;
+
 	int BattlePoke;
-	Card_Deck card_d;
 protected:
 	int ENE;
 public:
 	Pokemon();
 	//�`��ȊO�̍X�V����������
-	virtual void Update();
+	virtual void Update(class GameMainScene* a) override;
 	//�`��Ɋւ��邱�����������
-	virtual void Draw()const;
+	virtual void Draw()const override;
 
 	Data GetPokeID(int i)const { return Poke_id[i]; }
 };

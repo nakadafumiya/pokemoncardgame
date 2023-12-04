@@ -5,6 +5,8 @@
 #include "PadInput.h"
 #include "DxLib.h"
 #include <stdlib.h>	
+#include <fstream>
+#include "GameMainScene.h"
 #define N 256
 #define ROW 20
 
@@ -12,7 +14,6 @@ Pokemon::Pokemon()
 {
 	BattlePoke = -1;
 
-	i = 0;
 	FILE* fp = nullptr;
 	
 	errno_t err = fopen_s(&fp, "data/Pokemon.txt", "r");
@@ -40,15 +41,21 @@ Pokemon::Pokemon()
 	fclose(fp);
 }
 
-void Pokemon::Update()
+void Pokemon::Update(GameMainScene* a)
 {
-
-	i = card_d.GetCard();
 
 }
 void Pokemon::Draw() const
 {
-	DrawFormatString(0, 100, 0x000000, "%d", i);
+	DrawFormatString(0, 100, 0x000000, "%d", Hand_Card);
 
-	DrawFormatString(0, 0, 0x000000, "%s %d %s %s %d %d %d %s", Poke_id[i].NAME, Poke_id[i].HP, Poke_id[i].WEEK, Poke_id[i].NOWEEK, Poke_id[i].RUN, Poke_id[i].SIDE, Poke_id[i].EVO, Poke_id[i].SINKAMOTO);
+	DrawFormatString(0, 0, 0x000000, "%s %d %s %s %d %d %d %s", 
+		Poke_id[Hand_Card].NAME, 
+		Poke_id[Hand_Card].HP,
+		Poke_id[Hand_Card].WEEK,
+		Poke_id[Hand_Card].NOWEEK, 
+		Poke_id[Hand_Card].RUN, 
+		Poke_id[Hand_Card].SIDE,
+		Poke_id[Hand_Card].EVO, 
+		Poke_id[Hand_Card].SINKAMOTO);
 }

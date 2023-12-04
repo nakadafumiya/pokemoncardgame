@@ -153,17 +153,14 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="Hand.cpp" />
-    <ClCompile Include="Items.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Stadium.cpp" />
-    <ClCompile Include="Goods.cpp" />
+    <ClCompile Include="Sup.cpp" />
     <ClCompile Include="Title.cpp" />
-    <ClCompile Include="Trainer.cpp" />
     <ClCompile Include="Side.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,16 +171,13 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="Hand.h" />
-    <ClInclude Include="Items.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Stadium.h" />
-    <ClInclude Include="Goods.h" />
+    <ClInclude Include="Sup.h" />
     <ClInclude Include="Title.h" />
-    <ClInclude Include="Trainer.h" />
     <ClInclude Include="Side.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

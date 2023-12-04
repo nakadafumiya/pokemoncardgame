@@ -10,6 +10,7 @@ public:
 	bool First_Draw;
 	static int Hand_Card;
 	int Card_num;
+	int turn;
 
 	bool DrawCheck[19];  //山札にカードが存在するか true:ある false:ない
 	int CardDraw();  //ドロー
@@ -27,7 +28,15 @@ public:
 
 public:
 	Card_Deck();
-	void Update();
-	virtual void Draw()const;
+	virtual void Update(class GameMainScene* a);
+	virtual void Draw() const;
+
+	void setturn(int val);
+
+	int getturn()
+	{
+		return turn;
+	}
+
 	int GetCard()const { return Hand_Card; }
 };

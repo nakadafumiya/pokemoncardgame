@@ -10,6 +10,8 @@
 #include "CPU.h"
 
 
+class Card_Deck;
+
 class GameMainScene : public AbstractScene
 {
 private:
@@ -24,7 +26,7 @@ private:
 	 
 	//bool Battlefield;
 	bool NextTurn;
-	Card_Deck card_deck;
+	class Card_Deck card_deck;
 	Side side;
 	Pokemon pokemon;
 	
@@ -36,6 +38,12 @@ GameMainScene();
 virtual AbstractScene* Update();
 //�`��Ɋւ��邱�����������
 virtual void Draw()const;
+
+int GetTurn()
+{
+	return Turn;
+}
+
 //void Battlepoke();
 };
 

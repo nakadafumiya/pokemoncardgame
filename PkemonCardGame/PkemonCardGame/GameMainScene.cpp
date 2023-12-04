@@ -76,8 +76,10 @@ AbstractScene* GameMainScene::Update()
 		NextTurn = false;
 	}
 
-	card_deck.Update();
-	pokemon.Update();
+
+
+	card_deck.Update(this);
+	pokemon.Update(this);
 	return this;
 }
 
