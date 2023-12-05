@@ -34,11 +34,11 @@ void Card_Deck::Update(GameMainScene* a)
 		}
 	}
 
-	if (CheckHitKey(KEY_INPUT_SPACE))
+	/*if (CheckHitKey(KEY_INPUT_SPACE))
 	{
 
 		Hand_Card = GetRand(60);
-	}
+	}*/
 	setturn(turn_tmp);
 }
 
