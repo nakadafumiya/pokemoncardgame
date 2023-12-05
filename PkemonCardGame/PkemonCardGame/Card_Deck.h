@@ -12,6 +12,20 @@ public:
 	int Card_num;
 	int turn;
 
+	bool DrawCheck[19];  //山札にカードが存在するか true:ある false:ない
+	int CardDraw();  //ドロー
+	bool CheckCard() //山札にカードが残っているか? true：ある false:ない
+	{
+		for (int i = 0; i < 19; i++)
+		{
+			if (DrawCheck[i])
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 public:
 	Card_Deck();
 	virtual void Update(class GameMainScene* a);

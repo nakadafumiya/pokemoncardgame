@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractScene.h" />
+    <ClCompile Include="CPU.cpp" />
     <ClCompile Include="Card_Deck.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Sup.cpp" />
@@ -163,11 +165,13 @@
   <ItemGroup>
     <ClInclude Include="Card_Deck.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="CPU.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="Hand.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="PadInput.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Sup.h" />

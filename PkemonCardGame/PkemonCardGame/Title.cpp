@@ -138,7 +138,7 @@ void Title::Draw()const
 
 
 	
-	
+	SetFontSize(16);
 
 	
 	
