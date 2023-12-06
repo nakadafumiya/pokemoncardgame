@@ -24,6 +24,7 @@ private:
 	int rarutosu;
 	int dhianshi;
 	int gekkouga;
+
 protected:
 	int ENE;
 public:
@@ -33,6 +34,7 @@ public:
 	//・ｽ`・ｽ・ｽﾉ関ゑｿｽ・ｽ驍ｱ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ
 	virtual void Draw()const override;
 
-	int Weak()const;
 	Data GetPokeID(int i)const { return Poke_id[i]; }
+
+	int Battle(int id);
 };

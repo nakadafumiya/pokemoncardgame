@@ -25,7 +25,7 @@ Pokemon::Pokemon()
 		throw (-1);
 	}
 
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		fscanf_s(fp, "%[^,],%d,%d,",
 			Poke_id[i].NAME, 20,
@@ -35,7 +35,7 @@ Pokemon::Pokemon()
 	Action = false;
 	fclose(fp);
 
-	//kokuba = LoadGraph("images/OriginalMaterial/Pokemon_Card_D1_Before/こくばバドレックスV.jpg");
+
 	kokuba = LoadGraph("images/Pokemon_Card_D1/こくばバドレックスV.png");
 	rarutosu = LoadGraph("images/Pokemon_Card_D1/Ralts.png");
 	dhianshi = LoadGraph("images/Pokemon_Card_D1/ディアンシー.png");
@@ -44,7 +44,7 @@ Pokemon::Pokemon()
 
 void Pokemon::Update(GameMainScene* a)
 {
-
+	
 }
 
 void Pokemon::Draw() const
@@ -66,14 +66,47 @@ void Pokemon::Draw() const
 		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, rarutosu, TRUE);
 	}
 	//ディアンシー
-	if (Hand_Card == 8);
+	if (Hand_Card == 8)
 	{
 		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, dhianshi, TRUE);
 	}
 	//ゲッコウガ
-	if (Hand_Card == 9);
+	if (Hand_Card == 9)
 	{
 		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, gekkouga, TRUE);
+	}
+}
+
+int Pokemon::Battle(int id)
+{
+	if (id < 4)
+	{
+		if (ENE <= 1)
+		{
+			return 10;
+		}
+	}
+	if (id < 8)
+	{
+		if (ENE <= 1)
+		{
+			return 10;
+		}
+	}
+	if (id == 8)
+	{
+		if (ENE <= 1)
+		{
+			return 20;
+		}
+	}
+	if (id == 9)
+	{
+		if (ENE <= 3)
+		{
+			ENE = -2;
+			return 90;
+		}
 	}
 }
 

@@ -135,14 +135,10 @@ void GameMainScene::Draw() const
 	cpu.Draw();
 }
 
-//void GameMainScene::Battlepoke()
-//{
-//	if (Battlefield = true && Poke_id[i].SINKAMOTO = null)
-//	{
-//		
-//	}
-//	else(Poke_id[i].SINKAMOTO = kokuba && Hand)
-//	{
-//
-//	}
-//}
+void GameMainScene::Battlepoke()
+{
+	if (Battlefield = true)
+	{
+		Battlefield = false;
+	}
+}
