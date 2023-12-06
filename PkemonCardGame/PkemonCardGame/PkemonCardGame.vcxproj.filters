@@ -15,9 +15,10 @@
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Side.cpp" />
-    <ClCompile Include="Sup.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="CPU.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card_Deck.h" />
@@ -33,7 +34,8 @@
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Side.h" />
-    <ClInclude Include="Sup.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="CPU.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

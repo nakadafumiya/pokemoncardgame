@@ -29,26 +29,26 @@ Card_Deck::Card_Deck()
 
 void Card_Deck::Update(GameMainScene* a)
 {
-	/*int turn_tmp = a->GetTurn();
-	if (turn_tmp == 1)
-	{
-		First_Draw = true;
+	//int turn_tmp = a->GetTurn();
+	//if (turn_tmp == 1)
+	//{
+	//	First_Draw = true;
 
-		if (First_Draw == true)
-		{
-			Card_num = GetRand(18);
-			Hand_Card = Card_num;
-			First_Draw = false;
-		}
-		else if (Card_num == Hand_Card)
-		{
-			while (Card_num != Hand_Card)
-			{
-				Card_num = GetRand(18);
-			}
-			First_Draw = false;
-		}
-	}*/
+	//	if (First_Draw == true)
+	//	{
+	//		Card_num = GetRand(18);
+	//		Hand_Card = Card_num;
+	//		First_Draw = false;
+	//	}
+	//	else if (Card_num == Hand_Card)
+	//	{
+	//		while (Card_num != Hand_Card)
+	//		{
+	//			Card_num = GetRand(18);
+	//		}
+	//		First_Draw = false;
+	//	}
+	//}
 
 
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_B))
