@@ -12,6 +12,21 @@ Player::Player()
 	{
 		cardImg[i] = -1;
 	}
+
+	for (int i = 0; i < 19; i++)
+	{
+		poke_data[i] = poke.GetPokeID(i);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (CheckCard())
+		{
+			SetSide(CardDraw());
+		}
+	}
+
+	LoadImages();
 }
 
 Player::Player(int dtype)
@@ -27,10 +42,6 @@ Player::Player(int dtype)
 			poke_data[i] = poke.GetPokeID(i);
 		}
 	}
-	else //デッキタイプが1の時()
-	{
-
-	}
 }
 
 void Player::Update()
@@ -44,7 +55,7 @@ void Player::Update()
 		//引けるカードがある時だけ引く
 		if (CheckCard())
 		{
-			DrawCard(CardDraw());
+			AddHand(CardDraw());
 		}
 	}
 
@@ -84,9 +95,9 @@ void Player::Update()
 void Player::Draw() const
 {
 	DrawString(1100, 680, "手札", 0xffffff);
-	for (int i = 0; i < HandNum; i++)
+	for (int i = 0; i < 6; i++)//HandNum
 	{
-		DrawFormatString(1100 + 25 * i, 700, 0xffffff, "%d", hand[i]);
+		DrawFormatString(1100 + 25 * i, 700, 0xffffff, "%d", GetSide(i)); //hand[i]
 	}
 	DrawCircle(910 + 110 * Cursor_X, 800, 5, 0xff0000, true);
 
@@ -137,6 +148,8 @@ void Player::Draw() const
 			}
 		}
 	}
+
+	Side::Draw();
 
 #ifndef DEBUG
 #define DEBUG

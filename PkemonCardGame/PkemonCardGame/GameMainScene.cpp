@@ -18,7 +18,7 @@ AbstractScene* GameMainScene::Update()
 {
 	player.Update();
 	cpu.Update();
-	side.Update();
+	//side.Update();
 
 	switch(Turn)
 	{
@@ -32,6 +32,25 @@ AbstractScene* GameMainScene::Update()
 		{
 			Turn = ENEMY_TURN;
 		}
+
+		//最初に7枚引く
+		if (player.First_Draw)
+		{
+			for (int i = 0; i < 7; i++)
+			{
+				player.AddHand(player.CardDraw());
+			}
+			player.First_Draw = false;
+		}
+		if (cpu.First_Draw)
+		{
+			for (int i = 0; i < 7; i++)
+			{
+				cpu.AddHand(cpu.CardDraw());
+			}
+			cpu.First_Draw = false;
+		}
+
 		break;
 	
 	case MY_TURN:
@@ -62,7 +81,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				NextTurn = true;	
 				break;
-			}	
+			}
 		}
 		break;
 	case ENEMY_TURN:

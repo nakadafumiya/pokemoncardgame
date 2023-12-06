@@ -19,7 +19,7 @@ Hand::Hand()
 	Push_X = 90;
 }
 
-void Hand::DrawCard(int card)
+void Hand::AddHand(int card)
 {
 	//èD‚Ì”‚ğˆø‚¢‚½•ª‘‚â‚·
 	++HandNum;

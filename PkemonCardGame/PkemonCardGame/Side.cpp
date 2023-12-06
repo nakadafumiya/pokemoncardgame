@@ -17,13 +17,21 @@ Side::Side()
 	{
 		side[count];
 	}
+
+	/*todo*/
+	for (int i = 0; i < 6; i++)
+	{
+		side[i] = -1;
+	}
+	count = 0;
+	//ここまで
 }
 //メンバ変数の値を書き換えるのがアップデート関数
-AbstractScene* Side::Update()
-{
-
-	return 0;
-}
+//AbstractScene* Side::Update()
+//{
+//
+//	return 0;
+//}
 
 //描画処理のみを行う関数
 void Side::Draw() const
@@ -52,7 +60,7 @@ void Side::Draw() const
 	{
 		DrawRotaGraph(495, 775, 1, 0, BackCard, FALSE);//手前中
 	}
-	if (6 < count) 
+	if (6 <= count) 
 	{
 		DrawRotaGraph(495, 615, 1, 0, BackCard, FALSE);//手前上
 	}

@@ -7,7 +7,7 @@ class Hand
 public:
 	Hand();
 	//èD‚ğ‘‚â‚·
-	void DrawCard(int card);
+	void AddHand(int card);
 	//èD‚ğŒ¸‚ç‚·
 	void TrashHand();
 	//Á‚·ƒJ[ƒh‚ğİ’è‚·‚é
