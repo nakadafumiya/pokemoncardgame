@@ -8,13 +8,7 @@ struct Data
 {
 	char NAME[20];
 	int HP;
-	char TYPE[10];
-	char WEEK[10];
-	char NOWEEK[10];
-	int RUN;
 	int SIDE;
-	int EVO;
-	char SINKAMOTO[20];
 };
 
 class Pokemon : public Card_Deck
@@ -30,9 +24,6 @@ private:
 	int rarutosu;
 	int dhianshi;
 	int gekkouga;
-	int kokuba_m;
-	int kiruria;
-	int sa_naito;
 protected:
 	int ENE;
 public:
