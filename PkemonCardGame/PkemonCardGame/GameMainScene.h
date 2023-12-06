@@ -44,6 +44,6 @@ int GetTurn()
 	return Turn;
 }
 
- void Battlepoke();
+ void Battlepoke(int Card);
 };
 

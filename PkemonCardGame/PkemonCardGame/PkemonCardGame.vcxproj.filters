@@ -1,39 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="AbstractScene.h" />
-    <ClCompile Include="Card_Deck.cpp" />
-    <ClCompile Include="GameMainScene.cpp" />
-    <ClCompile Include="Hand.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="Pokemon.cpp" />
-    <ClCompile Include="KeyManager.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PadInput.cpp" />
-    <ClCompile Include="Pokemon.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Side.cpp" />
-    <ClCompile Include="Sup.cpp" />
-    <ClCompile Include="Title.cpp" />
-    <ClCompile Include="Field.cpp" />
+    <ClCompile Include="Card_Deck.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CPU.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Field.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMainScene.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Hand.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="PadInput.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Pokemon.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Side.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Sup.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractScene.h">
+      <Filter>h</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Card_Deck.h" />
-    <ClInclude Include="common.h" />
-    <ClInclude Include="Field.h" />
-    <ClInclude Include="GameMainScene.h" />
-    <ClInclude Include="Hand.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="Pokemon.h" />
-    <ClInclude Include="KeyManager.h" />
-    <ClInclude Include="PadInput.h" />
-    <ClInclude Include="Pokemon.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Side.h" />
-    <ClInclude Include="Sup.h" />
-    <ClInclude Include="Title.h" />
+    <ClInclude Include="Title.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Side.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Sup.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Pokemon.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="PadInput.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Hand.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMainScene.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="CPU.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Card_Deck.h">
+      <Filter>h</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="cpp">
+      <UniqueIdentifier>{bd4cff59-895e-4d87-b171-f004ea23d1ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="h">
+      <UniqueIdentifier>{6edf3ca8-243b-4c00-b5c6-286bb0cca650}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

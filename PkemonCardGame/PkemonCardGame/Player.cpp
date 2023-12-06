@@ -29,46 +29,50 @@ Player::Player()
 	LoadImages();
 }
 
-Player::Player(int dtype)
-{
-	DeckType = dtype;
-	LoadImages();
-
-	//ƒfƒbƒLƒ^ƒCƒv‚ª0‚ÌŽž(‚±‚­‚Î)
-	if (DeckType == 0)
-	{
-		for (int i = 0; i < 19; i++)
-		{
-			poke_data[i] = poke.GetPokeID(i);
-		}
-	}
-}
+//Player::Player(int dtype)
+//{
+//	DeckType = dtype;
+//	LoadImages();
+//
+//	//ï¿½fï¿½bï¿½Lï¿½^ï¿½Cï¿½vï¿½ï¿½0ï¿½ÌŽï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+//	if (DeckType == 0)
+//	{
+//		for (int i = 0; i < 19; i++)
+//		{
+//			poke_data[i] = poke.GetPokeID(i);
+//		}
+//	}
+//	else //ï¿½fï¿½bï¿½Lï¿½^ï¿½Cï¿½vï¿½ï¿½1ï¿½ÌŽï¿½()
+//	{
+//
+//	}
+//}
 
 void Player::Update()
 {
 	SticControl();
 
-	//to do Šm”F—p	
-	//ƒfƒbƒL‚©‚çƒJ[ƒh‚ðˆø‚­
+	//to do ï¿½mï¿½Fï¿½p	
+	//ï¿½fï¿½bï¿½Lï¿½ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_X))
 	{
-		//ˆø‚¯‚éƒJ[ƒh‚ª‚ ‚éŽž‚¾‚¯ˆø‚­
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½éŽžï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (CheckCard())
 		{
 			AddHand(CardDraw());
 		}
 	}
 
-	//íœŠJŽn
+	//ï¿½íœï¿½Jï¿½n
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_BACK))
 	{
 		TrashHand();
 		AdjustmentCursor();
 	}
-	//‚±‚±‚Ü‚Å
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½
 
-	//ƒJ[ƒ\ƒ‹ˆÚ“®
-	//‰E
+	//ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
+	//ï¿½E
 	if (MARGIN < PAD_INPUT::GetPadThumbLX() && FlgX == 0)
 	{
 		if (HandNum - 1 < ++Cursor_X)
@@ -76,7 +80,7 @@ void Player::Update()
 			Cursor_X = 0;
 		}
 	}
-	//¶
+	//ï¿½ï¿½
 	if (PAD_INPUT::GetPadThumbLX() < -MARGIN && FlgX == 0)
 	{
 		if (--Cursor_X < 0)
@@ -85,7 +89,7 @@ void Player::Update()
 		}
 	}
 
-	//Œˆ’è
+	//ï¿½ï¿½ï¿½ï¿½
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_A))
 	{
 		SetTrashPosition(Cursor_X);
@@ -94,7 +98,7 @@ void Player::Update()
 
 void Player::Draw() const
 {
-	DrawString(1100, 680, "ŽèŽD", 0xffffff);
+	DrawString(1100, 680, "ï¿½ï¿½D", 0xffffff);
 	for (int i = 0; i < 6; i++)//HandNum
 	{
 		DrawFormatString(1100 + 25 * i, 700, 0xffffff, "%d", GetSide(i)); //hand[i]
@@ -105,12 +109,12 @@ void Player::Draw() const
 	{
 		int ph = 0;
 		int pw = 0;
-		//ƒJ[ƒ\ƒ‹ˆÊ’u‚ÌƒJ[ƒh‚ðã‚Éã‚°‚é
+		//ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ê’uï¿½ÌƒJï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½Éã‚°ï¿½ï¿½
 		if (Cursor_X == i)
 		{
 			ph = 20;
 		}
-		//ƒJ[ƒ\ƒ‹ˆÊ’uˆÈŠO‚ÌƒJ[ƒh‚ð¶‰E‚É‚¸‚ç‚·
+		//ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ê’uï¿½ÈŠOï¿½ÌƒJï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Eï¿½É‚ï¿½ï¿½ç‚·
 		if (i < Cursor_X)
 		{
 			pw = -20;
@@ -124,25 +128,25 @@ void Player::Draw() const
 		{
 			switch (DetermineCard(i,DeckType))
 			{
-			case 0:  //‚±‚­‚Î
+			case 0:  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[0], TRUE);
 				break;
-			case 1:  //‚±‚­‚ÎVMAX
+			case 1:  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VMAX
 				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[1], TRUE);
 				break;
-			case 2:  //ƒ‰ƒ‹ƒgƒX
+			case 2:  //ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½X
 				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[2], TRUE);
 				break;
-			case 3:  //ƒLƒ‹ƒŠƒA
+			case 3:  //ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½A
 				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[3], TRUE);
 				break;
-			case 4:  //ƒT[ƒiƒCƒg
+			case 4:  //ï¿½Tï¿½[ï¿½iï¿½Cï¿½g
 				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[4], TRUE);
 				break;
-			case 5:  //ƒfƒBƒAƒ“ƒV[
+			case 5:  //ï¿½fï¿½Bï¿½Aï¿½ï¿½ï¿½Vï¿½[
 				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[5], TRUE);
 				break;
-			case 6:  //ƒQƒbƒRƒEƒK
+			case 6:  //ï¿½Qï¿½bï¿½Rï¿½Eï¿½K
 				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[6], TRUE);
 				break;
 			}
@@ -158,31 +162,31 @@ void Player::Draw() const
 		DrawFormatString(900 + 25 * i, 400, 0xffffff, "%d", hand[i]);
 	}*/
 
-	DrawFormatString(1100, 600, 0xff0000, "Á‚·–‡” %d", DecreaseNum);
-	DrawString(1250, 600, "Á‚·ˆÊ’u ", 0xff0000);
+	DrawFormatString(1100, 600, 0xff0000, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ %d", DecreaseNum);
+	DrawString(1250, 600, "ï¿½ï¿½ï¿½ï¿½ï¿½Ê’u ", 0xff0000);
 	for (int i = 0; i < DecreaseNum; i++)
 	{
 		DrawFormatString(1380 + 20 * i, 600, 0xff0000, "%d ", dPosition[i]);
 	}
 
-	/*DrawString(1300, 680, "ƒJ[ƒ\ƒ‹ˆÚ“® ©¨(ƒXƒeƒBƒbƒN)", 0x000000);
-	DrawString(1300, 700, "‘I‘ð A", 0x000000);
-	DrawString(1300, 720, "Á‹Ž BACK", 0x000000);
-	DrawString(1300, 740, "”Žš‚ð“ü‚ê‚é X", 0x000000);*/
+	/*DrawString(1300, 680, "ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Xï¿½eï¿½Bï¿½bï¿½N)", 0x000000);
+	DrawString(1300, 700, "ï¿½Iï¿½ï¿½ A", 0x000000);
+	DrawString(1300, 720, "ï¿½ï¿½ï¿½ï¿½ BACK", 0x000000);
+	DrawString(1300, 740, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ X", 0x000000);*/
 #endif // !DEBUG
 
 }
 
 void Player::LoadImages()
 {
-	//ƒfƒbƒLƒ^ƒCƒv‚ª0‚ÌŽž
+	//ï¿½fï¿½bï¿½Lï¿½^ï¿½Cï¿½vï¿½ï¿½0ï¿½ÌŽï¿½
 	if (DeckType == 0)
 	{
 		const char* card[] = { "images/Pokemon_Card_D1/Calyrex_V.png","images/Pokemon_Card_D1/Calyrex_VMAX.png","images/Pokemon_Card_D1/Ralts.png"
-		,"images/Pokemon_Card_D1/Kirlia.png","images/Pokemon_Card_D1/Gardevoir_ex.png","images/Pokemon_Card_D1/Diancie.png","images/Pokemon_Card_D1/‚©‚ª‚â‚­ƒQƒbƒRƒEƒK.png"
-		,"images/Pokemon_Card_D1/’´ƒGƒlƒ‹ƒM[.png","images/Pokemon_Card_D1/OldCemetery.png","images/Pokemon_Card_D1/ƒ|ƒPƒ‚ƒ“‚¢‚ê‚©‚¦.png","images/Pokemon_Card_D1/NestBall.png"
-		,"images/Pokemon_Card_D1/ƒnƒCƒp[ƒ{[ƒ‹.png","images/Pokemon_Card_D1/FogCrystal.png","images/Pokemon_Card_D1/EscapeRope.png","images/Pokemon_Card_D1/‚°‚ñ‚«‚Ìƒnƒ`ƒ}ƒL.png"
-		,"images/Pokemon_Card_D1/ChoiceBelt.png","images/Pokemon_Card_D1/‚Ó‚µ‚¬‚ÈƒAƒ.png","images/Pokemon_Card_D1/Miriam.png","images/Pokemon_Card_D1/ProfessorsResearch_Sada.png"
+		,"images/Pokemon_Card_D1/Kirlia.png","images/Pokemon_Card_D1/Gardevoir_ex.png","images/Pokemon_Card_D1/Diancie.png","images/Pokemon_Card_D1/ï¿½ï¿½ï¿½ï¿½ï¿½â‚­ï¿½Qï¿½bï¿½Rï¿½Eï¿½K.png"
+		,"images/Pokemon_Card_D1/ï¿½ï¿½ï¿½Gï¿½lï¿½ï¿½ï¿½Mï¿½[.png","images/Pokemon_Card_D1/OldCemetery.png","images/Pokemon_Card_D1/ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚©ï¿½ï¿½.png","images/Pokemon_Card_D1/NestBall.png"
+		,"images/Pokemon_Card_D1/ï¿½nï¿½Cï¿½pï¿½[ï¿½{ï¿½[ï¿½ï¿½.png","images/Pokemon_Card_D1/FogCrystal.png","images/Pokemon_Card_D1/EscapeRope.png","images/Pokemon_Card_D1/ï¿½ï¿½ï¿½ñ‚«‚Ìƒnï¿½`ï¿½}ï¿½L.png"
+		,"images/Pokemon_Card_D1/ChoiceBelt.png","images/Pokemon_Card_D1/ï¿½Ó‚ï¿½ï¿½ï¿½ï¿½ÈƒAï¿½ï¿½.png","images/Pokemon_Card_D1/Miriam.png","images/Pokemon_Card_D1/ProfessorsResearch_Sada.png"
 		,"images/Pokemon_Card_D1/BosssOrders_GCis.png","images/Pokemon_Card_D1/Serena.png","images/Pokemon_Card_D1/Arven.png" };
 
 		for (int i = 0; i < 22; i++)
@@ -190,7 +194,7 @@ void Player::LoadImages()
 			cardImg[i] = LoadGraph(card[i]);
 		}
 	}
-	else //ƒfƒbƒLƒ^ƒCƒv‚ª1‚ÌŽž
+	else //ï¿½fï¿½bï¿½Lï¿½^ï¿½Cï¿½vï¿½ï¿½1ï¿½ÌŽï¿½
 	{
 		const char* card[] = { "images/Pokemon_Card_D2/Arceus_VSTAR.png","images/Pokemon_Card_D2/Arceus_VSTAR.png","images/Pokemon_Card_D2/Arceus_V.png","images/Pokemon_Card_D2/Rayquaza_VMAX.png"
 			,"images/Pokemon_Card_D2/Rayquaza_V.png","images/Pokemon_Card_D2/Delphox_V.png","images/Pokemon_Card_D2/Lumineon_V.png","images/Pokemon_Card_D2/Charcadet.png","images/Pokemon_Card_D2/Armarouge.png"
@@ -226,8 +230,8 @@ void Player::SticControl()
 
 void Player::AdjustmentCursor()
 {
-	//ƒJ[ƒ\ƒ‹ˆÊ’u‚ªŽèŽD‚Ì”‚æ‚è‘å‚«‚©‚Á‚½‚ç
-	//ÅŒã”ö‚É’²®‚·‚é
+	//ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ê’uï¿½ï¿½ï¿½ï¿½Dï¿½Ìï¿½ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ÅŒï¿½ï¿½ï¿½É’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (HandNum < Cursor_X + 1)
 	{
 		Cursor_X = HandNum - 1;
