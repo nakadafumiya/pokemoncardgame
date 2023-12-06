@@ -16,7 +16,7 @@ Pokemon::Pokemon()
 
 	FILE* fp = nullptr;
 	
-	errno_t err = fopen_s(&fp, "data/Pokemon.txt", "r");
+	errno_t err = fopen_s(&fp, "data/Pokemon1.txt", "r");
 
 	//
 	if (fp == nullptr)
@@ -28,13 +28,29 @@ Pokemon::Pokemon()
 	for (int i = 0; i < 10; i++)
 	{
 		fscanf_s(fp, "%[^,],%d,%d,",
-			Poke_id[i].NAME, 20,
-			&Poke_id[i].HP,
-			&Poke_id[i].SIDE);
+			Poke_id1[i].NAME, 20,
+			&Poke_id1[i].HP,
+			&Poke_id1[i].SIDE);
 	}
 	Action = false;
 	fclose(fp);
 
+	 err = fopen_s(&fp, "data/Pokemon2.txt", "r");
+
+	if (fp == nullptr)
+	{
+		OutputDebugString("images/Pokemon_Card_D2/CardBack.png");
+		throw (-1);
+	}
+
+	for (int i = 0; i < 13; i++)
+	{
+		fscanf_s(fp, "%[^,],%d,%d,",
+			Poke_id2[i].NAME, 20,
+			&Poke_id2[i].HP,
+			&Poke_id2[i].SIDE);
+	}
+	fclose(fp);
 
 	kokuba = LoadGraph("images/Pokemon_Card_D1/こくばバドレックスV.png");
 	rarutosu = LoadGraph("images/Pokemon_Card_D1/Ralts.png");
@@ -52,9 +68,9 @@ void Pokemon::Draw() const
 	DrawFormatString(0, 100, 0x000000, "%d", Hand_Card);
 
 	DrawFormatString(0, 0, 0x000000, "%s %d %d ", 
-		Poke_id[Hand_Card].NAME, 
-		Poke_id[Hand_Card].HP,
-		Poke_id[Hand_Card].SIDE);
+		Poke_id2[Hand_Card].NAME, 
+		Poke_id2[Hand_Card].HP,
+		Poke_id2[Hand_Card].SIDE);
 	//こくば
 	if (Hand_Card < 4) 
 	{
@@ -77,7 +93,7 @@ void Pokemon::Draw() const
 	}
 }
 
-int Pokemon::Battle(int id)
+int Pokemon::Battle1(int id)
 {
 	if (id < 4)
 	{
@@ -86,7 +102,7 @@ int Pokemon::Battle(int id)
 			return 10;
 		}
 	}
-	if (id < 8)
+	if (id >= 4 && id < 8)
 	{
 		if (ENE <= 1)
 		{
@@ -106,6 +122,74 @@ int Pokemon::Battle(int id)
 		{
 			ENE = -2;
 			return 90;
+		}
+	}
+}
+
+int Pokemon::Battle2(int id)
+{
+	if (id < 3)
+	{
+		if (ENE <= 3)
+		{
+			return 130;
+		}
+	}
+
+	if (id >= 3 && id < 5)
+	{
+		if (E_ENE <= 1)
+		{
+			return 40;
+		}
+		else if (F_ENE <= 1 && E_ENE <= 1)
+		{
+			return 100;
+		}
+	}
+
+	if (id >= 5 && id < 7)
+	{
+		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1)
+		{
+			return 120;
+		}
+	
+	}
+
+	if (id >= 8 && id < 10)
+	{
+		if (F_ENE <= 1 || E_ENE <= 1)
+		{
+			return 10;
+		}
+		else if (F_ENE <= 2 || F_ENE <= 1 && E_ENE <= 1)
+		{
+			return 20;
+		}
+	}
+
+	if (id == 10)
+	{
+		if (F_ENE <= 2 || E_ENE <= 2)
+		{
+			return 20;
+		}
+	}
+
+	if (id == 11)
+	{
+		if (F_ENE <= 2 || E_ENE <= 2)
+		{
+			return 20;
+		}
+	}
+
+	if (id == 12)
+	{
+		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1 || F_ENE <= 1 && E_ENE <= 2)
+		{
+			return 70;
 		}
 	}
 }

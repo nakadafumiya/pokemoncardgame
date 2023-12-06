@@ -135,9 +135,9 @@ void GameMainScene::Draw() const
 	cpu.Draw();
 }
 
-void GameMainScene::Battlepoke()
+void GameMainScene::Battlepoke(int Card)
 {
-	if (Battlefield = true)
+	if (Battlefield = true && Card < 10)
 	{
 		Battlefield = false;
 	}
