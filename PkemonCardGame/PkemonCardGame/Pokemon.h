@@ -38,6 +38,8 @@ private:
 
 protected:
 	int ENE;
+	int E_ENE;
+	int F_ENE;
 public:
 	Pokemon();
 	//
@@ -49,5 +51,7 @@ public:
 
 	Data GetPokeID2(int i)const { return Poke_id2[i]; }
 
-	int Battle(int id);
+	int Battle1(int id);
+
+	int Battle2(int id);
 };
