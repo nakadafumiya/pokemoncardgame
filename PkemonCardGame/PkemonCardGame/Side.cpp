@@ -11,9 +11,7 @@ Side::Side()
 	BackCard = LoadGraph("images/Pokemon_Card_D1/CardBack.png");
 
 
-
-
-	for (count = 1; count <= 6; ++count)
+	for (count = 0; count <= 5; ++count)
 	{
 		side[count];
 	}
@@ -21,7 +19,10 @@ Side::Side()
 //メンバ変数の値を書き換えるのがアップデート関数
 AbstractScene* Side::Update()
 {
-
+	if (PAD_INPUT::OnClick(XINPUT_BUTTON_Y))
+	{
+		count--;
+	}
 	return 0;
 }
 
@@ -32,27 +33,27 @@ void Side::Draw() const
 
 	DrawFormatString(0,0,0x000000,"%d",count);
 	
-	if (1 < count)
+	if (0 < count)
 	{
 		DrawRotaGraph(470, 959, 1, 0, BackCard, FALSE);//奥下
 	}
-	if (2 < count)
+	if (1 < count)
 	{
 		DrawRotaGraph(470, 799, 1, 0, BackCard, FALSE);//奥中
 	}
-	if (3 < count)
+	if (2 < count)
 	{
 		DrawRotaGraph(470, 639, 1, 0, BackCard, FALSE);//奥上
 	}
-	if (4 < count)
+	if (3 < count)
 	{
 		DrawRotaGraph(495, 935, 1, 0, BackCard, FALSE);//手前下
 	}
-	if (5 < count) 
+	if (4 < count) 
 	{
 		DrawRotaGraph(495, 775, 1, 0, BackCard, FALSE);//手前中
 	}
-	if (6 < count) 
+	if (5 < count) 
 	{
 		DrawRotaGraph(495, 615, 1, 0, BackCard, FALSE);//手前上
 	}

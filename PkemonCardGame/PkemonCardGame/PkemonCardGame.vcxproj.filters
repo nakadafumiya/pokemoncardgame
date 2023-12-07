@@ -17,6 +17,9 @@
     <ClCompile Include="Goods.cpp" />
     <ClCompile Include="Trainer.cpp" />
     <ClCompile Include="Side.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Help.cpp" />
+    <ClCompile Include="End.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card_Deck.h" />
@@ -34,5 +37,8 @@
     <ClInclude Include="Goods.h" />
     <ClInclude Include="Trainer.h" />
     <ClInclude Include="Side.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="Help.h" />
+    <ClInclude Include="End.h" />
   </ItemGroup>
 </Project>
