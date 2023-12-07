@@ -1,20 +1,23 @@
 #include "Dxlib.h"
 #include "GameMainScene.h"
 #include "Card_Deck.h"
+#include "Pokemon.h"
+#include "PadInput.h"
+Pokemon poke;
 
 GameMainScene::GameMainScene()
 {
 	NextTurn = false;
+	Battlefield = true;
 	Player = 0;
 	Turn = START;
 	Cr = GetColor(255, 255, 255);
-
 }
 
 AbstractScene* GameMainScene::Update()
 {
-	
-	hand.Update();
+	player.Update();
+	cpu.Update();
 	side.Update();
 
 	switch(Turn)
@@ -73,8 +76,8 @@ AbstractScene* GameMainScene::Update()
 
 
 
-	card_deck.Update();
-	pokemon.Update();
+	card_deck.Update(this);
+	pokemon.Update(this);
 	return this;
 }
 
@@ -82,8 +85,7 @@ void GameMainScene::Draw() const
 {
 	
 	field.Draw();
-	hand.Draw();
-	//card_deck.Draw();
+	card_deck.Draw();
 	pokemon.Draw();
 
 	switch (Turn)
@@ -129,4 +131,14 @@ void GameMainScene::Draw() const
 		DrawString(960, 540, "ENEMY TURN", Cr);
 	}
 	side.Draw();
+	player.Draw();
+	cpu.Draw();
+}
+
+void GameMainScene::Battlepoke(int Card)
+{
+	if (Battlefield = true && Card < 10)
+	{
+		Battlefield = false;
+	}
 }

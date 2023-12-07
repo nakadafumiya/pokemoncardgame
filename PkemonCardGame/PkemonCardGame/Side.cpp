@@ -31,7 +31,7 @@ void Side::Draw() const
 {
 	//player ÉTÉCÉh
 
-	DrawFormatString(0,0,0x000000,"%d",count);
+	//DrawFormatString(0,0,0x000000,"%d",count);
 	
 	if (0 < count)
 	{

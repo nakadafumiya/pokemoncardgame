@@ -196,7 +196,7 @@ void Title::Draw()const
 		DrawRotaGraph(SCREEN_WIDTH / 2+400, SCREEN_HEIGHT / 2, 1, 0, ruleimage2, TRUE);
 	}
 	
-	
+	SetFontSize(16);
 
 	
 	

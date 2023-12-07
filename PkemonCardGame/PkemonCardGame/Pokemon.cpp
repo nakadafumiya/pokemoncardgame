@@ -1,76 +1,198 @@
+#include <fstream>
+#include <iostream>
 #include "Pokemon.h"
 #include <stdio.h>
 #include "PadInput.h"
 #include "DxLib.h"
 #include <stdlib.h>	
 #include <fstream>
+#include "GameMainScene.h"
 #define N 256
 #define ROW 20
 
 Pokemon::Pokemon()
 {
-	i = 0;
+	BattlePoke = -1;
+
 	FILE* fp = nullptr;
 	
-	errno_t err = fopen_s(&fp, "data/Pokemon.txt", "r");
+	errno_t err = fopen_s(&fp, "data/Pokemon1.txt", "r");
 
-	// エラーチェック
+	//
 	if (fp == nullptr)
 	{
-		OutputDebugString("ファイルを開けない\n");
+		OutputDebugString("images/Pokemon_Card_D2/CardBack.png");
 		throw (-1);
 	}
 
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		fscanf_s(fp, "%[^,],%d,%[^,],%[^,],%d,%d,%d,%[^,],",
-			Poke_id[i].NAME, 20,
-			&Poke_id[i].HP,
-			Poke_id[i].WEEK, 10,
-			Poke_id[i].NOWEEK, 10,
-			&Poke_id[i].RUN,
-			&Poke_id[i].SIDE,
-			&Poke_id[i].EVO, 
-			Poke_id[i].SINKAMOTO, 20);
+		fscanf_s(fp, "%[^,],%d,%d,",
+			Poke_id1[i].NAME, 20,
+			&Poke_id1[i].HP,
+			&Poke_id1[i].SIDE);
 	}
 	Action = false;
 	fclose(fp);
-}
 
-void Pokemon::Update()
-{
+	 err = fopen_s(&fp, "data/Pokemon2.txt", "r");
+
+	if (fp == nullptr)
 	{
-		//card_d.Hand_Card;
-		/*if (card_d.Hand_Card > 19)
-		{
-			Poke_id[i].NAME;
-			Poke_id[i].HP;
-			Poke_id[i].WEEK;
-			Poke_id[i].NOWEEK;
-			Poke_id[i].RUN;
-			Poke_id[i].SIDE;
-			Poke_id[i].EVO;
-			Poke_id[i].SINKAMOTO;
-		}*/
-
-		 if (CheckHitKey(KEY_INPUT_SPACE))
-		 {
-			//int i = Hand_Card;
-		    i = GetRand(18);
-			Poke_id[i].NAME;
-			Poke_id[i].HP;
-			Poke_id[i].WEEK;
-			Poke_id[i].NOWEEK;
-			Poke_id[i].RUN;
-			Poke_id[i].SIDE;
-			Poke_id[i].EVO;
-			Poke_id[i].SINKAMOTO;
-			
-		 }
-
+		OutputDebugString("images/Pokemon_Card_D2/CardBack.png");
+		throw (-1);
 	}
+
+	for (int i = 0; i < 13; i++)
+	{
+		fscanf_s(fp, "%[^,],%d,%d,",
+			Poke_id2[i].NAME, 20,
+			&Poke_id2[i].HP,
+			&Poke_id2[i].SIDE);
+	}
+	fclose(fp);
+
+	kokuba = LoadGraph("images/Pokemon_Card_D1/こくばバドレックスV.png");
+	rarutosu = LoadGraph("images/Pokemon_Card_D1/Ralts.png");
+	dhianshi = LoadGraph("images/Pokemon_Card_D1/ディアンシー.png");
+	gekkouga = LoadGraph("images/Pokemon_Card_D1/ShiningGreninja.png");
 }
+
+void Pokemon::Update(GameMainScene* a)
+{
+	
+}
+
 void Pokemon::Draw() const
 {
-	DrawFormatString(0, 0, 0x000000, "%s %d %s %s %d %d %d %s", Poke_id[i].NAME, Poke_id[i].HP, Poke_id[i].WEEK, Poke_id[i].NOWEEK, Poke_id[i].RUN, Poke_id[i].SIDE, Poke_id[i].EVO, Poke_id[i].SINKAMOTO);
+	DrawFormatString(0, 100, 0x000000, "%d", Hand_Card);
+
+	DrawFormatString(0, 0, 0x000000, "%s %d %d ", 
+		Poke_id2[Hand_Card].NAME, 
+		Poke_id2[Hand_Card].HP,
+		Poke_id2[Hand_Card].SIDE);
+	//こくば
+	if (Hand_Card < 4) 
+	{
+		DrawGraph(SCREEN_WIDTH/2-70, 630, kokuba, TRUE);
+	}
+	//ラルトス
+	if (Hand_Card >= 4 && Hand_Card < 8)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, rarutosu, TRUE);
+	}
+	//ディアンシー
+	if (Hand_Card == 8)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, dhianshi, TRUE);
+	}
+	//ゲッコウガ
+	if (Hand_Card == 9)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, gekkouga, TRUE);
+	}
 }
+
+int Pokemon::Battle1(int id)
+{
+	if (id < 4)
+	{
+		if (ENE <= 1)
+		{
+			return 10;
+		}
+	}
+	if (id >= 4 && id < 8)
+	{
+		if (ENE <= 1)
+		{
+			return 10;
+		}
+	}
+	if (id == 8)
+	{
+		if (ENE <= 1)
+		{
+			return 20;
+		}
+	}
+	if (id == 9)
+	{
+		if (ENE <= 3)
+		{
+			ENE = -2;
+			return 90;
+		}
+	}
+}
+
+int Pokemon::Battle2(int id)
+{
+	if (id < 3)
+	{
+		if (ENE <= 3)
+		{
+			return 130;
+		}
+	}
+
+	if (id >= 3 && id < 5)
+	{
+		if (E_ENE <= 1)
+		{
+			return 40;
+		}
+		else if (F_ENE <= 1 && E_ENE <= 1)
+		{
+			return 100;
+		}
+	}
+
+	if (id >= 5 && id < 7)
+	{
+		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1)
+		{
+			return 120;
+		}
+	
+	}
+
+	if (id >= 8 && id < 10)
+	{
+		if (F_ENE <= 1 || E_ENE <= 1)
+		{
+			return 10;
+		}
+		else if (F_ENE <= 2 || F_ENE <= 1 && E_ENE <= 1)
+		{
+			return 20;
+		}
+	}
+
+	if (id == 10)
+	{
+		if (F_ENE <= 2 || E_ENE <= 2)
+		{
+			return 20;
+		}
+	}
+
+	if (id == 11)
+	{
+		if (F_ENE <= 2 || E_ENE <= 2)
+		{
+			return 20;
+		}
+	}
+
+	if (id == 12)
+	{
+		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1 || F_ENE <= 1 && E_ENE <= 2)
+		{
+			return 70;
+		}
+	}
+}
+
+
+
