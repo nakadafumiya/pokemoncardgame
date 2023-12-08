@@ -19,6 +19,7 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="CPU.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="GameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card_Deck.h" />
@@ -37,5 +38,6 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="CPU.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="GameOver.h" />
   </ItemGroup>
 </Project>

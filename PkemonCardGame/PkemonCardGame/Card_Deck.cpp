@@ -15,7 +15,7 @@ int Card_Deck::CardDraw()
 int Card_Deck::Hand_Card = 0;
 
 Card_Deck::Card_Deck()
-{
+{	
 	First_Draw = false;
 	Hand_Card = 0;
 
