@@ -14,24 +14,24 @@ Player::Player()
 	}
 }
 
-Player::Player(int dtype)
-{
-	DeckType = dtype;
-	LoadImages();
-
-	//デッキタイプが0の時(こくば)
-	if (DeckType == 0)
-	{
-		for (int i = 0; i < 19; i++)
-		{
-			poke_data[i] = poke.GetPokeID(i);
-		}
-	}
-	else //デッキタイプが1の時()
-	{
-
-	}
-}
+//Player::Player(int dtype)
+//{
+//	DeckType = dtype;
+//	LoadImages();
+//
+//	//デッキタイプが0の時(こくば)
+//	if (DeckType == 0)
+//	{
+//		for (int i = 0; i < 19; i++)
+//		{
+//			poke_data[i] = poke.GetPokeID(i);
+//		}
+//	}
+//	else //デッキタイプが1の時()
+//	{
+//
+//	}
+//}
 
 void Player::Update()
 {

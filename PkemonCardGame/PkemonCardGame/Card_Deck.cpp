@@ -7,7 +7,7 @@ int Card_Deck::CardDraw()
 	int ret = 0;
 	do
 	{
-		ret = GetRand(19 - 1);
+		ret = GetRand(11 - 1);
 	} while (!DrawCheck[ret]);
 	DrawCheck[ret] = false;
 	return ret;
@@ -20,7 +20,7 @@ Card_Deck::Card_Deck()
 	Hand_Card = 0;
 
 	/*�l�p*/
-	for (int i = 0; i < 19; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		DrawCheck[i] = true;
 	}
@@ -54,7 +54,7 @@ void Card_Deck::Update(GameMainScene* a)
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_B))
 	{
 
-		Hand_Card = GetRand(18);
+		Hand_Card = GetRand(9);
 	}
 	//setturn(turn_tmp);
 

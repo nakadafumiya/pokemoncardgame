@@ -8,19 +8,15 @@ struct Data
 {
 	char NAME[20];
 	int HP;
-	char TYPE[10];
-	char WEEK[10];
-	char NOWEEK[10];
-	int RUN;
 	int SIDE;
-	int EVO;
-	char SINKAMOTO[20];
 };
 
 class Pokemon : public Card_Deck
 {
 private:
-	Data Poke_id[20];
+	Data Poke_id1[20];
+
+	Data Poke_id2[20];
 	bool Action;
 	
 	int BattlePoke;
@@ -30,18 +26,32 @@ private:
 	int rarutosu;
 	int dhianshi;
 	int gekkouga;
-	int kokuba_m;
-	int kiruria;
-	int sa_naito;
+
+	int aruseusu;
+	int rekkuza;
+	int mafokushi;
+	int neoranto;
+	int karubou;
+	int bakettya;
+	int hoshigarisu;
+	int hi_doran;
+
 protected:
 	int ENE;
+	int E_ENE;
+	int F_ENE;
 public:
 	Pokemon();
-	//・ｽ`・ｽ・ｽﾈ外・ｽﾌ更・ｽV・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ
+	//
 	virtual void Update(class GameMainScene* a) override;
-	//・ｽ`・ｽ・ｽﾉ関ゑｿｽ・ｽ驍ｱ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ
+	//
 	virtual void Draw()const override;
 
-	int Weak()const;
-	Data GetPokeID(int i)const { return Poke_id[i]; }
+	Data GetPokeID1(int i)const { return Poke_id1[i]; }
+
+	Data GetPokeID2(int i)const { return Poke_id2[i]; }
+
+	int Battle1(int id);
+
+	int Battle2(int id);
 };

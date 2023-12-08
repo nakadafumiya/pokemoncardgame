@@ -1,4 +1,4 @@
-#include "Dxlib.h"
+﻿#include "Dxlib.h"
 #include "GameMainScene.h"
 #include "Card_Deck.h"
 #include "Pokemon.h"
@@ -135,14 +135,10 @@ void GameMainScene::Draw() const
 	cpu.Draw();
 }
 
-//void GameMainScene::Battlepoke()
-//{
-//	if (Battlefield = true && Poke_id[i].SINKAMOTO = null)
-//	{
-//		
-//	}
-//	else(Poke_id[i].SINKAMOTO = kokuba && Hand)
-//	{
-//
-//	}
-//}
+void GameMainScene::Battlepoke(int Card)
+{
+	if (Battlefield = true && Card < 10)
+	{
+		Battlefield = false;
+	}
+}

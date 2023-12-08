@@ -34,9 +34,9 @@ private:
 
 public:
 GameMainScene();
-//�`��ȊO�̍X�V����������
+
 virtual AbstractScene* Update();
-//�`��Ɋւ��邱�����������
+
 virtual void Draw()const;
 
 int GetTurn()
@@ -44,6 +44,6 @@ int GetTurn()
 	return Turn;
 }
 
- void Battlepoke();
+ void Battlepoke(int Card);
 };
 
