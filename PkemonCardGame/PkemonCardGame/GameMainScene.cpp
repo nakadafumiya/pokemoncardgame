@@ -14,6 +14,8 @@ GameMainScene::GameMainScene()
 	Cr = GetColor(255, 255, 255);
 }
 
+int interval = 0;
+
 AbstractScene* GameMainScene::Update()
 {
 	player.Update();
@@ -24,26 +26,61 @@ AbstractScene* GameMainScene::Update()
 	{
 	case START:
 		
-		if (!NextTurn/*==false*/)
-		{
-			Turn = MY_TURN;
-		}
-		else
-		{
-			Turn = ENEMY_TURN;
-		}
+		//if (!NextTurn/*==false*/)
+		//{
+		//	Turn = MY_TURN;
+		//}
+		//else
+		//{
+		//	Turn = ENEMY_TURN;
+		//}
 
-		//最初に7枚引く
+		//最初に7枚手札に加える・サイドを入れる
 		if (player.First_Draw)
 		{
+			//サイドに置く
+			for (int i = 0; i < 6; i++)
+			{
+				if (player.CheckCard())
+				{
+					player.SetSide(player.CardDraw());
+				}
+			}
+			//7枚手札に加える
 			for (int i = 0; i < 7; i++)
 			{
 				player.AddHand(player.CardDraw());
 			}
-			player.First_Draw = false;
+			//手札に[たね]があるかないか調べる
+			if (600 < ++interval)
+			{
+				interval = 0;
+				//[たね]がない場合
+				if (!player.IsSeedInHand())
+				{
+					//手札のカードを全て山札に戻す
+					for (int i = 0; i < 7; i++)
+					{
+						player.ReturnCard(player.GetHand(i));
+					}
+				}
+				else
+				{
+					player.First_Draw = false;
+				}
+			}
 		}
 		if (cpu.First_Draw)
 		{
+			//6枚サイドに置く
+			for (int i = 0; i < 6; i++)
+			{
+				if (cpu.CheckCard())
+				{
+					cpu.SetSide(cpu.CardDraw());
+				}
+			}
+			//7枚手札に加える
 			for (int i = 0; i < 7; i++)
 			{
 				cpu.AddHand(cpu.CardDraw());

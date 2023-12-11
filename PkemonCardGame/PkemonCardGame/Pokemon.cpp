@@ -71,26 +71,6 @@ void Pokemon::Draw() const
 		Poke_id2[Hand_Card].NAME, 
 		Poke_id2[Hand_Card].HP,
 		Poke_id2[Hand_Card].SIDE);
-	//こくば
-	if (Hand_Card < 4) 
-	{
-		DrawGraph(SCREEN_WIDTH/2-70, 630, kokuba, TRUE);
-	}
-	//ラルトス
-	if (Hand_Card >= 4 && Hand_Card < 8)
-	{
-		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, rarutosu, TRUE);
-	}
-	//ディアンシー
-	if (Hand_Card == 8)
-	{
-		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, dhianshi, TRUE);
-	}
-	//ゲッコウガ
-	if (Hand_Card == 9)
-	{
-		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, gekkouga, TRUE);
-	}
 }
 
 int Pokemon::Battle1(int id)

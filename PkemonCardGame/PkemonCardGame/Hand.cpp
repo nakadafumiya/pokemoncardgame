@@ -45,7 +45,6 @@ void Hand::TrashHand()
 		{
 			saveHand[i] = hand[i];
 		}
-		//hand[dPosition[i]] = NULL;
 		hand[dPosition[i]] = -1;
 		if (Push_X < 90) //間隔が90未満の時
 		{
@@ -111,54 +110,8 @@ void Hand::AllTrash()
 {
 	for (int i = 0; i < HandNum; i++)
 	{ 
+		saveHand[i] = hand[i];
 		hand[i] = -1;
-		//hand[i] = NULL;
 	}
 	HandNum = 0;
-}
-
-int Hand::DetermineCard(int i,int dtype) const
-{
-	//デッキタイプが0の時
-	if (dtype == 0)
-	{
-		/*ポケモン*/
-		if (hand[i] <= 3)
-		{
-			return 0;
-		}
-		if (hand[i] <= 7)
-		{
-			return 1;
-		}
-		if (hand[i] <= 11)
-		{
-			return 2;
-		}
-		if (hand[i] <= 14)
-		{
-			return 3;
-		}
-		if (hand[i] <= 16)
-		{
-			return 4;
-		}
-		if (hand[i] == 17)
-		{
-			return 5;
-		}
-		if (hand[i] == 18)
-		{
-			return 6;
-		}
-		/*道具*/
-
-		/*トレーナーズ*/
-
-	}
-	else
-	{
-
-	}
-	return -1;
 }

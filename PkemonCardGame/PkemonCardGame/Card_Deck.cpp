@@ -7,7 +7,7 @@ int Card_Deck::CardDraw()
 	int ret = 0;
 	do
 	{
-		ret = GetRand(11 - 1);
+		ret = GetRand(23 - 1); //31
 	} while (!DrawCheck[ret]);
 	DrawCheck[ret] = false;
 	return ret;
@@ -20,7 +20,7 @@ Card_Deck::Card_Deck()
 	Hand_Card = 0;
 
 	/*�l�p*/
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 31; i++)
 	{
 		DrawCheck[i] = true;
 	}

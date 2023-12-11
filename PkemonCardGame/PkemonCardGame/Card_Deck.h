@@ -12,11 +12,15 @@ public:
 	int Card_num;
 	int turn;
 
-	bool DrawCheck[19];  //山札にカードが存在するか true:ある false:ない
-	int CardDraw();  //ドロー
-	bool CheckCard() //山札にカードが残っているか? true：ある false:ない
+private:
+	bool DrawCheck[31];  //山札にカードが存在するか true:ある false:ない
+public:
+	//ドロー
+	int CardDraw();
+	//山札にカードが残っているか? true：ある false:ない
+	bool CheckCard()const
 	{
-		for (int i = 0; i < 19; i++)
+		for (int i = 0; i < 31; i++)
 		{
 			if (DrawCheck[i])
 			{
@@ -24,6 +28,11 @@ public:
 			}
 		}
 		return false;
+	}
+	//山札にカードを戻す
+	void ReturnCard(int card_id)
+	{
+		DrawCheck[card_id] = true;
 	}
 
 public:

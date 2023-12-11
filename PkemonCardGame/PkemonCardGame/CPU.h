@@ -13,7 +13,11 @@ public:
 
 private:
 	int DeckType;  //デッキの種類
-	int cardBack;
+	int CardBack;    //カードの裏面
+	int BattleField; //バトルフィールドに出すカードのID
+	int Trash[60]; //トラッシュされたカード
+	int tCount;    //トラッシュにいるカードの枚数
 	Data poke_data[20];
+	Pokemon poke;
 };
 

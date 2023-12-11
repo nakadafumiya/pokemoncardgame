@@ -14,24 +14,30 @@ public:
 	void SetTrashPosition(int position);
 	//手札全部消す
 	void AllTrash();
-	//char* SendCardName(int i) { return saveHand[i]; }
-	int SendCardName(int i) { return saveHand[i]; }
+	int SendCardID(int i) { return saveHand[i]; }
+	//一時保存していたカードを消す
 	void InitSaveHand()
 	{
-		/*for (int i = 0; i < 5; i++)
-		{
-			if (saveHand[i] == NULL) break;
-			saveHand[i] = NULL;
-		}*/
-
 		for (int i = 0; i < 5; i++)
 		{
 			if (saveHand[i] == -1) break;
 			saveHand[i] = -1;
 		}
 	}
-	//描画するカードを判別
-	int DetermineCard(int i ,int dtype)const;
+	//手札に「たね」が存在するか
+	bool IsSeedInHand()
+	{
+		for (int i = 0; i < HandNum; i++)
+		{
+			if (hand[i] <= 18) //IDが18以下のとき[たね]が存在する
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+	int GetHand(int i) { return hand[i]; }
 
 protected:
 	int hand[10]; //手札
