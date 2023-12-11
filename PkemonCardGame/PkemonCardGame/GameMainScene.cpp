@@ -1,4 +1,4 @@
-#include "Dxlib.h"
+﻿#include "Dxlib.h"
 #include "GameMainScene.h"
 #include "Card_Deck.h"
 #include "Pokemon.h"

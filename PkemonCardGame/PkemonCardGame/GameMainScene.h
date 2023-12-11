@@ -34,9 +34,9 @@ private:
 
 public:
 GameMainScene();
-//�`��ȊO�̍X�V����������
+
 virtual AbstractScene* Update();
-//�`��Ɋւ��邱�����������
+
 virtual void Draw()const;
 
 int GetTurn()

@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="KeyManager.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PadInput.cpp" />
-    <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Card_Deck.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
@@ -50,11 +46,20 @@
     <ClCompile Include="AbstractScene.h">
       <Filter>h</Filter>
     </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="PadInput.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Pokemon.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KeyManager.h" />
-    <ClInclude Include="PadInput.h" />
-    <ClInclude Include="Pokemon.h" />
     <ClInclude Include="Title.h">
       <Filter>h</Filter>
     </ClInclude>
@@ -95,6 +100,15 @@
       <Filter>h</Filter>
     </ClInclude>
     <ClInclude Include="Card_Deck.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="PadInput.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Pokemon.h">
       <Filter>h</Filter>
     </ClInclude>
   </ItemGroup>
