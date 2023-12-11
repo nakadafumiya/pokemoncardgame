@@ -1,4 +1,4 @@
-#include <fstream>
+﻿#include <fstream>
 #include <iostream>
 #include "Pokemon.h"
 #include <stdio.h>
@@ -15,10 +15,10 @@ Pokemon::Pokemon()
 	BattlePoke = -1;
 
 	FILE* fp = nullptr;
-	
+	//デッキ１のファイル読み込み
 	errno_t err = fopen_s(&fp, "data/Pokemon1.txt", "r");
 
-	//
+	//エラーが出た時にチェックしやすいよう
 	if (fp == nullptr)
 	{
 		OutputDebugString("images/Pokemon_Card_D2/CardBack.png");
@@ -35,6 +35,7 @@ Pokemon::Pokemon()
 	Action = false;
 	fclose(fp);
 
+	//デッキ２のファイル読み込み
 	 err = fopen_s(&fp, "data/Pokemon2.txt", "r");
 
 	if (fp == nullptr)
@@ -52,17 +53,28 @@ Pokemon::Pokemon()
 	}
 	fclose(fp);
 
-	kokuba = LoadGraph("images/Pokemon_Card_D1/�����΃o�h���b�N�XV.png");
+	//デッキ１画像
+	kokuba = LoadGraph("images/Pokemon_Card_D1/こくばバドレックスV.png");
 	rarutosu = LoadGraph("images/Pokemon_Card_D1/Ralts.png");
-	dhianshi = LoadGraph("images/Pokemon_Card_D1/�f�B�A���V�[.png");
+	dhianshi = LoadGraph("images/Pokemon_Card_D1/ディアンシー.png");
 	gekkouga = LoadGraph("images/Pokemon_Card_D1/ShiningGreninja.png");
+	//デッキ２画像
+	aruseusu = LoadGraph("images/Pokemon_Card_D2/アルセウスV.png");
+	rekkuza = LoadGraph("images/Pokemon_Card_D2/レックウザV.png");
+	mafokushi = LoadGraph("images/Pokemon_Card_D2/マフォクシーV.png");
+	neoranto = LoadGraph("images/Pokemon_Card_D2ネオラントV.png");
+	karubou = LoadGraph("images/Pokemon_Card_D2/カルボウ.png");
+	bakettya = LoadGraph("images/Pokemon_Card_D2/バケッチャ.png");
+	hoshigarisu = LoadGraph("images/Pokemon_Card_D2/ホシガリス.png");
+	hi_doran = LoadGraph("images/Pokemon_Card_D2/かがやくヒードラン.png");
+
 }
 
 void Pokemon::Update(GameMainScene* a)
 {
 	
 }
-
+//ポケモンカードの表示
 void Pokemon::Draw() const
 {
 	DrawFormatString(0, 100, 0x000000, "%d", Hand_Card);
@@ -71,30 +83,32 @@ void Pokemon::Draw() const
 		Poke_id2[Hand_Card].NAME, 
 		Poke_id2[Hand_Card].HP,
 		Poke_id2[Hand_Card].SIDE);
-	//������
+	//こくば
 	if (Hand_Card < 4) 
 	{
 		DrawGraph(SCREEN_WIDTH/2-70, 630, kokuba, TRUE);
 	}
-	//�����g�X
+	//ラルトス
 	if (Hand_Card >= 4 && Hand_Card < 8)
 	{
 		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, rarutosu, TRUE);
 	}
-	//�f�B�A���V�[
+	//ディアンシー
 	if (Hand_Card == 8)
 	{
 		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, dhianshi, TRUE);
 	}
-	//�Q�b�R�E�K
+	//ゲッコウガ
 	if (Hand_Card == 9)
 	{
 		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, gekkouga, TRUE);
 	}
 }
 
+//デッキ１ポケモンの技条件
 int Pokemon::Battle1(int id)
 {
+	//こくば
 	if (id < 4)
 	{
 		if (ENE <= 1)
@@ -102,6 +116,7 @@ int Pokemon::Battle1(int id)
 			return 10;
 		}
 	}
+	//ラルトス
 	if (id >= 4 && id < 8)
 	{
 		if (ENE <= 1)
@@ -109,6 +124,7 @@ int Pokemon::Battle1(int id)
 			return 10;
 		}
 	}
+	//ディアンシー
 	if (id == 8)
 	{
 		if (ENE <= 1)
@@ -116,6 +132,7 @@ int Pokemon::Battle1(int id)
 			return 20;
 		}
 	}
+	//ゲッコウガ
 	if (id == 9)
 	{
 		if (ENE <= 3)
@@ -125,9 +142,10 @@ int Pokemon::Battle1(int id)
 		}
 	}
 }
-
+//デッキ２のポケモンの技条件
 int Pokemon::Battle2(int id)
 {
+	//アルセウス
 	if (id < 3)
 	{
 		if (ENE <= 3)
@@ -135,7 +153,7 @@ int Pokemon::Battle2(int id)
 			return 130;
 		}
 	}
-
+	//レックウザ
 	if (id >= 3 && id < 5)
 	{
 		if (E_ENE <= 1)
@@ -147,7 +165,7 @@ int Pokemon::Battle2(int id)
 			return 100;
 		}
 	}
-
+	//マフォクシー
 	if (id >= 5 && id < 7)
 	{
 		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1)
@@ -156,7 +174,12 @@ int Pokemon::Battle2(int id)
 		}
 	
 	}
-
+	//ネオラント
+	if (id == 7)
+	{
+		
+	}
+	//カルボウ
 	if (id >= 8 && id < 10)
 	{
 		if (F_ENE <= 1 || E_ENE <= 1)
@@ -168,7 +191,7 @@ int Pokemon::Battle2(int id)
 			return 20;
 		}
 	}
-
+	//バケッチャ
 	if (id == 10)
 	{
 		if (F_ENE <= 2 || E_ENE <= 2)
@@ -176,7 +199,7 @@ int Pokemon::Battle2(int id)
 			return 20;
 		}
 	}
-
+	//ホシガリス
 	if (id == 11)
 	{
 		if (F_ENE <= 2 || E_ENE <= 2)
@@ -184,7 +207,7 @@ int Pokemon::Battle2(int id)
 			return 20;
 		}
 	}
-
+	//ヒードラン
 	if (id == 12)
 	{
 		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1 || F_ENE <= 1 && E_ENE <= 2)
