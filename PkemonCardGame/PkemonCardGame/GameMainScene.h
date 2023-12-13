@@ -8,6 +8,7 @@
 #include "Title.h"
 #include "Player.h"
 #include "CPU.h"
+#include "GameOver.h"
 
 
 class Card_Deck;
@@ -19,6 +20,8 @@ private:
 	Field field;
 	Player player;
 	CPU cpu;
+	GameOver gameover;
+
 	int Turn;
 	int Cr;
 	int Player;

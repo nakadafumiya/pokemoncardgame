@@ -78,6 +78,8 @@ AbstractScene* GameMainScene::Update()
 
 	card_deck.Update(this);
 	pokemon.Update(this);
+	//gameover.Update();
+	return new GameOver();
 	return this;
 }
 
@@ -133,6 +135,7 @@ void GameMainScene::Draw() const
 	side.Draw();
 	player.Draw();
 	cpu.Draw();
+	gameover.Draw();
 }
 
 void GameMainScene::Battlepoke(int Card)

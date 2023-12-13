@@ -34,7 +34,7 @@ public:
 	int DetermineCard(int i ,int dtype)const;
 
 protected:
-	int hand[10]; //èD
+	int hand[19]; //èD
 	//char* hand[10]; //charŒ^èD
 	//char* saveHand[5]; //ˆê•Û‘¶—p
 	int saveHand[5];
@@ -42,7 +42,7 @@ protected:
 	int DecreaseNum = 0;    //Œ¸‚ç‚·”
 	int dPosition[10]; //Œ¸‚ç‚·ˆÊ’u
 	int Push_X;  //èD‚ª‘‚¦‚é‚½‚Ñ‚É‰¡‚É‹l‚ß‚é
-	const int MaxHand = 10;  //Å‘å‚Å‚Ä‚éèD‚Ì”
+	const int MaxHand = 19;  //Å‘å‚Å‚Ä‚éèD‚Ì”
 
 private:
 	Card_Deck deck;

@@ -7,7 +7,7 @@ int Card_Deck::CardDraw()
 	int ret = 0;
 	do
 	{
-		ret = GetRand(11 - 1);
+		ret = GetRand(19 - 1);
 	} while (!DrawCheck[ret]);
 	DrawCheck[ret] = false;
 	return ret;

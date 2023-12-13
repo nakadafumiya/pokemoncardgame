@@ -3,15 +3,16 @@
 #include "Card_Deck.h"
 
 
-class GameOver : public Card_Deck
+class GameOver : public AbstractScene
 {
 protected:
-	int image;w
+	int GO_image;
+
+	Card_Deck card_deck;
 
 public:
 	GameOver();
-	virtual void Update(class GameMainScene* a) override;
+	virtual AbstractScene* Update();
 	virtual void Draw()const override;
-
 };
 
