@@ -1,10 +1,11 @@
 #include "Dxlib.h"
 #include "GameMainScene.h"
 #include "Card_Deck.h"
+#include "PadInput.h"
 
 GameMainScene::GameMainScene()
 {
-	NextTurn = false;
+	TurnCount = 0;
 	Player = 0;
 	Turn = START;
 	Cr = GetColor(255, 255, 255);
@@ -20,14 +21,8 @@ AbstractScene* GameMainScene::Update()
 	{
 	case START:
 		
-		if (!NextTurn/*==false*/)
-		{
 			Turn = MY_TURN;
-		}
-		else
-		{
-			Turn = ENEMY_TURN;
-		}
+		
 		break;
 	
 	case MY_TURN:
@@ -54,9 +49,17 @@ AbstractScene* GameMainScene::Update()
 			{
 				//戻る
 			}
-			if (GetJoypadInputState(PAD_INPUT_START) == 1)
+			if (PAD_INPUT::OnClick(PAD_INPUT_START)|| CheckHitKey(KEY_INPUT_SPACE))
 			{
-				NextTurn = true;	
+				int A = 0;
+				if (KEY_INPUT_SPACE) { A++; }
+				else { A = 0; } //Ａボタンが離されたら
+				TurnCount++;
+				//一瞬だけ反応させたい
+				if (A == 1) 
+				{
+					Turn = ENEMY_TURN; 
+				}
 				break;
 			}	
 		}
@@ -65,9 +68,12 @@ AbstractScene* GameMainScene::Update()
 	   
 		Cr = GetColor(255, 255, 255);
 		
-	  
-		DrawString(960, 540, "ENEMY TURN", Cr);
-		NextTurn = false;
+		if (PAD_INPUT::OnClick(PAD_INPUT_START) || CheckHitKey(KEY_INPUT_G))
+		{
+			TurnCount++;
+			Turn = MY_TURN;
+		}
+
 	}
 
 
@@ -95,6 +101,7 @@ void GameMainScene::Draw() const
 
 			
 			DrawString(960, 540, "YOUR TURN", Cr);
+			DrawBoxAA(950, 500, 1200, 600, 0x57AF72, true);
 			DrawString(50, 100, "X:手札　 Y:カードの使用 B:カードの詳細　 A:戻る 　START:ターンエンド　", Cr);
 
 			if (GetJoypadInputState(PAD_INPUT_X) == 1)
@@ -109,11 +116,11 @@ void GameMainScene::Draw() const
 			{
 				//カードの詳細表示(横のスペース)
 			}
-			if (GetJoypadInputState(PAD_INPUT_A) == 1)
+			if (GetJoypadInputState(PAD_INPUT_START) == 1)
 			{
 				//戻る
 			}
-			if (GetJoypadInputState(PAD_INPUT_START) == 1)
+			if (PAD_INPUT::OnClick(PAD_INPUT_A) || CheckHitKey(KEY_INPUT_SPACE))
 			{
 				DrawString(960, 540, "TURN END", Cr);
 				break;
@@ -124,6 +131,7 @@ void GameMainScene::Draw() const
 
 		
 		DrawString(960, 540, "ENEMY TURN", Cr);
+		
 	}
 	side.Draw();
 }

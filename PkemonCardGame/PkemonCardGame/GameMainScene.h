@@ -18,7 +18,7 @@ private:
 	int Player;
 	int CPU;
 	 
-	bool NextTurn;
+	int TurnCount;
 	Card_Deck card_deck;
 	Side side;
 	Pokemon pokemon;

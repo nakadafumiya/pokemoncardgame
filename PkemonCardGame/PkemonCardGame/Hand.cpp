@@ -25,44 +25,44 @@ Hand::Hand()
 void Hand::Update()
 {
 	//to do 確認用
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_X))
-	{
-		srand((unsigned int)time(NULL));
-		DrawCard(rand() % 10+1);
-	}
-	
-	//カーソル移動
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_RIGHT))
-	{
-		if (hand_num - 1 < ++cursor_x)
-		{
-			cursor_x = 0;
-		}
-	}
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_LEFT))
-	{
-		if (--cursor_x < 0)
-		{
-			cursor_x = hand_num - 1;
-		}
-	}
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_X))
+	//{
+	//	srand((unsigned int)time(NULL));
+	//	DrawCard(rand() % 10+1);
+	//}
+	//
+	////カーソル移動
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_RIGHT))
+	//{
+	//	if (hand_num - 1 < ++cursor_x)
+	//	{
+	//		cursor_x = 0;
+	//	}
+	//}
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_LEFT))
+	//{
+	//	if (--cursor_x < 0)
+	//	{
+	//		cursor_x = hand_num - 1;
+	//	}
+	//}
 
-	//決定
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_A))
-	{
-		SetTrashPosition(cursor_x);
-	}
+	////決定
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_A))
+	//{
+	//	SetTrashPosition(cursor_x);
+	//}
 
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_BACK))
-	{
-		TrashHand(0);
-		//数を減らし終えたら、dcとcsを初期化
-		dc = 0;
-		for (int i = 0; i < 10; i++)
-		{
-			cs[i] = -1;
-		}
-	}
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_BACK))
+	//{
+	//	TrashHand(0);
+	//	//数を減らし終えたら、dcとcsを初期化
+	//	dc = 0;
+	//	for (int i = 0; i < 10; i++)
+	//	{
+	//		cs[i] = -1;
+	//	}
+	//}
 	//ここまで
 }
 
