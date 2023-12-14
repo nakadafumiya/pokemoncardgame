@@ -24,12 +24,16 @@ private:
 
 	int Carsol;
 
-	bool flg;
+	int flg;
+	int deckflg;
 	int interval;
 	int JoyPadX;
 	int JoyPadY;
 	int selectX;
 	int selectY;
+	int count;
+	int ruleimage1;
+	int ruleimage2;
 
 public:
 	Title();
