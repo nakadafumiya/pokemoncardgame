@@ -11,9 +11,7 @@ Side::Side()
 	BackCard = LoadGraph("images/Pokemon_Card_D1/CardBack.png");
 
 
-
-
-	for (count = 1; count <= 6; ++count)
+	for (count = 0; count <= 5; ++count)
 	{
 		side[count];
 	}
@@ -24,54 +22,57 @@ Side::Side()
 		side[i] = -1;
 	}
 	count = 0;
-	//‚±‚±‚Ü‚Å
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½
 }
-//ƒƒ“ƒo•Ï”‚Ì’l‚ð‘‚«Š·‚¦‚é‚Ì‚ªƒAƒbƒvƒf[ƒgŠÖ”
-//AbstractScene* Side::Update()
-//{
-//
-//	return 0;
-//}
+//ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Ïï¿½ï¿½Ì’lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½Aï¿½bï¿½vï¿½fï¿½[ï¿½gï¿½Öï¿½
+AbstractScene* Side::Update()
+{
+	if (PAD_INPUT::OnClick(XINPUT_BUTTON_Y))
+	{
+		count--;
+	}
+	return 0;
+}
 
-//•`‰æˆ—‚Ì‚Ý‚ðs‚¤ŠÖ”
+//ï¿½`ï¿½æˆï¿½ï¿½ï¿½Ì‚Ý‚ï¿½ï¿½sï¿½ï¿½ï¿½Öï¿½
 void Side::Draw() const
 {
-	//player ƒTƒCƒh
+	//player ï¿½Tï¿½Cï¿½h
 
 	//DrawFormatString(0,0,0x000000,"%d",count);
 	
+	if (0 < count)
+	{
+		DrawRotaGraph(470, 959, 1, 0, BackCard, FALSE);//ï¿½ï¿½ï¿½ï¿½
+	}
 	if (1 < count)
 	{
-		DrawRotaGraph(470, 959, 1, 0, BackCard, FALSE);//‰œ‰º
+		DrawRotaGraph(470, 799, 1, 0, BackCard, FALSE);//ï¿½ï¿½ï¿½ï¿½
 	}
 	if (2 < count)
 	{
-		DrawRotaGraph(470, 799, 1, 0, BackCard, FALSE);//‰œ’†
+		DrawRotaGraph(470, 639, 1, 0, BackCard, FALSE);//ï¿½ï¿½ï¿½ï¿½
 	}
 	if (3 < count)
 	{
-		DrawRotaGraph(470, 639, 1, 0, BackCard, FALSE);//‰œã
+		DrawRotaGraph(495, 935, 1, 0, BackCard, FALSE);//ï¿½ï¿½Oï¿½ï¿½
 	}
-	if (4 < count)
+	if (4 < count) 
 	{
-		DrawRotaGraph(495, 935, 1, 0, BackCard, FALSE);//Žè‘O‰º
+		DrawRotaGraph(495, 775, 1, 0, BackCard, FALSE);//ï¿½ï¿½Oï¿½ï¿½
 	}
 	if (5 < count) 
 	{
-		DrawRotaGraph(495, 775, 1, 0, BackCard, FALSE);//Žè‘O’†
-	}
-	if (6 <= count) 
-	{
-		DrawRotaGraph(495, 615, 1, 0, BackCard, FALSE);//Žè‘Oã
+		DrawRotaGraph(495, 615, 1, 0, BackCard, FALSE);//ï¿½ï¿½Oï¿½ï¿½
 	}
 	
 
-	//“G@ƒTƒCƒh
-	DrawRotaGraph(1460, 420, 1, PI, BackCard, FALSE);//‰œã
-	DrawRotaGraph(1460, 260, 1, PI, BackCard, FALSE);//‰œ’†
-	DrawRotaGraph(1460, 100, 1, PI, BackCard, FALSE);//‰œ‰º
+	//ï¿½Gï¿½@ï¿½Tï¿½Cï¿½h
+	DrawRotaGraph(1460, 420, 1, PI, BackCard, FALSE);//ï¿½ï¿½ï¿½ï¿½
+	DrawRotaGraph(1460, 260, 1, PI, BackCard, FALSE);//ï¿½ï¿½ï¿½ï¿½
+	DrawRotaGraph(1460, 100, 1, PI, BackCard, FALSE);//ï¿½ï¿½ï¿½ï¿½
 
-	DrawRotaGraph(1435, 453, 1, PI, BackCard, FALSE);//Žè‘Oã
-	DrawRotaGraph(1435, 293, 1, PI, BackCard, FALSE);//Žè‘O’†
-	DrawRotaGraph(1435, 133, 1, PI, BackCard, FALSE);//Žè‘O‰º
+	DrawRotaGraph(1435, 453, 1, PI, BackCard, FALSE);//ï¿½ï¿½Oï¿½ï¿½
+	DrawRotaGraph(1435, 293, 1, PI, BackCard, FALSE);//ï¿½ï¿½Oï¿½ï¿½
+	DrawRotaGraph(1435, 133, 1, PI, BackCard, FALSE);//ï¿½ï¿½Oï¿½ï¿½
 }
