@@ -4,6 +4,8 @@
 #include "Title.h"
 #include "PadInput.h"
 #include "GameMainScene.h"
+#include"End.h"
+
 
 #define PI    3.1415926535897932384626433832795f
 
@@ -70,7 +72,7 @@ AbstractScene* Title::Update()
 		}
 		if (selectY == 2 && PAD_INPUT::OnClick(XINPUT_BUTTON_B))
 		{
-			return 0;
+			return new End();
 		}
 
 		if (selectY < 0)selectY = 2;
