@@ -31,7 +31,7 @@ AbstractScene* GameMainScene::Update()
 {
 	player.Update();
 	cpu.Update();
-	side.Update();
+	//side.Update();
 	end.Update();
 
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_START))
@@ -46,7 +46,111 @@ AbstractScene* GameMainScene::Update()
 		{
 		case START:
 
-			Turn = MY_TURN;
+			if (player.EndFirstDraw && cpu.EndFirstDraw)
+			{
+				//if (!NextTurn/*==false*/)
+				//{
+				//	Turn = MY_TURN;
+				//}
+				//else
+				//{
+				//	Turn = ENEMY_TURN;
+				//}
+				Turn = MY_TURN;
+			}
+
+			//最初に7枚手札に加える・サイドを入れる
+			if (10 < ++interval)
+			{
+				interval = 0;
+				//プレイヤー
+				if (!player.EndFirstDraw)
+				{
+					//一枚も持っていない時7枚手札に加える
+					if (player.GetHand(0) == -1)
+					{
+						for (int i = 0; i < 7; i++)
+						{
+							player.AddHand(player.CardDraw());
+						}
+					}
+
+					//手札に[たね]があるかないか調べる
+					if (!player.IsSeedInHand())//[たね]がない場合
+					{
+						//手札のカードを全て山札に戻す
+						for (int i = 0; i < 7; i++)
+						{
+							player.ReturnCard(player.GetHand(i));
+							player.DecreaseHandNum();
+						}
+
+						//ドローし直す
+						for (int i = 0; i < 7; i++)
+						{
+							player.AddHand(player.CardDraw());
+						}
+					}
+					else
+					{
+						//サイドに置く
+						for (int i = 0; i < 6; i++)
+						{
+							if (player.CheckCard())
+							{
+								player.SetSide(player.CardDraw());
+							}
+						}
+
+						player.EndFirstDraw = true;
+					}
+				}
+				//CPU
+				if (!cpu.EndFirstDraw)
+				{
+					//7枚手札に加える
+					if (cpu.GetHand(0) == -1)
+					{
+						for (int i = 0; i < 7; i++)
+						{
+							cpu.AddHand(cpu.CardDraw());
+						}
+					}
+
+					//手札に[たね]があるかないか調べる
+					if (!cpu.IsSeedInHand())//[たね]がない場合
+					{
+						//手札のカードを全て山札に戻す
+						for (int i = 0; i < 7; i++)
+						{
+							cpu.ReturnCard(cpu.GetHand(i));
+							cpu.DecreaseHandNum();
+						}
+
+						//ドローし直す
+						for (int i = 0; i < 7; i++)
+						{
+							cpu.AddHand(cpu.CardDraw());
+						}
+					}
+					else
+					{
+						//サイドに置く
+						for (int i = 0; i < 6; i++)
+						{
+							if (cpu.CheckCard())
+							{
+								cpu.SetSide(cpu.CardDraw());
+							}
+						}
+
+						cpu.EndFirstDraw = true;
+					}
+				}
+			}
+
+			//Turn = MY_TURN;
+
 
 			break;
 
@@ -101,169 +205,6 @@ AbstractScene* GameMainScene::Update()
 		}
 	}
 
-	if (HelpFlag == true)
-	{
-		if (PAD_INPUT::OnClick(XINPUT_BUTTON_A))
-		{
-			HelpFlag = false;
-		}
-	case START:
-		
-		if (player.EndFirstDraw && cpu.EndFirstDraw)
-		{
-			if (!NextTurn/*==false*/)
-			{
-				Turn = MY_TURN;
-			}
-			else
-			{
-				Turn = ENEMY_TURN;
-			}
-		}
-
-		//最初に7枚手札に加える・サイドを入れる
-		if (10 < ++interval)
-		{
-			interval = 0;
-			//プレイヤー
-			if (!player.EndFirstDraw)
-			{
-				//一枚も持っていない時7枚手札に加える
-				if (player.GetHand(0) == -1)
-				{
-					for (int i = 0; i < 7; i++)
-					{
-						player.AddHand(player.CardDraw());
-					}
-				}
-
-				//手札に[たね]があるかないか調べる
-				if (!player.IsSeedInHand())//[たね]がない場合
-				{
-					//手札のカードを全て山札に戻す
-					for (int i = 0; i < 7; i++)
-					{
-						player.ReturnCard(player.GetHand(i));
-						player.DecreaseHandNum();
-					}
-
-					//ドローし直す
-					for (int i = 0; i < 7; i++)
-					{
-						player.AddHand(player.CardDraw());
-					}
-				}
-				else
-				{
-					//サイドに置く
-					for (int i = 0; i < 6; i++)
-					{
-						if (player.CheckCard())
-						{
-							player.SetSide(player.CardDraw());
-						}
-					}
-
-					player.EndFirstDraw = true;
-				}
-			}
-			//CPU
-			if (!cpu.EndFirstDraw)
-			{
-				//7枚手札に加える
-				if (cpu.GetHand(0) == -1)
-				{
-					for (int i = 0; i < 7; i++)
-					{
-						cpu.AddHand(cpu.CardDraw());
-					}
-				}
-
-				//手札に[たね]があるかないか調べる
-				if (!cpu.IsSeedInHand())//[たね]がない場合
-				{
-					//手札のカードを全て山札に戻す
-					for (int i = 0; i < 7; i++)
-					{
-						cpu.ReturnCard(cpu.GetHand(i));
-						cpu.DecreaseHandNum();
-					}
-
-					//ドローし直す
-					for (int i = 0; i < 7; i++)
-					{
-						cpu.AddHand(cpu.CardDraw());
-					}
-				}
-				else
-				{
-					//サイドに置く
-					for (int i = 0; i < 6; i++)
-					{
-						if (cpu.CheckCard())
-						{
-							cpu.SetSide(cpu.CardDraw());
-						}
-					}
-
-					cpu.EndFirstDraw = true;
-				}
-			}
-		}
-
-			Turn = MY_TURN;
-		
-		break;
-	
-	case MY_TURN:
-		if (Player == 0)
-		{
-			
-			Cr = GetColor(255, 255, 255);
-			
-			if (GetJoypadInputState(PAD_INPUT_X) == 1)
-			{
-				//手札
-				return this;
-			}
-			if (GetJoypadInputState(PAD_INPUT_Y) == 1)
-			{
-				//カードの使用・召喚
-			}
-			if (GetJoypadInputState(PAD_INPUT_B) == 1)
-			{
-				//カードの詳細表示(横のスペース)
-			}
-			if (GetJoypadInputState(PAD_INPUT_A) == 1)
-			{
-				//戻る
-			}
-			if (PAD_INPUT::OnClick(PAD_INPUT_START)|| CheckHitKey(KEY_INPUT_SPACE))
-			{
-				int A = 0;
-				if (KEY_INPUT_SPACE) { A++; }
-				else { A = 0; } //Ａボタンが離されたら
-				TurnCount++;
-				//一瞬だけ反応させたい
-				if (A == 1) 
-				{
-					Turn = ENEMY_TURN; 
-				}
-				break;
-			}
-		}
-		break;
-	case ENEMY_TURN:
-	   
-		Cr = GetColor(255, 255, 255);
-		
-		if (PAD_INPUT::OnClick(PAD_INPUT_START) || CheckHitKey(KEY_INPUT_G))
-		{
-			TurnCount++;
-			Turn = MY_TURN;
-		}
-	}
-
 
 
 	card_deck.Update(this);
@@ -278,7 +219,7 @@ void GameMainScene::Draw() const
 
 		field.Draw();
 		card_deck.Draw();
-		pokemon.Draw();
+		//pokemon.Draw();
 
 
 

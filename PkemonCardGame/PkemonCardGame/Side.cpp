@@ -25,14 +25,14 @@ Side::Side()
 	//�����܂�
 }
 //�����o�ϐ��̒l������������̂��A�b�v�f�[�g�֐�
-AbstractScene* Side::Update()
-{
-	if (PAD_INPUT::OnClick(XINPUT_BUTTON_Y))
-	{
-		count--;
-	}
-	return 0;
-}
+//AbstractScene* Side::Update()
+//{
+//	if (PAD_INPUT::OnClick(XINPUT_BUTTON_Y))
+//	{
+//		count--;
+//	}
+//	return 0;
+//}
 
 //�`�揈���݂̂��s���֐�
 void Side::Draw() const
