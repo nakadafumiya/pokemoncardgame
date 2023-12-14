@@ -11,60 +11,140 @@ Hand::Hand()
 
 		dPosition[i] = -1;
 	}
+
 	for (int i = 0; i < 5; i++)
 	{
 		saveHand[i] = -1;
 	}
 	HandNum = 0;//7
 	Push_X = 90;
+
+	hand_num = 7;
+	cursor_x = 0;
+}
+
+void Hand::Update()
+{
+	//to do ï¿½mï¿½Fï¿½p
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_X))
+	//{
+	//	srand((unsigned int)time(NULL));
+	//	DrawCard(rand() % 10+1);
+	//}
+	//
+	////ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_RIGHT))
+	//{
+	//	if (hand_num - 1 < ++cursor_x)
+	//	{
+	//		cursor_x = 0;
+	//	}
+	//}
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_DPAD_LEFT))
+	//{
+	//	if (--cursor_x < 0)
+	//	{
+	//		cursor_x = hand_num - 1;
+	//	}
+	//}
+
+	////ï¿½ï¿½ï¿½ï¿½
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_A))
+	//{
+	//	SetTrashPosition(cursor_x);
+	//}
+
+	//if (PAD_INPUT::OnClick(XINPUT_BUTTON_BACK))
+	//{
+	//	TrashHand(0);
+	//	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‚µï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Adcï¿½ï¿½csï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//	dc = 0;
+	//	for (int i = 0; i < 10; i++)
+	//	{
+	//		cs[i] = -1;
+	//	}
+	//}
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½
+}
+
+void Hand::Draw() const
+{
+	DrawString(1100, 680, "ï¿½ï¿½D", 0xffffff);
+	for (int i = 0; i < hand_num; i++)
+	{
+		DrawFormatString(1100 + 25 * i, 700, 0xffffff, "%d", hand[i]);
+	}
+	DrawCircle(1105 + 28 * cursor_x, 730, 5, 0xff0000, true);
+
+	DrawString(1300, 680, "ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Aï¿½iï¿½ï¿½ï¿½Oï¿½{ï¿½^ï¿½ï¿½)", 0x000000);
+	DrawString(1300, 700, "ï¿½Iï¿½ï¿½ A", 0x000000);
+	DrawString(1300, 720, "ï¿½ï¿½ï¿½ï¿½ BACK", 0x000000);
+	DrawString(1300, 740, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ X", 0x000000);
+
+#ifndef DEBUG
+#define DEBUG
+	/*for (int i = 0; i < 10; i++)
+	{
+		DrawFormatString(900 + 25 * i, 400, 0xffffff, "%d", hand[i]);
+	}*/
+
+	DrawFormatString(1100, 600, 0xff0000, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ %d", dc);
+	DrawString(1250, 600, "ï¿½ï¿½ï¿½ï¿½ï¿½Ê’u ", 0xff0000);
+	for (int i = 0; i < dc; i++)
+	{
+		DrawFormatString(1380+20*i, 600, 0xff0000, "%d ", cs[i]);
+	}
+#endif // !DEBUG
+
+
 }
 
 void Hand::DrawCard(int card)
 {
-	//ŽèŽD‚Ì”‚ðˆø‚¢‚½•ª‘‚â‚·
+	//ï¿½ï¿½Dï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â‚·
 	++HandNum;
 
-	//ƒJ[ƒh‚ÌŽí—Þ‚ðŠi”[
+	//ï¿½Jï¿½[ï¿½hï¿½ÌŽï¿½Þ‚ï¿½ï¿½iï¿½[
 	hand[HandNum - 1] = card;
 	//hand[HandNum] = poke.GetName(card);
 
-	//ŽèŽD‚Ì”‚ª7–‡‚æ‚èã‚ÌŽžŠÔŠu‚ð‹·‚ß‚é
+	//ï¿½ï¿½Dï¿½Ìï¿½ï¿½ï¿½7ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŽï¿½ï¿½ÔŠuï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 	if (7 < HandNum)
 	{
-		Push_X -= 5;  //ŽèŽD‚ª‘‚¦‚½•ªƒJ[ƒh‚ÌŠÔŠu‚ð‹·‚ß‚é
+		Push_X -= 5;  //ï¿½ï¿½Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ÌŠÔŠuï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½
 	}
 	
 }
 
 void Hand::TrashHand()
 {
-	//Žw’è‚µ‚½ˆÊ’u‚ÌƒJ[ƒh‚ðÁ‚·
+	//ï¿½wï¿½è‚µï¿½ï¿½ï¿½Ê’uï¿½ÌƒJï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < DecreaseNum; i++)
 	{
-		if (i < 5) //ˆêŽž•Û‘¶
+		if (i < 5) //ï¿½êŽžï¿½Û‘ï¿½
 		{
 			saveHand[i] = hand[i];
 		}
 		//hand[dPosition[i]] = NULL;
 		hand[dPosition[i]] = -1;
-		if (Push_X < 90) //ŠÔŠu‚ª90–¢–ž‚ÌŽž
+		if (Push_X < 90) //ï¿½ÔŠuï¿½ï¿½90ï¿½ï¿½ï¿½ï¿½ï¿½ÌŽï¿½
 		{
-			Push_X += 5;  //ŽèŽD‚ªŒ¸‚Á‚½•ªƒJ[ƒh‚ÌŠÔŠu‚ðL‚°‚é
+			Push_X += 5;  //ï¿½ï¿½Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ÌŠÔŠuï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½
 		}
 	}
 
-	//”‚ðŒ¸‚ç‚µI‚¦‚½‚çAdPosition‚ÆDecreaseNum‚ð‰Šú‰»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‚µï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AdPositionï¿½ï¿½DecreaseNumï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < DecreaseNum; i++)
 	{
 		dPosition[i] = -1;
 	}
 	DecreaseNum = 0;
 
-	//ŽèŽD‚ÉƒJ[ƒh‚ªŽc‚Á‚Ä‚¢‚é‚©’²‚×‚é
-	bool have_c = false; //true:Žc‚Á‚Ä‚¢‚é false:Žc‚Á‚Ä‚¢‚È‚¢
+	//ï¿½ï¿½Dï¿½ÉƒJï¿½[ï¿½hï¿½ï¿½ï¿½cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½ï¿½ï¿½×‚ï¿½
+	bool have_c = false; //true:ï¿½cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ false:ï¿½cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½
 	for (int i = 0; i < HandNum; i++)
 	{
-		//ƒJ[ƒh‚ª‚ ‚éŽžhave_c‚ðtrue‚É‚·‚é
+		//ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½éŽžhave_cï¿½ï¿½trueï¿½É‚ï¿½ï¿½ï¿½
 		if (hand[i] != -1)
 		{
 			have_c = true;
@@ -74,24 +154,24 @@ void Hand::TrashHand()
 
 
 	int i = 0;
-	//Žc‚Á‚Ä‚¢‚éƒJ[ƒh‚ª‚ ‚éŽž‘O‚É‹l‚ß‚é
+	//ï¿½cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½éŽžï¿½Oï¿½É‹lï¿½ß‚ï¿½
 	if (have_c)
 	{
 		while (i < HandNum)
 		{
-			//¡Œ©‚Ä‚¢‚é‚Ì‚ªNULL‚È‚çŒã‚ë‚©‚ç‘O‚É‹l‚ß‚é
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Ì‚ï¿½NULLï¿½È‚ï¿½ï¿½ë‚©ï¿½ï¿½Oï¿½É‹lï¿½ß‚ï¿½
 			if (hand[i] == -1)
 			{
 				for (int j = i; j < HandNum; j++)
 				{
 					hand[j] = hand[j + 1];
 				}
-				//ÅŒã”ö‚ð-1‚É‚·‚éEŽèŽD‚Ì”‚ðŒ¸‚ç‚·
+				//ï¿½ÅŒï¿½ï¿½ï¿½ï¿½-1ï¿½É‚ï¿½ï¿½ï¿½Eï¿½ï¿½Dï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
 				hand[HandNum - 1] = -1;
 				--HandNum;
 			}
 
-			//hand[i]‚ª-1‚¶‚á‚È‚¢‚È‚çi‚ð+1‚·‚é
+			//hand[i]ï¿½ï¿½-1ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½iï¿½ï¿½+1ï¿½ï¿½ï¿½ï¿½
 			if (hand[i] != -1) ++i;
 		}
 	}
@@ -119,10 +199,10 @@ void Hand::AllTrash()
 
 int Hand::DetermineCard(int i,int dtype) const
 {
-	//ƒfƒbƒLƒ^ƒCƒv‚ª0‚ÌŽž
+	//ï¿½fï¿½bï¿½Lï¿½^ï¿½Cï¿½vï¿½ï¿½0ï¿½ÌŽï¿½
 	if (dtype == 0)
 	{
-		/*ƒ|ƒPƒ‚ƒ“*/
+		/*ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½*/
 		if (hand[i] <= 3)
 		{
 			return 0;
@@ -151,9 +231,9 @@ int Hand::DetermineCard(int i,int dtype) const
 		{
 			return 6;
 		}
-		/*“¹‹ï*/
+		/*ï¿½ï¿½ï¿½ï¿½*/
 
-		/*ƒgƒŒ[ƒi[ƒY*/
+		/*ï¿½gï¿½ï¿½ï¿½[ï¿½iï¿½[ï¿½Y*/
 
 	}
 	else
