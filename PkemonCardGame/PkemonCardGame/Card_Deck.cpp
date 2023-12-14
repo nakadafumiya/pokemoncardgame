@@ -53,7 +53,7 @@ void Card_Deck::Update(GameMainScene* a)
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_B))
 	{
 
-		Hand_Card = GetRand(9);
+		Hand_Card = GetRand(12);
 	}
 	//setturn(turn_tmp);
 }

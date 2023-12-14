@@ -134,7 +134,7 @@ void GameMainScene::Draw() const
 	player.Draw();
 	cpu.Draw();
 }
-
+//ポケモンをバトルフィールドに置く条件
 void GameMainScene::Battlepoke(int Card)
 {
 	if (Battlefield = true && Card < 10)

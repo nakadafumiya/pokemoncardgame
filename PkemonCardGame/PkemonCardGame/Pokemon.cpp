@@ -62,7 +62,7 @@ Pokemon::Pokemon()
 	aruseusu = LoadGraph("images/Pokemon_Card_D2/アルセウスV.png");
 	rekkuza = LoadGraph("images/Pokemon_Card_D2/レックウザV.png");
 	mafokushi = LoadGraph("images/Pokemon_Card_D2/マフォクシーV.png");
-	neoranto = LoadGraph("images/Pokemon_Card_D2ネオラントV.png");
+	neoranto = LoadGraph("images/Pokemon_Card_D2/ネオラントV.png");
 	karubou = LoadGraph("images/Pokemon_Card_D2/カルボウ.png");
 	bakettya = LoadGraph("images/Pokemon_Card_D2/バケッチャ.png");
 	hoshigarisu = LoadGraph("images/Pokemon_Card_D2/ホシガリス.png");
@@ -83,6 +83,7 @@ void Pokemon::Draw() const
 		Poke_id2[Hand_Card].NAME, 
 		Poke_id2[Hand_Card].HP,
 		Poke_id2[Hand_Card].SIDE);
+	//デッキ１の画像読み込み
 	//こくば
 	if (Hand_Card < 4) 
 	{
@@ -102,6 +103,49 @@ void Pokemon::Draw() const
 	if (Hand_Card == 9)
 	{
 		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, gekkouga, TRUE);
+	}
+
+
+	//デッキ２の画像読み込み
+	//アルセウス
+	if (Hand_Card < 3)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, aruseusu, TRUE);
+	}
+	//レックウザ
+	if (Hand_Card >= 3 && Hand_Card < 5)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, rekkuza, TRUE);
+	}
+	//マフォクシー
+	if (Hand_Card >= 5 && Hand_Card < 7)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, mafokushi, TRUE);
+	}
+	//ネオラント
+	if (Hand_Card == 7)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, neoranto, TRUE);
+	}
+	//カルボウ
+	if (Hand_Card >= 8 && Hand_Card < 10)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, karubou, TRUE);
+	}
+	//バケッチャ
+	if (Hand_Card == 10)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, bakettya, TRUE);
+	}
+	//ホシガリス
+	if (Hand_Card == 11)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, hoshigarisu, TRUE);
+	}
+	//ヒードラン
+	if (Hand_Card == 12)
+	{
+		DrawGraph(SCREEN_WIDTH / 2 - 70, 630, hi_doran, TRUE);
 	}
 }
 
