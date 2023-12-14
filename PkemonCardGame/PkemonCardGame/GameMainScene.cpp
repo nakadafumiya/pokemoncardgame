@@ -4,6 +4,7 @@
 #include "Pokemon.h"
 #include "PadInput.h"
 Pokemon poke;
+int interval = 0;
 
 GameMainScene::GameMainScene()
 {
@@ -14,78 +15,115 @@ GameMainScene::GameMainScene()
 	Cr = GetColor(255, 255, 255);
 }
 
-int interval = 0;
-
 AbstractScene* GameMainScene::Update()
 {
 	player.Update();
-	cpu.Update();
 	//side.Update();
 
 	switch(Turn)
 	{
 	case START:
 		
-		//if (!NextTurn/*==false*/)
-		//{
-		//	Turn = MY_TURN;
-		//}
-		//else
-		//{
-		//	Turn = ENEMY_TURN;
-		//}
+		if (player.EndFirstDraw && cpu.EndFirstDraw)
+		{
+			if (!NextTurn/*==false*/)
+			{
+				Turn = MY_TURN;
+			}
+			else
+			{
+				Turn = ENEMY_TURN;
+			}
+		}
 
 		//最初に7枚手札に加える・サイドを入れる
-		if (player.First_Draw)
+		if (10 < ++interval)
 		{
-			//サイドに置く
-			for (int i = 0; i < 6; i++)
+			interval = 0;
+			//プレイヤー
+			if (!player.EndFirstDraw)
 			{
-				if (player.CheckCard())
+				//一枚も持っていない時7枚手札に加える
+				if (player.GetHand(0) == -1)
 				{
-					player.SetSide(player.CardDraw());
+					for (int i = 0; i < 7; i++)
+					{
+						player.AddHand(player.CardDraw());
+					}
 				}
-			}
-			//7枚手札に加える
-			for (int i = 0; i < 7; i++)
-			{
-				player.AddHand(player.CardDraw());
-			}
-			//手札に[たね]があるかないか調べる
-			if (600 < ++interval)
-			{
-				interval = 0;
-				//[たね]がない場合
-				if (!player.IsSeedInHand())
+
+				//手札に[たね]があるかないか調べる
+				if (!player.IsSeedInHand())//[たね]がない場合
 				{
 					//手札のカードを全て山札に戻す
 					for (int i = 0; i < 7; i++)
 					{
 						player.ReturnCard(player.GetHand(i));
+						player.DecreaseHandNum();
+					}
+
+					//ドローし直す
+					for (int i = 0; i < 7; i++)
+					{
+						player.AddHand(player.CardDraw());
 					}
 				}
 				else
 				{
-					player.First_Draw = false;
+					//サイドに置く
+					for (int i = 0; i < 6; i++)
+					{
+						if (player.CheckCard())
+						{
+							player.SetSide(player.CardDraw());
+						}
+					}
+
+					player.EndFirstDraw = true;
 				}
 			}
-		}
-		if (cpu.First_Draw)
-		{
-			//6枚サイドに置く
-			for (int i = 0; i < 6; i++)
+			//CPU
+			if (!cpu.EndFirstDraw)
 			{
-				if (cpu.CheckCard())
+				//7枚手札に加える
+				if (cpu.GetHand(0) == -1)
 				{
-					cpu.SetSide(cpu.CardDraw());
+					for (int i = 0; i < 7; i++)
+					{
+						cpu.AddHand(cpu.CardDraw());
+					}
+				}
+
+				//手札に[たね]があるかないか調べる
+				if (!cpu.IsSeedInHand())//[たね]がない場合
+				{
+					//手札のカードを全て山札に戻す
+					for (int i = 0; i < 7; i++)
+					{
+						cpu.ReturnCard(cpu.GetHand(i));
+						cpu.DecreaseHandNum();
+					}
+
+					//ドローし直す
+					for (int i = 0; i < 7; i++)
+					{
+						cpu.AddHand(cpu.CardDraw());
+					}
+				}
+				else
+				{
+					//サイドに置く
+					for (int i = 0; i < 6; i++)
+					{
+						if (cpu.CheckCard())
+						{
+							cpu.SetSide(cpu.CardDraw());
+						}
+					}
+
+					cpu.EndFirstDraw = true;
 				}
 			}
-			//7枚手札に加える
-			for (int i = 0; i < 7; i++)
-			{
-				cpu.AddHand(cpu.CardDraw());
-			}
-			cpu.First_Draw = false;
 		}
 
 		break;
@@ -95,7 +133,6 @@ AbstractScene* GameMainScene::Update()
 		{
 			//���F�̒l���擾
 			Cr = GetColor(255, 255, 255);
-
 			
 			if (GetJoypadInputState(PAD_INPUT_1) == 1)
 			{
@@ -116,7 +153,9 @@ AbstractScene* GameMainScene::Update()
 			}
 			if (GetJoypadInputState(PAD_INPUT_START) == 1)
 			{
-				NextTurn = true;	
+				NextTurn = true;
+				Turn = START;    //スタートに戻す
+				player.EndStartDraw = false;
 				break;
 			}
 		}
@@ -153,32 +192,10 @@ void GameMainScene::Draw() const
 	case MY_TURN:
 		if (Player == 0)
 		{
-
+			DrawString(960, 540, "PLAYER TURN", Cr);
 			//������̕`��
 			//DrawString(960, 540, "�����̃^�[���I", Cr);
 			//DrawString(50, 100, "B:��D Y:�J�[�h�̏ڍ� X:�g�p(����) A:�߂� START:�^�[���G���h", Cr);
-
-			if (GetJoypadInputState(PAD_INPUT_1) == 1)
-			{
-				//��D����
-			}
-			if (GetJoypadInputState(PAD_INPUT_3) == 1)
-			{
-				//�J�[�h�̏ڍ�(���̉�ʂɃA�b�v)
-			}
-			if (GetJoypadInputState(PAD_INPUT_2) == 1)
-			{
-				//�J�[�h�̎g�p(����)
-			}
-			if (GetJoypadInputState(PAD_INPUT_4) == 1)
-			{
-				//�߂�
-			}
-			if (GetJoypadInputState(PAD_INPUT_START) == 1)
-			{
-				//DrawString(960, 540, "�^�[���G���h", Cr);
-				break;
-			}
 		}
 		break;
 	case ENEMY_TURN:

@@ -20,17 +20,25 @@ public:
 	//トラッシュにカードを入れる
 	void SetTrash(int card) { Trash[tCount++] = card; }
 
+	bool EndFirstDraw;//ゲーム開始時に7枚引いたか true：終わった false：終わっていない
+	bool EndStartDraw;//ターン開始時に1枚引いたか true：終わった false：終わっていない
+	bool EndSet;//カードを置き終わったか true：終わった false：終わっていない
 private:
 	int cardImg[27]; //カード画像
 	int CardBack;    //カードの裏
-	int Cursor_X;  //カーソル位置
+	int Cursor_X;  //カーソル位置 X座標
+	int Cursor_Y;  //カーソル位置 Y座標
 	int DeckType;  //デッキの種類
 	int OldX;
+	int OldY;
 	int FlgX;
+	int FlgY;
 	int Battle; //バトルフィールドに出すカードのID
 	int Bench[5];  //ベンチに出すカードのID
 	int Trash[60]; //トラッシュされたカードのID
 	int tCount;    //トラッシュにいるカードの枚数
+	const int X[3] = { 950,980,700 };
+	const int Y[3] = { 700,800,910 };
 
 	Data poke_data[19];
 	Pokemon poke;
@@ -40,6 +48,6 @@ private:
 	//バトルフィールドに置いたカードを描画
 	void BattleFieldDraw()const;
 	//描画するカードを判別
-	int DetermineCard(int card, int dtype)const;
+	int DetermineCard(int card_id, int dtype)const;
 };
 

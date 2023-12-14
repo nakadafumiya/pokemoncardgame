@@ -7,12 +7,12 @@
 class Card_Deck
 {
 public:
-	bool First_Draw;
 	static int Hand_Card;
 	int Card_num;
 	int turn;
 
 private:
+	const int MaxDeck = 31;
 	bool DrawCheck[31];  //山札にカードが存在するか true:ある false:ない
 public:
 	//ドロー
@@ -20,7 +20,7 @@ public:
 	//山札にカードが残っているか? true：ある false:ない
 	bool CheckCard()const
 	{
-		for (int i = 0; i < 31; i++)
+		for (int i = 0; i < MaxDeck; i++)
 		{
 			if (DrawCheck[i])
 			{

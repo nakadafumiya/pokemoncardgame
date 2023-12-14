@@ -21,7 +21,7 @@ Hand::Hand()
 
 void Hand::AddHand(int card)
 {
-	//èD‚Ì”‚ğˆø‚¢‚½•ª‘‚â‚·
+	//èD‚Ì”‚ğ‘‚â‚·
 	++HandNum;
 
 	//ƒJ[ƒh‚Ìí—Ş‚ğŠi”[

@@ -13,9 +13,6 @@ private:
 
 	int BackCard;
 
-	/*to do*/
-	int SideNum = 0;
-	/*‚±‚±‚Ü‚Å*/
 public:
 	int count;
 
@@ -28,8 +25,8 @@ public:
 	/*to do*/
 	void SetSide(int card) 
 	{ 
-		side[SideNum++] = card;
 		++count;
+		side[count - 1] = card;
 	}
 	int GetSide(int i)const { return side[i]; }
 	/*‚±‚±‚Ü‚Å*/

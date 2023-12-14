@@ -29,7 +29,7 @@ public:
 	{
 		for (int i = 0; i < HandNum; i++)
 		{
-			if (hand[i] <= 18) //ID‚ª18ˆÈ‰º‚Ì‚Æ‚«[‚½‚Ë]‚ª‘¶Ý‚·‚é
+			if (hand[i] <= 9) //Œ³F18 ID‚ª18ˆÈ‰º‚Ì‚Æ‚«[‚½‚Ë]‚ª‘¶Ý‚·‚é
 			{
 				return true;
 			}
@@ -38,6 +38,7 @@ public:
 		return false;
 	}
 	int GetHand(int i) { return hand[i]; }
+	void DecreaseHandNum() { --HandNum; }
 
 protected:
 	int hand[10]; //ŽèŽD

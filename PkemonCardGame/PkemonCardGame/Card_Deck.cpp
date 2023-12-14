@@ -7,7 +7,7 @@ int Card_Deck::CardDraw()
 	int ret = 0;
 	do
 	{
-		ret = GetRand(23 - 1); //31
+		ret = GetRand(MaxDeck - 1); //31
 	} while (!DrawCheck[ret]);
 	DrawCheck[ret] = false;
 	return ret;
@@ -16,13 +16,19 @@ int Card_Deck::Hand_Card = 0;
 
 Card_Deck::Card_Deck()
 {
-	First_Draw = true;
 	Hand_Card = 0;
 
 	/*�l�p*/
-	for (int i = 0; i < 31; i++)
+	for (int i = 0; i < MaxDeck; i++)
 	{
-		DrawCheck[i] = true;
+		if (10 <= i && i <= 16)
+		{
+			DrawCheck[i] = false;
+		}
+		else
+		{
+			DrawCheck[i] = true;
+		}
 	}
 	Card_num = 0;
 }
