@@ -28,7 +28,6 @@ private:
 
 	bool Battlefield;
 	bool NextTurn;
-	class Card_Deck card_deck;
 
 	int TurnCount;
 	Card_Deck card_deck;
@@ -54,6 +53,6 @@ int GetTurn()
 	return Turn;
 }
 
- void Battlepoke(int Card);
+ //void Battlepoke(int Card);
 };
 
