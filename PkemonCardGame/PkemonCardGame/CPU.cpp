@@ -120,12 +120,12 @@ void CPU::Draw()const
 		}
 	}
 
-	DrawString(1100, 150, "CPU ŽèŽD", 0xffffff);
-	for (int i = 0; i < HandNum; i++)//6
-	{
-		DrawFormatString(1100 + 25 * i, 300, 0xffffff, "%d", hand[i]); //GetSide(i)
-	}
-	DrawFormatString(1100 + 25, 400, 0xffffff, "BattleField %d", Battle);
+	//DrawString(1100, 150, "CPU ŽèŽD", 0xffffff);
+	//for (int i = 0; i < HandNum; i++)//6
+	//{
+	//	DrawFormatString(1100 + 25 * i, 300, 0xffffff, "%d", hand[i]); //GetSide(i)
+	//}
+	//DrawFormatString(1100 + 25, 400, 0xffffff, "BattleField %d", Battle);
 }
 
 void CPU::LoadImages()

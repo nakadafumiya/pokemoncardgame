@@ -285,7 +285,11 @@ void Player::Draw() const
 	//カーソル
 	DrawCircle(X[Cursor_Y] + 110 * Cursor_X, Y[Cursor_Y], 5, 0xff0000, true);
 
-#ifndef DEBUG
+
+	DrawString(1300, 680, "cursor stick", 0x000000);
+	DrawString(1300, 700, "select A", 0x000000);
+	//DrawString(1300, 740, "数字を入れる X", 0x000000);
+#ifdef DEBUG
 #define DEBUG
 	DrawString(1100, 680, "手札", 0xffffff);
 	for (int i = 0; i < HandNum; i++)
@@ -306,10 +310,10 @@ void Player::Draw() const
 		DrawFormatString(1380 + 20 * i, 600, 0xff0000, "%d ", dPosition[i]);
 	}
 
-	/*DrawString(1300, 680, "カーソル移動 ←→(スティック)", 0x000000);
+	DrawString(1300, 680, "カーソル移動 ←→(スティック)", 0x000000);
 	DrawString(1300, 700, "選択 A", 0x000000);
 	DrawString(1300, 720, "消去 BACK", 0x000000);
-	DrawString(1300, 740, "数字を入れる X", 0x000000);*/
+	DrawString(1300, 740, "数字を入れる X", 0x000000);
 #endif // !DEBUG
 
 }
