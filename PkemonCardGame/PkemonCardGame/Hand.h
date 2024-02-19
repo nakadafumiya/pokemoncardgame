@@ -44,7 +44,7 @@ protected:
 	int hand[10]; //èD
 	//char* hand[10]; //charŒ^èD
 	//char* saveHand[5]; //ˆê•Û‘¶—p
-	int saveHand[5];
+	int saveHand[5]; //ˆê•Û‘¶—p
 	int HandNum;  //‚Á‚Ä‚¢‚éèD‚Ì”
 	int DecreaseNum = 0;    //Œ¸‚ç‚·”
 	int dPosition[10]; //Œ¸‚ç‚·ˆÊ’u

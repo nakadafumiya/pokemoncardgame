@@ -9,6 +9,10 @@ struct Data
 	char NAME[20];
 	int HP;
 	int SIDE;
+	//それぞれのエネルギー
+	int ENE;
+	int E_ENE;
+	int F_ENE;
 };
 
 class Pokemon : public Card_Deck
@@ -38,10 +42,10 @@ private:
 	int hi_doran;
 
 protected:
-	//それぞれのエネルギー
-	int ENE;
-	int E_ENE;
-	int F_ENE;
+	////それぞれのエネルギー
+	//int ENE;
+	//int E_ENE;
+	//int F_ENE;
 public:
 	Pokemon();
 

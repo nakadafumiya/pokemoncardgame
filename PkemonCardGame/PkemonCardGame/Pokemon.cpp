@@ -155,7 +155,7 @@ int Pokemon::Battle1(int id)
 	//こくば
 	if (id < 4)
 	{
-		if (ENE <= 1)
+		if (Poke_id1[id].ENE <= 1)
 		{
 			return 10;
 		}
@@ -163,7 +163,7 @@ int Pokemon::Battle1(int id)
 	//ラルトス
 	if (id >= 4 && id < 8)
 	{
-		if (ENE <= 1)
+		if (Poke_id1[id].ENE <= 1)
 		{
 			return 10;
 		}
@@ -171,7 +171,7 @@ int Pokemon::Battle1(int id)
 	//ディアンシー
 	if (id == 8)
 	{
-		if (ENE <= 1)
+		if (Poke_id1[id].ENE <= 1)
 		{
 			return 20;
 		}
@@ -179,9 +179,9 @@ int Pokemon::Battle1(int id)
 	//ゲッコウガ
 	if (id == 9)
 	{
-		if (ENE <= 3)
+		if (Poke_id1[id].ENE <= 3)
 		{
-			ENE = -2;
+			Poke_id1[id].ENE = -2;
 			return 90;
 		}
 	}
@@ -192,7 +192,7 @@ int Pokemon::Battle2(int id)
 	//アルセウス
 	if (id < 3)
 	{
-		if (ENE <= 3)
+		if (Poke_id1[id].ENE <= 3)
 		{
 			return 130;
 		}
@@ -200,11 +200,11 @@ int Pokemon::Battle2(int id)
 	//レックウザ
 	if (id >= 3 && id < 5)
 	{
-		if (E_ENE <= 1)
+		if (Poke_id1[id].E_ENE <= 1)
 		{
 			return 40;
 		}
-		else if (F_ENE <= 1 && E_ENE <= 1)
+		else if (Poke_id1[id].F_ENE <= 1 && Poke_id1[id].E_ENE <= 1)
 		{
 			return 100;
 		}
@@ -212,7 +212,7 @@ int Pokemon::Battle2(int id)
 	//マフォクシー
 	if (id >= 5 && id < 7)
 	{
-		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1)
+		if (Poke_id1[id].F_ENE <= 3 || Poke_id1[id].F_ENE <= 2 && Poke_id1[id].E_ENE <= 1)
 		{
 			return 120;
 		}
@@ -226,11 +226,11 @@ int Pokemon::Battle2(int id)
 	//カルボウ
 	if (id >= 8 && id < 10)
 	{
-		if (F_ENE <= 1 || E_ENE <= 1)
+		if (Poke_id1[id].F_ENE <= 1 || Poke_id1[id].E_ENE <= 1)
 		{
 			return 10;
 		}
-		else if (F_ENE <= 2 || F_ENE <= 1 && E_ENE <= 1)
+		else if (Poke_id1[id].F_ENE <= 2 || Poke_id1[id].F_ENE <= 1 && Poke_id1[id].E_ENE <= 1)
 		{
 			return 20;
 		}
@@ -238,7 +238,7 @@ int Pokemon::Battle2(int id)
 	//バケッチャ
 	if (id == 10)
 	{
-		if (F_ENE <= 2 || E_ENE <= 2)
+		if (Poke_id1[id].F_ENE <= 2 || Poke_id1[id].E_ENE <= 2)
 		{
 			return 20;
 		}
@@ -246,7 +246,7 @@ int Pokemon::Battle2(int id)
 	//ホシガリス
 	if (id == 11)
 	{
-		if (F_ENE <= 2 || E_ENE <= 2)
+		if (Poke_id1[id].F_ENE <= 2 || Poke_id1[id].E_ENE <= 2)
 		{
 			return 20;
 		}
@@ -254,7 +254,7 @@ int Pokemon::Battle2(int id)
 	//ヒードラン
 	if (id == 12)
 	{
-		if (F_ENE <= 3 || F_ENE <= 2 && E_ENE <= 1 || F_ENE <= 1 && E_ENE <= 2)
+		if (Poke_id1[id].F_ENE <= 3 || Poke_id1[id].F_ENE <= 2 && Poke_id1[id].E_ENE <= 1 || Poke_id1[id].F_ENE <= 1 && Poke_id1[id].E_ENE <= 2)
 		{
 			return 70;
 		}

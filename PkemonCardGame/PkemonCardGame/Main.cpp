@@ -22,7 +22,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     SetFontSize(20);  //•¶šƒTƒCƒY‚ğİ’è
 
-    SceneManager sceneMng((AbstractScene*)new Title());  //GameMainScene()
+    SceneManager sceneMng((AbstractScene*)new GameMainScene());  //Title()
 
   
 

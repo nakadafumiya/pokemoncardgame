@@ -25,9 +25,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Pokemon.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
@@ -61,6 +58,9 @@
     <ClCompile Include="End.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -76,9 +76,6 @@
       <Filter>h</Filter>
     </ClInclude>
     <ClInclude Include="Pokemon.h">
-      <Filter>h</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
       <Filter>h</Filter>
     </ClInclude>
     <ClInclude Include="PadInput.h">
@@ -115,6 +112,9 @@
       <Filter>h</Filter>
     </ClInclude>
     <ClInclude Include="End.h">
+      <Filter>h</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>h</Filter>
     </ClInclude>
   </ItemGroup>

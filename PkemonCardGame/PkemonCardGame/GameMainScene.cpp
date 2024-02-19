@@ -46,16 +46,8 @@ AbstractScene* GameMainScene::Update()
 		{
 		case START:
 
-			if (player.EndFirstDraw && cpu.EndFirstDraw)
+			if (player.EndFirstDraw == true && cpu.EndFirstDraw == true)
 			{
-				//if (!NextTurn/*==false*/)
-				//{
-				//	Turn = MY_TURN;
-				//}
-				//else
-				//{
-				//	Turn = ENEMY_TURN;
-				//}
 				Turn = MY_TURN;
 			}
 
@@ -295,9 +287,9 @@ void GameMainScene::Draw() const
 			break;
 
 		}
-		side.Draw();
-		player.Draw();
+		//side.Draw();
 		cpu.Draw();
+		player.Draw();
 	}
 
 	if (HelpFlag == true)

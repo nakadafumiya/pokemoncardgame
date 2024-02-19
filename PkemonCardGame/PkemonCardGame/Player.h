@@ -1,53 +1,54 @@
-#pragma once
+ï»¿#pragma once
 #include "Hand.h"
 #include "Card_Deck.h"
 #include "Pokemon.h"
 #include "Side.h"
 
-class Player :public Hand,public Card_Deck,public Side
+class Player :public Hand, public Card_Deck, public Side
 {
 public:
 	Player();
 	Player(int dtype);
 	void Update();
 	void Draw()const;
-	//‰æ‘œ“Ç‚İ‚İ
+	//ç”»åƒèª­ã¿è¾¼ã¿
 	void LoadImages();
-	//ƒXƒeƒBƒbƒN§Œä
+	//ã‚¹ãƒ†ã‚£ãƒƒã‚¯åˆ¶å¾¡
 	void SticControl();
-	//ƒJ[ƒ\ƒ‹ˆÊ’u‚Ì’²®
+	//ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã®èª¿æ•´
 	void AdjustmentCursor();
-	//ƒgƒ‰ƒbƒVƒ…‚ÉƒJ[ƒh‚ğ“ü‚ê‚é
+	//ãƒˆãƒ©ãƒƒã‚·ãƒ¥ã«ã‚«ãƒ¼ãƒ‰ã‚’å…¥ã‚Œã‚‹
 	void SetTrash(int card) { Trash[tCount++] = card; }
 
-	bool EndFirstDraw;//ƒQ[ƒ€ŠJn‚É7–‡ˆø‚¢‚½‚© trueFI‚í‚Á‚½ falseFI‚í‚Á‚Ä‚¢‚È‚¢
-	bool EndStartDraw;//ƒ^[ƒ“ŠJn‚É1–‡ˆø‚¢‚½‚© trueFI‚í‚Á‚½ falseFI‚í‚Á‚Ä‚¢‚È‚¢
-	bool EndSet;//ƒJ[ƒh‚ğ’u‚«I‚í‚Á‚½‚© trueFI‚í‚Á‚½ falseFI‚í‚Á‚Ä‚¢‚È‚¢
+	bool EndFirstDraw;//ã‚²ãƒ¼ãƒ é–‹å§‹æ™‚ã«7æšå¼•ã„ãŸã‹ trueï¼šçµ‚ã‚ã£ãŸ falseï¼šçµ‚ã‚ã£ã¦ã„ãªã„
+	bool EndStartDraw;//ã‚¿ãƒ¼ãƒ³é–‹å§‹æ™‚ã«1æšå¼•ã„ãŸã‹ trueï¼šçµ‚ã‚ã£ãŸ falseï¼šçµ‚ã‚ã£ã¦ã„ãªã„
+	bool EndFirstSet;//ã‚«ãƒ¼ãƒ‰ã‚’ç½®ãçµ‚ã‚ã£ãŸã‹ trueï¼šçµ‚ã‚ã£ãŸ falseï¼šçµ‚ã‚ã£ã¦ã„ãªã„
 private:
-	int cardImg[27]; //ƒJ[ƒh‰æ‘œ
-	int CardBack;    //ƒJ[ƒh‚Ì— 
-	int Cursor_X;  //ƒJ[ƒ\ƒ‹ˆÊ’u XÀ•W
-	int Cursor_Y;  //ƒJ[ƒ\ƒ‹ˆÊ’u YÀ•W
-	int DeckType;  //ƒfƒbƒL‚Ìí—Ş
+	int cardImg[27]; //ã‚«ãƒ¼ãƒ‰ç”»åƒ
+	int CardBack;    //ã‚«ãƒ¼ãƒ‰ã®è£
+	int Cursor_X;  //ã‚«ãƒ¼ã‚½ãƒ«ä½ç½® Xåº§æ¨™
+	int Cursor_Y;  //ã‚«ãƒ¼ã‚½ãƒ«ä½ç½® Yåº§æ¨™
+	int DeckType;  //ãƒ‡ãƒƒã‚­ã®ç¨®é¡
 	int OldX;
 	int OldY;
 	int FlgX;
 	int FlgY;
-	int Battle; //ƒoƒgƒ‹ƒtƒB[ƒ‹ƒh‚Éo‚·ƒJ[ƒh‚ÌID
-	int Bench[5];  //ƒxƒ“ƒ`‚Éo‚·ƒJ[ƒh‚ÌID
-	int Trash[60]; //ƒgƒ‰ƒbƒVƒ…‚³‚ê‚½ƒJ[ƒh‚ÌID
-	int tCount;    //ƒgƒ‰ƒbƒVƒ…‚É‚¢‚éƒJ[ƒh‚Ì–‡”
+	int Battle; //ãƒãƒˆãƒ«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å‡ºã™ã‚«ãƒ¼ãƒ‰ã®ID
+	int Bench[5];  //ãƒ™ãƒ³ãƒã«å‡ºã™ã‚«ãƒ¼ãƒ‰ã®ID
+	int Trash[60]; //ãƒˆãƒ©ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚«ãƒ¼ãƒ‰ã®ID
+	int tCount;    //ãƒˆãƒ©ãƒƒã‚·ãƒ¥ã«ã„ã‚‹ã‚«ãƒ¼ãƒ‰ã®æšæ•°
 	const int X[3] = { 950,980,700 };
 	const int Y[3] = { 700,800,910 };
 
 	Data poke_data[19];
 	Pokemon poke;
 
-	//èD‚ğ•`‰æ
+	//æ‰‹æœ­ã‚’æç”»
 	void HandDraw()const;
-	//ƒoƒgƒ‹ƒtƒB[ƒ‹ƒh‚É’u‚¢‚½ƒJ[ƒh‚ğ•`‰æ
+	//ãƒãƒˆãƒ«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«ç½®ã„ãŸã‚«ãƒ¼ãƒ‰ã‚’æç”»
 	void BattleFieldDraw()const;
-	//•`‰æ‚·‚éƒJ[ƒh‚ğ”»•Ê
+	//æç”»ã™ã‚‹ã‚«ãƒ¼ãƒ‰ã‚’åˆ¤åˆ¥
 	int DetermineCard(int card_id, int dtype)const;
+	//1ã‚¿ãƒ¼ãƒ³ç›®ã«ãƒãƒˆãƒ«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¨ãƒ™ãƒ³ãƒã«ã‚«ãƒ¼ãƒ‰ã‚’ç½®ã
+	void FirstCardSet();
 };
-

@@ -18,7 +18,6 @@ Card_Deck::Card_Deck()
 {
 	Hand_Card = 0;
 
-	/*�l�p*/
 	for (int i = 0; i < MaxDeck; i++)
 	{
 		if (10 <= i && i <= 16)
