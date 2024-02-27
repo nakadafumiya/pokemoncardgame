@@ -483,19 +483,19 @@ void Player::HandDraw() const
 			switch (DetermineCard(hand[i], DeckType))
 			{
 			case 0:  //こくば
-				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[0], FALSE);
+				DrawGraph(1200 + i * Push_X + pw, 920 - ph, cardImg[0], FALSE);
 				break;
 			case 1:  //ラルトス
-				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[2], FALSE);
+				DrawGraph(1200 + i * Push_X + pw, 920 - ph, cardImg[2], FALSE);
 				break;
 			case 2:  //ディアンシー
-				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[5], FALSE);
+				DrawGraph(1200 + i * Push_X + pw, 920 - ph, cardImg[5], FALSE);
 				break;
 			case 3:  //ゲッコウガ
-				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[6], FALSE);
+				DrawGraph(1200 + i * Push_X + pw, 920 - ph, cardImg[6], FALSE);
 				break;
 			case 4:  //エネルギー
-				DrawGraph(1000 + i * Push_X + pw, 800 - ph, cardImg[7], FALSE);
+				DrawGraph(1200 + i * Push_X + pw, 920 - ph, cardImg[7], FALSE);
 				break;
 			}
 		}
@@ -702,16 +702,20 @@ void Player::FirstCardSet()
 	if (PAD_INPUT::OnClick(XINPUT_BUTTON_A))
 	{
 		//カーソルが手札の位置の時 & カーソル位置にカードが存在する時
-		if (Cursor_Y == 1 && hand[Cursor_X] != -1)
+		if (Cursor_Y == 1 && hand[Cursor_X] != -1
+			&& DetermineCard(hand[Cursor_X], DeckType) < 4)
 		{
-			SetTrashPosition(Cursor_X);
 			if (Battle == -1)
 			{
+				SetTrashPosition(Cursor_X);
+
 				//カーソル位置のカードのidをバトルフィールドに入れる
 				Battle = hand[Cursor_X];
 			}
 			else
 			{
+				SetTrashPosition(Cursor_X);
+
 				for (int i = 0; i < 5; i++)
 				{
 					if (Bench[i] == -1)
@@ -727,7 +731,11 @@ void Player::FirstCardSet()
 		//カーソルがセット完了ボタンの時
 		else if(Cursor_Y == 3)
 		{
-			EndFirstSet = true;
+			//バトルフィールドにカードがある時のみ変更
+			if (Battle != -1)
+			{
+				EndFirstSet = true;
+			}
 		}
 	}
 }

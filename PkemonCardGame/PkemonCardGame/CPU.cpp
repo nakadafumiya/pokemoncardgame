@@ -82,7 +82,7 @@ void CPU::Draw()const
 		{
 			if (Bench[i] != -1)
 			{
-				DrawRotaGraph(1200 + i * 140, 100, 1, PI, CardBack, FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, CardBack, FALSE);
 			}
 		}
 	}
@@ -266,31 +266,31 @@ void CPU::BenchDraw() const
 			switch (DetermineCard(Bench[i], DeckType))
 			{
 			case 0:  //アルセウス
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[1], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[1], FALSE);
 				break;
 			case 1:  //レックウザ
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[3], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[3], FALSE);
 				break;
 			case 2:  //マフォクシー
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[4], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[4], FALSE);
 				break;
 			case 3:  //ネオラント
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[5], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[5], FALSE);
 				break;
 			case 4:  //カルボウ
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[6], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[6], FALSE);
 				break;
 			case 5:  //バケッチャ
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[8], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[8], FALSE);
 				break;
 			case 6:  //ホシガリス
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[9], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[9], FALSE);
 				break;
 			case 7:  //ヒードラン
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[10], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[10], FALSE);
 				break;
 			case 8:  //エネルギー
-				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[12], FALSE);
+				DrawRotaGraph(1249 - i * 140, 90, 1, PI, cardImg[12], FALSE);
 				break;
 			}
 		}
