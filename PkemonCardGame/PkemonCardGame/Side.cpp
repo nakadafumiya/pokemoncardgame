@@ -41,38 +41,38 @@ void Side::Draw() const
 
 	//DrawFormatString(0,0,0x000000,"%d",count);
 	
-	if (0 < count)
-	{
-		DrawRotaGraph(470, 959, 1, 0, BackCard, FALSE);//����
-	}
-	if (1 < count)
-	{
-		DrawRotaGraph(470, 799, 1, 0, BackCard, FALSE);//����
-	}
-	if (2 < count)
-	{
-		DrawRotaGraph(470, 639, 1, 0, BackCard, FALSE);//����
-	}
-	if (3 < count)
-	{
-		DrawRotaGraph(495, 935, 1, 0, BackCard, FALSE);//��O��
-	}
-	if (4 < count) 
-	{
-		DrawRotaGraph(495, 775, 1, 0, BackCard, FALSE);//��O��
-	}
-	if (5 < count) 
-	{
-		DrawRotaGraph(495, 615, 1, 0, BackCard, FALSE);//��O��
-	}
-	
+	//if (0 < count)
+	//{
+	//	DrawRotaGraph(470, 959, 1, 0, BackCard, FALSE);//����
+	//}
+	//if (1 < count)
+	//{
+	//	DrawRotaGraph(470, 799, 1, 0, BackCard, FALSE);//����
+	//}
+	//if (2 < count)
+	//{
+	//	DrawRotaGraph(470, 639, 1, 0, BackCard, FALSE);//����
+	//}
+	//if (3 < count)
+	//{
+	//	DrawRotaGraph(495, 935, 1, 0, BackCard, FALSE);//��O��
+	//}
+	//if (4 < count) 
+	//{
+	//	DrawRotaGraph(495, 775, 1, 0, BackCard, FALSE);//��O��
+	//}
+	//if (5 < count) 
+	//{
+	//	DrawRotaGraph(495, 615, 1, 0, BackCard, FALSE);//��O��
+	//}
+	//
 
-	//�G�@�T�C�h
-	DrawRotaGraph(1460, 420, 1, PI, BackCard, FALSE);//����
-	DrawRotaGraph(1460, 260, 1, PI, BackCard, FALSE);//����
-	DrawRotaGraph(1460, 100, 1, PI, BackCard, FALSE);//����
+	////�G�@�T�C�h
+	//DrawRotaGraph(1460, 420, 1, PI, BackCard, FALSE);//����
+	//DrawRotaGraph(1460, 260, 1, PI, BackCard, FALSE);//����
+	//DrawRotaGraph(1460, 100, 1, PI, BackCard, FALSE);//����
 
-	DrawRotaGraph(1435, 453, 1, PI, BackCard, FALSE);//��O��
-	DrawRotaGraph(1435, 293, 1, PI, BackCard, FALSE);//��O��
-	DrawRotaGraph(1435, 133, 1, PI, BackCard, FALSE);//��O��
+	//DrawRotaGraph(1435, 453, 1, PI, BackCard, FALSE);//��O��
+	//DrawRotaGraph(1435, 293, 1, PI, BackCard, FALSE);//��O��
+	//DrawRotaGraph(1435, 133, 1, PI, BackCard, FALSE);//��O��
 }

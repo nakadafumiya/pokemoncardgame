@@ -38,6 +38,7 @@ private:
 	int Backimage;
 	int helpimage1;
 	int helpimage2;
+	int EndSetButtom;
 	bool HelpFlag;
 
 

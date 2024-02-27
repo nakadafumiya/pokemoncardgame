@@ -15,9 +15,15 @@ public:
 	void SetBattleField();
 	//ベンチにカードを置く
 	void SetBench();
+	//最初に手札を7枚引く
+	void FirstDraw();
+	//ターン情報を受け取る
+	void SetTrun(int t) { Turn = t; }
 
-	bool EndFirstDraw;//ゲーム開始時に7枚引いたか true：終わった false：終わっていない
-	bool EndSet;//カードを置き終わったか true：終わった false：終わっていない
+	bool EndFirstDraw; //ゲーム開始時に7枚引いたか true：終わった false：終わっていない
+	bool EndFirstSet;  //カードを置き終わったか true：終わった false：終わっていない
+	bool EndSetSide;   //カードをサイドに置き終わったか true：終わった false：終わっていない
+	bool EndStartDraw; //ターン開始時に1枚引いたか true：終わった false：終わっていない
 
 private:
 	int DeckType;  //デッキの種類
@@ -27,11 +33,16 @@ private:
 	int Bench[5];  //ベンチに出すカードのID
 	int Trash[60]; //トラッシュされたカードのID
 	int tCount;    //トラッシュにいるカードの枚数
+	int Turn;	   //ターン
 	Data poke_data[20];
 	Pokemon poke;
 
+	//手札を描画
+	void HandDraw()const;
 	//バトルフィールドに置いたカードを描画
 	void BattleFieldDraw()const;
+	//ベンチに置いたカードを描画
+	void BenchDraw()const;
 	//描画するカードを判別
 	int DetermineCard(int card_id, int dtype)const;
 };

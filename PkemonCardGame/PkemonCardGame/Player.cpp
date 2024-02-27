@@ -11,8 +11,9 @@ Player::Player()
 	Battle = -1;
 	tCount = 0;
 	EndFirstDraw = false;
-	EndStartDraw = false;
 	EndFirstSet = false;
+	EndSetSide = false;
+	EndStartDraw = false;
 
 	for (int i = 0; i < 27; i++)
 	{
@@ -273,12 +274,6 @@ void Player::Draw() const
 	DrawString(1300, 680, "cursor キー", 0x000000);
 	DrawString(1300, 700, "select スペース", 0x000000);
 
-	if (Battle != -1)
-	{
-		DrawFormatString(SCREEN_WIDTH / 2 - 70, 580, 0xff0000, "%s", poke_data[Battle].NAME);
-		DrawFormatString(SCREEN_WIDTH / 2 - 70, 630, 0xff0000, "HP %d", poke_data[Battle].HP);
-	}
-
 	//カードを何処に置いてほしいか表示
 	//1ターン目のカードセット
 	if (!EndFirstSet)
@@ -302,6 +297,12 @@ void Player::Draw() const
 
 #ifndef DEBUG
 #define DEBUG
+	if (Battle != -1)
+	{
+		DrawFormatString(SCREEN_WIDTH / 2 - 70, 580, 0xff0000, "%s", poke_data[Battle].NAME);
+		DrawFormatString(SCREEN_WIDTH / 2 - 70, 630, 0xff0000, "HP %d", poke_data[Battle].HP);
+	}
+
 	DrawString(1100, 680, "手札", 0xffffff);
 	for (int i = 0; i < HandNum; i++)
 	{
@@ -314,12 +315,12 @@ void Player::Draw() const
 		DrawFormatString(1100 + 25 * i, 770, 0xffffff, "%d", GetSide(i));
 	}
 
-	DrawFormatString(1100, 600, 0xff0000, "消す枚数 %d", DecreaseNum);
+	/*DrawFormatString(1100, 600, 0xff0000, "消す枚数 %d", DecreaseNum);
 	DrawString(1250, 600, "消す位置 ", 0xff0000);
 	for (int i = 0; i < DecreaseNum; i++)
 	{
 		DrawFormatString(1380 + 20 * i, 600, 0xff0000, "%d ", dPosition[i]);
-	}
+	}*/
 #endif // !DEBUG
 
 }
@@ -386,6 +387,40 @@ void Player::AdjustmentCursor()
 		{
 			Cursor_X = HandNum - 1;
 		}
+	}
+}
+
+void Player::FirstDraw()
+{
+	//一枚も持っていない時7枚手札に加える
+	if (GetHand(0) == -1)
+	{
+		for (int i = 0; i < 7; i++)
+		{
+			AddHand(CardDraw());
+		}
+	}
+
+	//手札に[たね]があるかないか調べる
+	if (!IsSeedInHand())//[たね]がない場合
+	{
+		//手札のカードを全て山札に戻す
+		for (int i = 0; i < 7; i++)
+		{
+			ReturnCard(GetHand(i));
+			DecreaseHandNum();
+		}
+
+		//ドローし直す
+		for (int i = 0; i < 7; i++)
+		{
+			AddHand(CardDraw());
+		}
+	}
+	//[たね]がある場合
+	else
+	{
+		EndFirstDraw = true; //EndFirstDrawフラグをtrueにする
 	}
 }
 
@@ -607,21 +642,13 @@ int Player::DetermineCard(int card_id, int dtype) const
 void Player::FirstCardSet()
 {
 	//カーソル移動
-		//右
+	//右
 	if (MARGIN < PAD_INPUT::GetPadThumbLX() && FlgX == 0)
 	{
 		//カーソルY位置が手札の時
 		if (Cursor_Y == 1)
 		{
 			if (HandNum - 1 < ++Cursor_X)
-			{
-				Cursor_X = 0;
-			}
-		}
-		//カーソルY位置が配置完了の時
-		if (Cursor_Y == 2)
-		{
-			if (5 - 1 < ++Cursor_X)
 			{
 				Cursor_X = 0;
 			}
@@ -638,59 +665,36 @@ void Player::FirstCardSet()
 				Cursor_X = HandNum - 1;
 			}
 		}
-		//カーソルY位置が配置完了の時
-		if (Cursor_Y == 2)
-		{
-			if (--Cursor_X < 0)
-			{
-				Cursor_X = 5 - 1;
-			}
-		}
 	}
 
 	//上
-	if (EndFirstSet && MARGIN < PAD_INPUT::GetPadThumbLY() && FlgY == 0)
+	if (MARGIN < PAD_INPUT::GetPadThumbLY() && FlgY == 0)
 	{
-		if (--Cursor_Y <= 1)
+		Cursor_Y -= 2;
+		//Y位置が1より小さい時最後に戻る
+		if (Cursor_Y < 1)
 		{
-			Cursor_Y = 2;
-		}
-		//カーソル移動時に横の範囲から出ないようにする
-		switch (Cursor_Y)
-		{
-		case 1:
-			//手札の数よりカーソルX位置が上回っている時調整する
-			if (HandNum < Cursor_X)
-			{
-				Cursor_X = HandNum;
-			}
-			break;
-		case 2:
-			Cursor_X = 5;
-			break;
+			Cursor_Y = 3;
+
+			//カーソル位置の調整
+			Cursor_X = 3;
 		}
 	}
 	//下
-	if (EndFirstSet && PAD_INPUT::GetPadThumbLY() < -MARGIN && FlgY == 0)
+	if (PAD_INPUT::GetPadThumbLY() < -MARGIN && FlgY == 0)
 	{
-		if (2 <= ++Cursor_Y)
+		Cursor_Y += 2;
+
+		//Y位置が4より多い時最初に戻る
+		if (3 < Cursor_Y)
 		{
 			Cursor_Y = 1;
 		}
 
-		//カーソルが移動時に横の範囲から出ないようにする
-		switch (Cursor_Y)
+		//カーソル位置の調整
+		if (Cursor_Y == 3)
 		{
-		case 1:
-			//手札の数よりカーソルX位置が上回っている時調整する
-			if (HandNum < Cursor_X)
-			{
-				Cursor_X = HandNum;
-			}
-			break;
-		case 2:
-			Cursor_X = 5;
-			break;
+			Cursor_X = 3;
 		}
 	}
 
@@ -719,6 +723,11 @@ void Player::FirstCardSet()
 			}
 			TrashHand(); //手札をトラッシュする
 			AdjustmentCursor(); //カーソル位置の調整
+		}
+		//カーソルがセット完了ボタンの時
+		else if(Cursor_Y == 3)
+		{
+			EndFirstSet = true;
 		}
 	}
 }

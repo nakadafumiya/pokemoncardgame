@@ -23,6 +23,7 @@ GameMainScene::GameMainScene()
 	helpimage1 = LoadGraph("image/rule (2).png");
 	helpimage2 = LoadGraph("image/rule2 (2).png");
 	Backimage = LoadGraph("image/Title_Back.png");
+	EndSetButtom = LoadGraph("image/EndSet.png");
 
 	HelpFlag = false;
 }
@@ -31,6 +32,7 @@ AbstractScene* GameMainScene::Update()
 {
 	player.Update();
 	cpu.Update();
+	cpu.SetTrun(Turn);
 	//side.Update();
 	end.Update();
 
@@ -46,7 +48,7 @@ AbstractScene* GameMainScene::Update()
 		{
 		case START:
 
-			if (player.EndFirstDraw == true && cpu.EndFirstDraw == true)
+			if ((cpu.EndSetSide)&&(player.EndSetSide))
 			{
 				Turn = MY_TURN;
 			}
@@ -55,95 +57,53 @@ AbstractScene* GameMainScene::Update()
 			if (10 < ++interval)
 			{
 				interval = 0;
-				//プレイヤー
+				/** プレイヤー **/
+				//7枚手札に加える
 				if (!player.EndFirstDraw)
 				{
-					//一枚も持っていない時7枚手札に加える
-					if (player.GetHand(0) == -1)
-					{
-						for (int i = 0; i < 7; i++)
-						{
-							player.AddHand(player.CardDraw());
-						}
-					}
-
-					//手札に[たね]があるかないか調べる
-					if (!player.IsSeedInHand())//[たね]がない場合
-					{
-						//手札のカードを全て山札に戻す
-						for (int i = 0; i < 7; i++)
-						{
-							player.ReturnCard(player.GetHand(i));
-							player.DecreaseHandNum();
-						}
-
-						//ドローし直す
-						for (int i = 0; i < 7; i++)
-						{
-							player.AddHand(player.CardDraw());
-						}
-					}
-					else
-					{
-						//サイドに置く
-						for (int i = 0; i < 6; i++)
-						{
-							if (player.CheckCard())
-							{
-								player.SetSide(player.CardDraw());
-							}
-						}
-
-						player.EndFirstDraw = true;
-					}
+					player.FirstDraw();
 				}
-				//CPU
+				//バトル・ベンチにポケモンが置かれていた時
+				//サイドにカードを置く
+				if ((player.EndFirstSet) && (!player.EndSetSide))
+				{
+					for (int i = 0; i < 6; i++)
+					{
+						if (player.CheckCard())
+						{
+							player.SetSide(player.CardDraw());
+						}
+					}
+					player.EndSetSide = true;
+				}
+
+				/** CPU **/
+				//7枚手札に加える
 				if (!cpu.EndFirstDraw)
 				{
-					//7枚手札に加える
-					if (cpu.GetHand(0) == -1)
+					cpu.FirstDraw();
+				}
+				//バトル・ベンチにカードを置く
+				if (!cpu.EndFirstSet)
+				{
+					cpu.SetBattleField();
+					cpu.SetBench();
+					cpu.EndFirstSet = true;
+				}
+				//バトル・ベンチにポケモンが置かれていた時
+				//サイドにカードを置く
+				if ((cpu.EndFirstSet) && (!cpu.EndSetSide))
+				{
+					for (int i = 0; i < 6; i++)
 					{
-						for (int i = 0; i < 7; i++)
+						if (cpu.CheckCard())
 						{
-							cpu.AddHand(cpu.CardDraw());
+							cpu.SetSide(cpu.CardDraw());
 						}
 					}
-
-					//手札に[たね]があるかないか調べる
-					if (!cpu.IsSeedInHand())//[たね]がない場合
-					{
-						//手札のカードを全て山札に戻す
-						for (int i = 0; i < 7; i++)
-						{
-							cpu.ReturnCard(cpu.GetHand(i));
-							cpu.DecreaseHandNum();
-						}
-
-						//ドローし直す
-						for (int i = 0; i < 7; i++)
-						{
-							cpu.AddHand(cpu.CardDraw());
-						}
-					}
-					else
-					{
-						//サイドに置く
-						for (int i = 0; i < 6; i++)
-						{
-							if (cpu.CheckCard())
-							{
-								cpu.SetSide(cpu.CardDraw());
-							}
-						}
-
-						cpu.EndFirstDraw = true;
-					}
+					cpu.EndSetSide = true;
 				}
 			}
-
-			//Turn = MY_TURN;
-
-
 			break;
 
 		case MY_TURN:
@@ -219,6 +179,12 @@ void GameMainScene::Draw() const
 		{
 		case START:
 			//DrawString(960, 540, "Battle Start", GetColor(255, 0, 0));
+
+			//カードのセットアップ完了ボタン
+			if (!player.EndFirstSet)
+			{
+				DrawGraph(1550, 600, EndSetButtom, TRUE);
+			}
 			break;
 
 		case MY_TURN:

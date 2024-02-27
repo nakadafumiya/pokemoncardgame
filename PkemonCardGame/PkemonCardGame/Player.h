@@ -17,12 +17,15 @@ public:
 	void SticControl();
 	//カーソル位置の調整
 	void AdjustmentCursor();
+	//最初に手札を7枚引く
+	void FirstDraw();
 	//トラッシュにカードを入れる
 	void SetTrash(int card) { Trash[tCount++] = card; }
 
-	bool EndFirstDraw;//ゲーム開始時に7枚引いたか true：終わった false：終わっていない
-	bool EndStartDraw;//ターン開始時に1枚引いたか true：終わった false：終わっていない
-	bool EndFirstSet;//カードを置き終わったか true：終わった false：終わっていない
+	bool EndFirstDraw; //ゲーム開始時に7枚引いたか true：終わった false：終わっていない
+	bool EndFirstSet;  //カードを置き終わったか true：終わった false：終わっていない
+	bool EndSetSide;   //カードをサイドに置き終わったか true：終わった false：終わっていない
+	bool EndStartDraw; //ターン開始時に1枚引いたか true：終わった false：終わっていない
 private:
 	int cardImg[27]; //カード画像
 	int CardBack;    //カードの裏
@@ -37,8 +40,8 @@ private:
 	int Bench[5];  //ベンチに出すカードのID
 	int Trash[60]; //トラッシュされたカードのID
 	int tCount;    //トラッシュにいるカードの枚数
-	const int X[3] = { 950,980,700 };
-	const int Y[3] = { 700,800,910 };
+	const int X[4] = { 950,980,700,1570}; //カーソルX座標{バトルフィールド,手札,ベンチ,ボタン}
+	const int Y[4] = { 700,800,910, 620}; //カーソルY座標{バトルフィールド,手札,ベンチ,ボタン}
 
 	Data poke_data[19];
 	Pokemon poke;

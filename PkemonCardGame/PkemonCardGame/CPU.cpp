@@ -6,8 +6,11 @@ CPU::CPU()
 	DeckType = 1;
 	Battle = -1;
 	tCount = 0;
+	Turn = START;
 	EndFirstDraw = false;
-	EndSet = false;
+	EndFirstSet = false;
+	EndSetSide = false;
+	EndStartDraw = false;
 
 	for (int i = 0; i < 19; i++)
 	{
@@ -31,12 +34,6 @@ void CPU::Update()
 
 void CPU::Draw()const
 {
-	//DrawString(1100, 680, "手札", 0xffffff);
-	//for (int i = 0; i < 6; i++) //HandNum
-	//{
-	//	DrawFormatString(500 + 25 * i, 100, 0xffffff, "%d", GetSide(i));//hand[i]
-	//}
-
 	//山札
 	if (CheckCard()) //山札にカードが1枚でも存在する時描画する
 	{
@@ -73,59 +70,50 @@ void CPU::Draw()const
 		DrawRotaGraph(1435, 133, 1, PI, CardBack, FALSE);//手前上
 	}
 	//手札
-	for (int i = 0; i < HandNum; i++)
+	HandDraw();
+
+	//スタートの時はカードを裏にする
+	if (Turn == START)
 	{
-		if (hand[i] != -1)
+		//バトルフィールド
+		DrawRotaGraph(SCREEN_WIDTH / 2 - 20, 375, 1, PI, CardBack, FALSE);
+		//ベンチ
+		for (int i = 0; i < 5; i++)
 		{
-			DrawRotaGraph(1100 + i * Push_X, 0, 1.0, PI, CardBack, TRUE);
-		}
-	}
-	//バトルフィールド
-	BattleFieldDraw();
-	//ベンチ
-	for (int i = 0; i < 5; i++)
-	{
-		if (Bench[i] != -1)
-		{
-			switch (DetermineCard(Bench[i], DeckType))
+			if (Bench[i] != -1)
 			{
-			case 0:  //アルセウス
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[1], FALSE);
-				break;
-			case 1:  //レックウザ
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[3], FALSE);
-				break;
-			case 2:  //マフォクシー
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[4], FALSE);
-				break;
-			case 3:  //ネオラント
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[5], FALSE);
-				break;
-			case 4:  //カルボウ
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[6], FALSE);
-				break;
-			case 5:  //バケッチャ
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[8], FALSE);
-				break;
-			case 6:  //ホシガリス
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[9], FALSE);
-				break;
-			case 7:  //ヒードラン
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[10], FALSE);
-				break;
-			case 8:  //エネルギー
-				DrawRotaGraph(550 + i * 140, 100, 1, PI, cardImg[12], FALSE);
-				break;
+				DrawRotaGraph(1200 + i * 140, 100, 1, PI, CardBack, FALSE);
 			}
 		}
 	}
+	else
+	{
+		//バトルフィールド
+		BattleFieldDraw();
+		//ベンチ
+		BenchDraw();
+	}
 
-	//DrawString(1100, 150, "CPU 手札", 0xffffff);
-	//for (int i = 0; i < HandNum; i++)//6
-	//{
-	//	DrawFormatString(1100 + 25 * i, 300, 0xffffff, "%d", hand[i]); //GetSide(i)
-	//}
-	//DrawFormatString(1100 + 25, 400, 0xffffff, "BattleField %d", Battle);
+#ifndef DEBUG
+	if (Battle != -1)
+	{
+		DrawFormatString(SCREEN_WIDTH / 2 - 70, 80, 0xff0000, "%s", poke_data[Battle].NAME);
+		DrawFormatString(SCREEN_WIDTH / 2 - 70, 90, 0xff0000, "HP %d", poke_data[Battle].HP);
+	}
+
+	DrawString(1100, 150, "CPU 手札", 0xffff00);
+	for (int i = 0; i < HandNum; i++)//6
+	{
+		DrawFormatString(1100 + 25 * i, 180, 0xffff00, "%d", hand[i]);
+	}
+	DrawFormatString(1100 + 25, 220, 0xffff00, "BattleField %d", Battle);
+
+	DrawString(1300, 150, "CPU ベンチ", 0xffff00);
+	for (int i = 0; i < 5; i++)
+	{
+		DrawFormatString(1300 + 25 * i, 180, 0xffff00, "%d", Bench[i]);
+	}
+#endif
 }
 
 void CPU::LoadImages()
@@ -147,28 +135,87 @@ void CPU::LoadImages()
 
 void CPU::SetBattleField()
 {
-	for (int i = 0; i < HandNum; i++)
+	//ゲーム開始前にカードを置き終わっていない時
+	if (!EndFirstSet)
 	{
-		if (hand[i] < 13)
+		//手札のたねをバトルフィールドに入れる
+		for (int i = 0; i < HandNum; i++)
 		{
-			SetTrashPosition(i);
-			Battle = hand[i];
-			TrashHand();
-			break;
+			if (DetermineCard(hand[i], DeckType) <= 7)
+			{
+				SetTrashPosition(i);  //削除位置を設定
+				Battle = hand[i];
+				TrashHand();		  //手札を削除
+				break;
+			}
 		}
 	}
 }
 
 void CPU::SetBench()
 {
+	//たねがベンチに入っていない時
+	for (int b = 0; b < 5; b++)
+	{
+		if (Bench[b] != -1) continue;
+
+		//たねをベンチに入れる
+		for (int h = 0; h < HandNum; h++)
+		{
+			if (DetermineCard(hand[h], DeckType) <= 7)
+			{
+				SetTrashPosition(h);  //削除位置を設定
+				Bench[b] = hand[h];
+				TrashHand();		  //手札を削除
+				break;
+			}
+		}
+	}
+}
+
+//手札を7枚引く
+void CPU::FirstDraw()
+{
+	//一枚も持っていない時7枚手札に加える
+	if (GetHand(0) == -1)
+	{
+		for (int i = 0; i < 7; i++)
+		{
+			AddHand(CardDraw());
+		}
+	}
+
+	//手札に[たね]があるかないか調べる
+	if (!IsSeedInHand())//[たね]がない場合
+	{
+		//手札のカードを全て山札に戻す
+		for (int i = 0; i < 7; i++)
+		{
+			ReturnCard(GetHand(i));
+			DecreaseHandNum();
+		}
+
+		//ドローし直す
+		for (int i = 0; i < 7; i++)
+		{
+			AddHand(CardDraw());
+		}
+	}
+	//[たね]がある場合
+	else
+	{
+		EndFirstDraw = true; //EndFirstDrawフラグをtrueにする
+	}
+}
+
+void CPU::HandDraw() const
+{
 	for (int i = 0; i < HandNum; i++)
 	{
-		if (hand[i] < 13)
+		if (hand[i] != -1)
 		{
-			SetTrashPosition(i);
-			Bench[i] = hand[i];
-			TrashHand(); //手札をトラッシュする
-			if (Bench[4] != -1) break; //ベンチが埋まったら抜ける
+			//			  1100
+			DrawRotaGraph(1400 + i * Push_X, 0, 1.0, PI, CardBack, TRUE);
 		}
 	}
 }
@@ -210,6 +257,47 @@ void CPU::BattleFieldDraw() const
 	}
 }
 
+void CPU::BenchDraw() const
+{
+	for (int i = 0; i < 5; i++)
+	{
+		if (Bench[i] != -1)
+		{
+			switch (DetermineCard(Bench[i], DeckType))
+			{
+			case 0:  //アルセウス
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[1], FALSE);
+				break;
+			case 1:  //レックウザ
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[3], FALSE);
+				break;
+			case 2:  //マフォクシー
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[4], FALSE);
+				break;
+			case 3:  //ネオラント
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[5], FALSE);
+				break;
+			case 4:  //カルボウ
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[6], FALSE);
+				break;
+			case 5:  //バケッチャ
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[8], FALSE);
+				break;
+			case 6:  //ホシガリス
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[9], FALSE);
+				break;
+			case 7:  //ヒードラン
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[10], FALSE);
+				break;
+			case 8:  //エネルギー
+				DrawRotaGraph(1600 - i * 140, 100, 1, PI, cardImg[12], FALSE);
+				break;
+			}
+		}
+	}
+}
+
+//描画するカードを判別
 int CPU::DetermineCard(int card_id, int dtype) const
 {
 	//デッキタイプが1の時
